@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>audiocraft.models.builders API documentation</title>
+<meta name="description" content="All the functions to build the relevant models and modules
+from the Hydra config." />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>audiocraft.models.builders</code></h1>
+</header>
+<section id="section-intro">
+<p>All the functions to build the relevant models and modules
+from the Hydra config.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># Copyright (c) Meta Platforms, Inc. and affiliates.
+# All rights reserved.
+#
+# This source code is licensed under the license found in the
+# LICENSE file in the root directory of this source tree.
+
+&#34;&#34;&#34;
+All the functions to build the relevant models and modules
+from the Hydra config.
+&#34;&#34;&#34;
+
+import typing as tp
+import warnings
+
+import audiocraft
+import omegaconf
+import torch
+
+from .encodec import CompressionModel, EncodecModel, FlattenedCompressionModel  # noqa
+from .lm import LMModel
+from ..modules.codebooks_patterns import (
+    CodebooksPatternProvider,
+    DelayedPatternProvider,
+    ParallelPatternProvider,
+    UnrolledPatternProvider,
+    VALLEPattern,
+    MusicLMPattern,
+)
+from ..modules.conditioners import (
+    BaseConditioner,
+    ConditioningProvider,
+    LUTConditioner,
+    T5Conditioner,
+    ConditionFuser,
+    ChromaStemConditioner,
+)
+from .. import quantization as qt
+from ..utils.utils import dict_from_config
+
+
+def get_quantizer(quantizer: str, cfg: omegaconf.DictConfig, dimension: int) -&gt; qt.BaseQuantizer:
+    klass = {
+        &#39;no_quant&#39;: qt.DummyQuantizer,
+        &#39;rvq&#39;: qt.ResidualVectorQuantizer
+    }[quantizer]
+    kwargs = dict_from_config(getattr(cfg, quantizer))
+    if quantizer != &#39;no_quant&#39;:
+        kwargs[&#39;dimension&#39;] = dimension
+    return klass(**kwargs)
+
+
+def get_encodec_autoencoder(encoder_name: str, cfg: omegaconf.DictConfig):
+    if encoder_name == &#39;seanet&#39;:
+        kwargs = dict_from_config(getattr(cfg, &#39;seanet&#39;))
+        encoder_override_kwargs = kwargs.pop(&#39;encoder&#39;)
+        decoder_override_kwargs = kwargs.pop(&#39;decoder&#39;)
+        encoder_kwargs = {**kwargs, **encoder_override_kwargs}
+        decoder_kwargs = {**kwargs, **decoder_override_kwargs}
+        encoder = audiocraft.modules.SEANetEncoder(**encoder_kwargs)
+        decoder = audiocraft.modules.SEANetDecoder(**decoder_kwargs)
+        return encoder, decoder
+    else:
+        raise KeyError(f&#39;Unexpected compression model {cfg.compression_model}&#39;)
+
+
+def get_compression_model(cfg: omegaconf.DictConfig) -&gt; CompressionModel:
+    &#34;&#34;&#34;Instantiate a compression model.
+    &#34;&#34;&#34;
+    if cfg.compression_model == &#39;encodec&#39;:
+        kwargs = dict_from_config(getattr(cfg, &#39;encodec&#39;))
+        encoder_name = kwargs.pop(&#39;autoencoder&#39;)
+        quantizer_name = kwargs.pop(&#39;quantizer&#39;)
+        encoder, decoder = get_encodec_autoencoder(encoder_name, cfg)
+        quantizer = get_quantizer(quantizer_name, cfg, encoder.dimension)
+        frame_rate = kwargs[&#39;sample_rate&#39;] // encoder.hop_length
+        renormalize = kwargs.pop(&#39;renormalize&#39;, None)
+        renorm = kwargs.pop(&#39;renorm&#39;)
+        if renormalize is None:
+            renormalize = renorm is not None
+            warnings.warn(&#34;You are using a deprecated EnCodec model. Please migrate to new renormalization.&#34;)
+        return EncodecModel(encoder, decoder, quantizer,
+                            frame_rate=frame_rate, renormalize=renormalize, **kwargs).to(cfg.device)
+    else:
+        raise KeyError(f&#39;Unexpected compression model {cfg.compression_model}&#39;)
+
+
+def get_lm_model(cfg: omegaconf.DictConfig) -&gt; LMModel:
+    &#34;&#34;&#34;Instantiate a transformer LM.
+    &#34;&#34;&#34;
+    if cfg.lm_model == &#39;transformer_lm&#39;:
+        kwargs = dict_from_config(getattr(cfg, &#39;transformer_lm&#39;))
+        n_q = kwargs[&#39;n_q&#39;]
+        q_modeling = kwargs.pop(&#39;q_modeling&#39;, None)
+        codebooks_pattern_cfg = getattr(cfg, &#39;codebooks_pattern&#39;)
+        attribute_dropout = dict_from_config(getattr(cfg, &#39;attribute_dropout&#39;))
+        cls_free_guidance = dict_from_config(getattr(cfg, &#39;classifier_free_guidance&#39;))
+        cfg_prob, cfg_coef = cls_free_guidance[&#34;training_dropout&#34;], cls_free_guidance[&#34;inference_coef&#34;]
+        fuser = get_condition_fuser(cfg)
+        condition_provider = get_conditioner_provider(kwargs[&#34;dim&#34;], cfg).to(cfg.device)
+        if len(fuser.fuse2cond[&#39;cross&#39;]) &gt; 0:  # enforce cross-att programatically
+            kwargs[&#39;cross_attention&#39;] = True
+        if codebooks_pattern_cfg.modeling is None:
+            assert q_modeling is not None, \
+                &#39;LM model should either have a codebook pattern defined or transformer_lm.q_modeling&#39;
+            codebooks_pattern_cfg = omegaconf.OmegaConf.create(
+                {&#39;modeling&#39;: q_modeling, &#39;delay&#39;: {&#39;delays&#39;: list(range(n_q))}}
+            )
+        pattern_provider = get_codebooks_pattern_provider(n_q, codebooks_pattern_cfg)
+        return LMModel(
+            pattern_provider=pattern_provider,
+            condition_provider=condition_provider,
+            fuser=fuser,
+            cfg_dropout=cfg_prob,
+            cfg_coef=cfg_coef,
+            attribute_dropout=attribute_dropout,
+            dtype=getattr(torch, cfg.dtype),
+            device=cfg.device,
+            **kwargs
+        ).to(cfg.device)
+    else:
+        raise KeyError(f&#39;Unexpected LM model {cfg.lm_model}&#39;)
+
+
+def get_conditioner_provider(output_dim: int, cfg: omegaconf.DictConfig) -&gt; ConditioningProvider:
+    &#34;&#34;&#34;Instantiate a conditioning model.
+    &#34;&#34;&#34;
+    device = cfg.device
+    duration = cfg.dataset.segment_duration
+    cfg = getattr(cfg, &#34;conditioners&#34;)
+    cfg = omegaconf.OmegaConf.create({}) if cfg is None else cfg
+    conditioners: tp.Dict[str, BaseConditioner] = {}
+    with omegaconf.open_dict(cfg):
+        condition_provider_args = cfg.pop(&#39;args&#39;, {})
+    for cond, cond_cfg in cfg.items():
+        model_type = cond_cfg[&#34;model&#34;]
+        model_args = cond_cfg[model_type]
+        if model_type == &#34;t5&#34;:
+            conditioners[str(cond)] = T5Conditioner(output_dim=output_dim, device=device, **model_args)
+        elif model_type == &#34;lut&#34;:
+            conditioners[str(cond)] = LUTConditioner(output_dim=output_dim, **model_args)
+        elif model_type == &#34;chroma_stem&#34;:
+            model_args.pop(&#39;cache_path&#39;, None)
+            conditioners[str(cond)] = ChromaStemConditioner(
+                output_dim=output_dim,
+                duration=duration,
+                device=device,
+                **model_args
+            )
+        else:
+            raise ValueError(f&#34;unrecognized conditioning model: {model_type}&#34;)
+    conditioner = ConditioningProvider(conditioners, device=device, **condition_provider_args)
+    return conditioner
+
+
+def get_condition_fuser(cfg: omegaconf.DictConfig) -&gt; ConditionFuser:
+    &#34;&#34;&#34;Instantiate a condition fuser object.
+    &#34;&#34;&#34;
+    fuser_cfg = getattr(cfg, &#34;fuser&#34;)
+    fuser_methods = [&#34;sum&#34;, &#34;cross&#34;, &#34;prepend&#34;, &#34;input_interpolate&#34;]
+    fuse2cond = {k: fuser_cfg[k] for k in fuser_methods}
+    kwargs = {k: v for k, v in fuser_cfg.items() if k not in fuser_methods}
+    fuser = ConditionFuser(fuse2cond=fuse2cond, **kwargs)
+    return fuser
+
+
+def get_codebooks_pattern_provider(n_q: int, cfg: omegaconf.DictConfig) -&gt; CodebooksPatternProvider:
+    &#34;&#34;&#34;Instantiate a codebooks pattern provider object.
+    &#34;&#34;&#34;
+    pattern_providers = {
+        &#39;parallel&#39;: ParallelPatternProvider,
+        &#39;delay&#39;: DelayedPatternProvider,
+        &#39;unroll&#39;: UnrolledPatternProvider,
+        &#39;valle&#39;: VALLEPattern,
+        &#39;musiclm&#39;: MusicLMPattern,
+    }
+    name = cfg.modeling
+    kwargs = dict_from_config(cfg.get(name)) if hasattr(cfg, name) else {}
+    klass = pattern_providers[name]
+    return klass(n_q, **kwargs)
+
+
+def get_debug_compression_model(device=&#39;cpu&#39;):
+    &#34;&#34;&#34;Instantiate a debug compression model to be used for unit tests.
+    &#34;&#34;&#34;
+    seanet_kwargs = {
+        &#39;n_filters&#39;: 4,
+        &#39;n_residual_layers&#39;: 1,
+        &#39;dimension&#39;: 32,
+        &#39;ratios&#39;: [10, 8, 16]  # 25 Hz at 32kHz
+    }
+    encoder = audiocraft.modules.SEANetEncoder(**seanet_kwargs)
+    decoder = audiocraft.modules.SEANetDecoder(**seanet_kwargs)
+    quantizer = qt.ResidualVectorQuantizer(dimension=32, bins=400, n_q=4)
+    init_x = torch.randn(8, 32, 128)
+    quantizer(init_x, 1)  # initialize kmeans etc.
+    compression_model = EncodecModel(
+        encoder, decoder, quantizer,
+        frame_rate=25, sample_rate=32000, channels=1).to(device)
+    return compression_model.eval()
+
+
+def get_debug_lm_model(device=&#39;cpu&#39;):
+    &#34;&#34;&#34;Instantiate a debug LM to be used for unit tests.
+    &#34;&#34;&#34;
+    pattern = DelayedPatternProvider(n_q=4)
+    dim = 16
+    providers = {
+        &#39;description&#39;: LUTConditioner(n_bins=128, dim=dim, output_dim=dim, tokenizer=&#34;whitespace&#34;),
+    }
+    condition_provider = ConditioningProvider(providers)
+    fuser = ConditionFuser(
+        {&#39;cross&#39;: [&#39;description&#39;], &#39;prepend&#39;: [],
+         &#39;sum&#39;: [], &#39;input_interpolate&#39;: []})
+    lm = LMModel(
+        pattern, condition_provider, fuser,
+        n_q=4, card=400, dim=dim, num_heads=4, custom=True, num_layers=2,
+        cross_attention=True, causal=True)
+    return lm.to(device).eval()</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="audiocraft.models.builders.get_codebooks_pattern_provider"><code class="name flex">
+<span>def <span class="ident">get_codebooks_pattern_provider</span></span>(<span>n_q: int, cfg: omegaconf.dictconfig.DictConfig) ‑> <a title="audiocraft.modules.codebooks_patterns.CodebooksPatternProvider" href="../modules/codebooks_patterns.html#audiocraft.modules.codebooks_patterns.CodebooksPatternProvider">CodebooksPatternProvider</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Instantiate a codebooks pattern provider object.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_codebooks_pattern_provider(n_q: int, cfg: omegaconf.DictConfig) -&gt; CodebooksPatternProvider:
+    &#34;&#34;&#34;Instantiate a codebooks pattern provider object.
+    &#34;&#34;&#34;
+    pattern_providers = {
+        &#39;parallel&#39;: ParallelPatternProvider,
+        &#39;delay&#39;: DelayedPatternProvider,
+        &#39;unroll&#39;: UnrolledPatternProvider,
+        &#39;valle&#39;: VALLEPattern,
+        &#39;musiclm&#39;: MusicLMPattern,
+    }
+    name = cfg.modeling
+    kwargs = dict_from_config(cfg.get(name)) if hasattr(cfg, name) else {}
+    klass = pattern_providers[name]
+    return klass(n_q, **kwargs)</code></pre>
+</details>
+</dd>
+<dt id="audiocraft.models.builders.get_compression_model"><code class="name flex">
+<span>def <span class="ident">get_compression_model</span></span>(<span>cfg: omegaconf.dictconfig.DictConfig) ‑> <a title="audiocraft.models.encodec.CompressionModel" href="encodec.html#audiocraft.models.encodec.CompressionModel">CompressionModel</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Instantiate a compression model.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_compression_model(cfg: omegaconf.DictConfig) -&gt; CompressionModel:
+    &#34;&#34;&#34;Instantiate a compression model.
+    &#34;&#34;&#34;
+    if cfg.compression_model == &#39;encodec&#39;:
+        kwargs = dict_from_config(getattr(cfg, &#39;encodec&#39;))
+        encoder_name = kwargs.pop(&#39;autoencoder&#39;)
+        quantizer_name = kwargs.pop(&#39;quantizer&#39;)
+        encoder, decoder = get_encodec_autoencoder(encoder_name, cfg)
+        quantizer = get_quantizer(quantizer_name, cfg, encoder.dimension)
+        frame_rate = kwargs[&#39;sample_rate&#39;] // encoder.hop_length
+        renormalize = kwargs.pop(&#39;renormalize&#39;, None)
+        renorm = kwargs.pop(&#39;renorm&#39;)
+        if renormalize is None:
+            renormalize = renorm is not None
+            warnings.warn(&#34;You are using a deprecated EnCodec model. Please migrate to new renormalization.&#34;)
+        return EncodecModel(encoder, decoder, quantizer,
+                            frame_rate=frame_rate, renormalize=renormalize, **kwargs).to(cfg.device)
+    else:
+        raise KeyError(f&#39;Unexpected compression model {cfg.compression_model}&#39;)</code></pre>
+</details>
+</dd>
+<dt id="audiocraft.models.builders.get_condition_fuser"><code class="name flex">
+<span>def <span class="ident">get_condition_fuser</span></span>(<span>cfg: omegaconf.dictconfig.DictConfig) ‑> <a title="audiocraft.modules.conditioners.ConditionFuser" href="../modules/conditioners.html#audiocraft.modules.conditioners.ConditionFuser">ConditionFuser</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Instantiate a condition fuser object.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_condition_fuser(cfg: omegaconf.DictConfig) -&gt; ConditionFuser:
+    &#34;&#34;&#34;Instantiate a condition fuser object.
+    &#34;&#34;&#34;
+    fuser_cfg = getattr(cfg, &#34;fuser&#34;)
+    fuser_methods = [&#34;sum&#34;, &#34;cross&#34;, &#34;prepend&#34;, &#34;input_interpolate&#34;]
+    fuse2cond = {k: fuser_cfg[k] for k in fuser_methods}
+    kwargs = {k: v for k, v in fuser_cfg.items() if k not in fuser_methods}
+    fuser = ConditionFuser(fuse2cond=fuse2cond, **kwargs)
+    return fuser</code></pre>
+</details>
+</dd>
+<dt id="audiocraft.models.builders.get_conditioner_provider"><code class="name flex">
+<span>def <span class="ident">get_conditioner_provider</span></span>(<span>output_dim: int, cfg: omegaconf.dictconfig.DictConfig) ‑> <a title="audiocraft.modules.conditioners.ConditioningProvider" href="../modules/conditioners.html#audiocraft.modules.conditioners.ConditioningProvider">ConditioningProvider</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Instantiate a conditioning model.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_conditioner_provider(output_dim: int, cfg: omegaconf.DictConfig) -&gt; ConditioningProvider:
+    &#34;&#34;&#34;Instantiate a conditioning model.
+    &#34;&#34;&#34;
+    device = cfg.device
+    duration = cfg.dataset.segment_duration
+    cfg = getattr(cfg, &#34;conditioners&#34;)
+    cfg = omegaconf.OmegaConf.create({}) if cfg is None else cfg
+    conditioners: tp.Dict[str, BaseConditioner] = {}
+    with omegaconf.open_dict(cfg):
+        condition_provider_args = cfg.pop(&#39;args&#39;, {})
+    for cond, cond_cfg in cfg.items():
+        model_type = cond_cfg[&#34;model&#34;]
+        model_args = cond_cfg[model_type]
+        if model_type == &#34;t5&#34;:
+            conditioners[str(cond)] = T5Conditioner(output_dim=output_dim, device=device, **model_args)
+        elif model_type == &#34;lut&#34;:
+            conditioners[str(cond)] = LUTConditioner(output_dim=output_dim, **model_args)
+        elif model_type == &#34;chroma_stem&#34;:
+            model_args.pop(&#39;cache_path&#39;, None)
+            conditioners[str(cond)] = ChromaStemConditioner(
+                output_dim=output_dim,
+                duration=duration,
+                device=device,
+                **model_args
+            )
+        else:
+            raise ValueError(f&#34;unrecognized conditioning model: {model_type}&#34;)
+    conditioner = ConditioningProvider(conditioners, device=device, **condition_provider_args)
+    return conditioner</code></pre>
+</details>
+</dd>
+<dt id="audiocraft.models.builders.get_debug_compression_model"><code class="name flex">
+<span>def <span class="ident">get_debug_compression_model</span></span>(<span>device='cpu')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Instantiate a debug compression model to be used for unit tests.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_debug_compression_model(device=&#39;cpu&#39;):
+    &#34;&#34;&#34;Instantiate a debug compression model to be used for unit tests.
+    &#34;&#34;&#34;
+    seanet_kwargs = {
+        &#39;n_filters&#39;: 4,
+        &#39;n_residual_layers&#39;: 1,
+        &#39;dimension&#39;: 32,
+        &#39;ratios&#39;: [10, 8, 16]  # 25 Hz at 32kHz
+    }
+    encoder = audiocraft.modules.SEANetEncoder(**seanet_kwargs)
+    decoder = audiocraft.modules.SEANetDecoder(**seanet_kwargs)
+    quantizer = qt.ResidualVectorQuantizer(dimension=32, bins=400, n_q=4)
+    init_x = torch.randn(8, 32, 128)
+    quantizer(init_x, 1)  # initialize kmeans etc.
+    compression_model = EncodecModel(
+        encoder, decoder, quantizer,
+        frame_rate=25, sample_rate=32000, channels=1).to(device)
+    return compression_model.eval()</code></pre>
+</details>
+</dd>
+<dt id="audiocraft.models.builders.get_debug_lm_model"><code class="name flex">
+<span>def <span class="ident">get_debug_lm_model</span></span>(<span>device='cpu')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Instantiate a debug LM to be used for unit tests.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_debug_lm_model(device=&#39;cpu&#39;):
+    &#34;&#34;&#34;Instantiate a debug LM to be used for unit tests.
+    &#34;&#34;&#34;
+    pattern = DelayedPatternProvider(n_q=4)
+    dim = 16
+    providers = {
+        &#39;description&#39;: LUTConditioner(n_bins=128, dim=dim, output_dim=dim, tokenizer=&#34;whitespace&#34;),
+    }
+    condition_provider = ConditioningProvider(providers)
+    fuser = ConditionFuser(
+        {&#39;cross&#39;: [&#39;description&#39;], &#39;prepend&#39;: [],
+         &#39;sum&#39;: [], &#39;input_interpolate&#39;: []})
+    lm = LMModel(
+        pattern, condition_provider, fuser,
+        n_q=4, card=400, dim=dim, num_heads=4, custom=True, num_layers=2,
+        cross_attention=True, causal=True)
+    return lm.to(device).eval()</code></pre>
+</details>
+</dd>
+<dt id="audiocraft.models.builders.get_encodec_autoencoder"><code class="name flex">
+<span>def <span class="ident">get_encodec_autoencoder</span></span>(<span>encoder_name: str, cfg: omegaconf.dictconfig.DictConfig)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_encodec_autoencoder(encoder_name: str, cfg: omegaconf.DictConfig):
+    if encoder_name == &#39;seanet&#39;:
+        kwargs = dict_from_config(getattr(cfg, &#39;seanet&#39;))
+        encoder_override_kwargs = kwargs.pop(&#39;encoder&#39;)
+        decoder_override_kwargs = kwargs.pop(&#39;decoder&#39;)
+        encoder_kwargs = {**kwargs, **encoder_override_kwargs}
+        decoder_kwargs = {**kwargs, **decoder_override_kwargs}
+        encoder = audiocraft.modules.SEANetEncoder(**encoder_kwargs)
+        decoder = audiocraft.modules.SEANetDecoder(**decoder_kwargs)
+        return encoder, decoder
+    else:
+        raise KeyError(f&#39;Unexpected compression model {cfg.compression_model}&#39;)</code></pre>
+</details>
+</dd>
+<dt id="audiocraft.models.builders.get_lm_model"><code class="name flex">
+<span>def <span class="ident">get_lm_model</span></span>(<span>cfg: omegaconf.dictconfig.DictConfig) ‑> <a title="audiocraft.models.lm.LMModel" href="lm.html#audiocraft.models.lm.LMModel">LMModel</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Instantiate a transformer LM.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_lm_model(cfg: omegaconf.DictConfig) -&gt; LMModel:
+    &#34;&#34;&#34;Instantiate a transformer LM.
+    &#34;&#34;&#34;
+    if cfg.lm_model == &#39;transformer_lm&#39;:
+        kwargs = dict_from_config(getattr(cfg, &#39;transformer_lm&#39;))
+        n_q = kwargs[&#39;n_q&#39;]
+        q_modeling = kwargs.pop(&#39;q_modeling&#39;, None)
+        codebooks_pattern_cfg = getattr(cfg, &#39;codebooks_pattern&#39;)
+        attribute_dropout = dict_from_config(getattr(cfg, &#39;attribute_dropout&#39;))
+        cls_free_guidance = dict_from_config(getattr(cfg, &#39;classifier_free_guidance&#39;))
+        cfg_prob, cfg_coef = cls_free_guidance[&#34;training_dropout&#34;], cls_free_guidance[&#34;inference_coef&#34;]
+        fuser = get_condition_fuser(cfg)
+        condition_provider = get_conditioner_provider(kwargs[&#34;dim&#34;], cfg).to(cfg.device)
+        if len(fuser.fuse2cond[&#39;cross&#39;]) &gt; 0:  # enforce cross-att programatically
+            kwargs[&#39;cross_attention&#39;] = True
+        if codebooks_pattern_cfg.modeling is None:
+            assert q_modeling is not None, \
+                &#39;LM model should either have a codebook pattern defined or transformer_lm.q_modeling&#39;
+            codebooks_pattern_cfg = omegaconf.OmegaConf.create(
+                {&#39;modeling&#39;: q_modeling, &#39;delay&#39;: {&#39;delays&#39;: list(range(n_q))}}
+            )
+        pattern_provider = get_codebooks_pattern_provider(n_q, codebooks_pattern_cfg)
+        return LMModel(
+            pattern_provider=pattern_provider,
+            condition_provider=condition_provider,
+            fuser=fuser,
+            cfg_dropout=cfg_prob,
+            cfg_coef=cfg_coef,
+            attribute_dropout=attribute_dropout,
+            dtype=getattr(torch, cfg.dtype),
+            device=cfg.device,
+            **kwargs
+        ).to(cfg.device)
+    else:
+        raise KeyError(f&#39;Unexpected LM model {cfg.lm_model}&#39;)</code></pre>
+</details>
+</dd>
+<dt id="audiocraft.models.builders.get_quantizer"><code class="name flex">
+<span>def <span class="ident">get_quantizer</span></span>(<span>quantizer: str, cfg: omegaconf.dictconfig.DictConfig, dimension: int) ‑> <a title="audiocraft.quantization.base.BaseQuantizer" href="../quantization/base.html#audiocraft.quantization.base.BaseQuantizer">BaseQuantizer</a></span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_quantizer(quantizer: str, cfg: omegaconf.DictConfig, dimension: int) -&gt; qt.BaseQuantizer:
+    klass = {
+        &#39;no_quant&#39;: qt.DummyQuantizer,
+        &#39;rvq&#39;: qt.ResidualVectorQuantizer
+    }[quantizer]
+    kwargs = dict_from_config(getattr(cfg, quantizer))
+    if quantizer != &#39;no_quant&#39;:
+        kwargs[&#39;dimension&#39;] = dimension
+    return klass(**kwargs)</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="audiocraft.models" href="index.html">audiocraft.models</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="audiocraft.models.builders.get_codebooks_pattern_provider" href="#audiocraft.models.builders.get_codebooks_pattern_provider">get_codebooks_pattern_provider</a></code></li>
+<li><code><a title="audiocraft.models.builders.get_compression_model" href="#audiocraft.models.builders.get_compression_model">get_compression_model</a></code></li>
+<li><code><a title="audiocraft.models.builders.get_condition_fuser" href="#audiocraft.models.builders.get_condition_fuser">get_condition_fuser</a></code></li>
+<li><code><a title="audiocraft.models.builders.get_conditioner_provider" href="#audiocraft.models.builders.get_conditioner_provider">get_conditioner_provider</a></code></li>
+<li><code><a title="audiocraft.models.builders.get_debug_compression_model" href="#audiocraft.models.builders.get_debug_compression_model">get_debug_compression_model</a></code></li>
+<li><code><a title="audiocraft.models.builders.get_debug_lm_model" href="#audiocraft.models.builders.get_debug_lm_model">get_debug_lm_model</a></code></li>
+<li><code><a title="audiocraft.models.builders.get_encodec_autoencoder" href="#audiocraft.models.builders.get_encodec_autoencoder">get_encodec_autoencoder</a></code></li>
+<li><code><a title="audiocraft.models.builders.get_lm_model" href="#audiocraft.models.builders.get_lm_model">get_lm_model</a></code></li>
+<li><code><a title="audiocraft.models.builders.get_quantizer" href="#audiocraft.models.builders.get_quantizer">get_quantizer</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>

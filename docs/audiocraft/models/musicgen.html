@@ -1,0 +1,945 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>audiocraft.models.musicgen API documentation</title>
+<meta name="description" content="Main model for using MusicGen. This will combine all the required components
+and provide easy access to the generation API." />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>audiocraft.models.musicgen</code></h1>
+</header>
+<section id="section-intro">
+<p>Main model for using MusicGen. This will combine all the required components
+and provide easy access to the generation API.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># Copyright (c) Meta Platforms, Inc. and affiliates.
+# All rights reserved.
+#
+# This source code is licensed under the license found in the
+# LICENSE file in the root directory of this source tree.
+
+&#34;&#34;&#34;
+Main model for using MusicGen. This will combine all the required components
+and provide easy access to the generation API.
+&#34;&#34;&#34;
+
+import os
+import typing as tp
+
+import torch
+
+from .encodec import CompressionModel
+from .lm import LMModel
+from .builders import get_debug_compression_model, get_debug_lm_model
+from .loaders import load_compression_model, load_lm_model, HF_MODEL_CHECKPOINTS_MAP
+from ..data.audio_utils import convert_audio
+from ..modules.conditioners import ConditioningAttributes, WavCondition
+from ..utils.autocast import TorchAutocast
+
+
+MelodyList = tp.List[tp.Optional[torch.Tensor]]
+MelodyType = tp.Union[torch.Tensor, MelodyList]
+
+
+class MusicGen:
+    &#34;&#34;&#34;MusicGen main model with convenient generation API.
+
+    Args:
+        name (str): name of the model.
+        compression_model (CompressionModel): Compression model
+            used to map audio to invertible discrete representations.
+        lm (LMModel): Language model over discrete representations.
+    &#34;&#34;&#34;
+    def __init__(self, name: str, compression_model: CompressionModel, lm: LMModel):
+        self.name = name
+        self.compression_model = compression_model
+        self.lm = lm
+        self.device = next(iter(lm.parameters())).device
+        self.generation_params: dict = {}
+        self.set_generation_params(duration=15)  # 15 seconds by default
+        if self.device.type == &#39;cpu&#39;:
+            self.autocast = TorchAutocast(enabled=False)
+        else:
+            self.autocast = TorchAutocast(
+                enabled=True, device_type=self.device.type, dtype=torch.float16)
+
+    @property
+    def frame_rate(self) -&gt; int:
+        &#34;&#34;&#34;Roughly the number of AR steps per seconds.&#34;&#34;&#34;
+        return self.compression_model.frame_rate
+
+    @property
+    def sample_rate(self) -&gt; int:
+        &#34;&#34;&#34;Sample rate of the generated audio.&#34;&#34;&#34;
+        return self.compression_model.sample_rate
+
+    @property
+    def audio_channels(self) -&gt; int:
+        &#34;&#34;&#34;Audio channels of the generated audio.&#34;&#34;&#34;
+        return self.compression_model.channels
+
+    @staticmethod
+    def get_pretrained(name: str = &#39;melody&#39;, device=&#39;cuda&#39;):
+        &#34;&#34;&#34;Return pretrained model, we provide four models:
+        - small (300M), text to music, # see: https://huggingface.co/facebook/musicgen-small
+        - medium (1.5B), text to music, # see: https://huggingface.co/facebook/musicgen-medium
+        - melody (1.5B) text to music and text+melody to music, # see: https://huggingface.co/facebook/musicgen-melody
+        - large (3.3B), text to music, # see: https://huggingface.co/facebook/musicgen-large
+        &#34;&#34;&#34;
+
+        if name == &#39;debug&#39;:
+            # used only for unit tests
+            compression_model = get_debug_compression_model(device)
+            lm = get_debug_lm_model(device)
+            return MusicGen(name, compression_model, lm)
+
+        if name not in HF_MODEL_CHECKPOINTS_MAP:
+            raise ValueError(
+                f&#34;{name} is not a valid checkpoint name. &#34;
+                f&#34;Choose one of {&#39;, &#39;.join(HF_MODEL_CHECKPOINTS_MAP.keys())}&#34;
+            )
+
+        cache_dir = os.environ.get(&#39;MUSICGEN_ROOT&#39;, None)
+        compression_model = load_compression_model(name, device=device, cache_dir=cache_dir)
+        lm = load_lm_model(name, device=device, cache_dir=cache_dir)
+
+        return MusicGen(name, compression_model, lm)
+
+    def set_generation_params(self, use_sampling: bool = True, top_k: int = 250,
+                              top_p: float = 0.0, temperature: float = 1.0,
+                              duration: float = 30.0, cfg_coef: float = 3.0,
+                              two_step_cfg: bool = False):
+        &#34;&#34;&#34;Set the generation parameters for MusicGen.
+
+        Args:
+            use_sampling (bool, optional): Use sampling if True, else do argmax decoding. Defaults to True.
+            top_k (int, optional): top_k used for sampling. Defaults to 250.
+            top_p (float, optional): top_p used for sampling, when set to 0 top_k is used. Defaults to 0.0.
+            temperature (float, optional): Softmax temperature parameter. Defaults to 1.0.
+            duration (float, optional): Duration of the generated waveform. Defaults to 30.0.
+            cfg_coef (float, optional): Coefficient used for classifier free guidance. Defaults to 3.0.
+            two_step_cfg (bool, optional): If True, performs 2 forward for Classifier Free Guidance,
+                instead of batching together the two. This has some impact on how things
+                are padded but seems to have little impact in practice.
+        &#34;&#34;&#34;
+        assert duration &lt;= 30, &#34;The MusicGen cannot generate more than 30 seconds&#34;
+        self.generation_params = {
+            &#39;max_gen_len&#39;: int(duration * self.frame_rate),
+            &#39;use_sampling&#39;: use_sampling,
+            &#39;temp&#39;: temperature,
+            &#39;top_k&#39;: top_k,
+            &#39;top_p&#39;: top_p,
+            &#39;cfg_coef&#39;: cfg_coef,
+            &#39;two_step_cfg&#39;: two_step_cfg,
+        }
+
+    def generate_unconditional(self, num_samples: int, progress: bool = False) -&gt; torch.Tensor:
+        &#34;&#34;&#34;Generate samples in an unconditional manner.
+
+        Args:
+            num_samples (int): Number of samples to be generated.
+            progress (bool, optional): Flag to display progress of the generation process. Defaults to False.
+        &#34;&#34;&#34;
+        descriptions: tp.List[tp.Optional[str]] = [None] * num_samples
+        attributes, prompt_tokens = self._prepare_tokens_and_attributes(descriptions, None)
+        return self._generate_tokens(attributes, prompt_tokens, progress)
+
+    def generate(self, descriptions: tp.List[str], progress: bool = False) -&gt; torch.Tensor:
+        &#34;&#34;&#34;Generate samples conditioned on text.
+
+        Args:
+            descriptions (tp.List[str]): A list of strings used as text conditioning.
+            progress (bool, optional): Flag to display progress of the generation process. Defaults to False.
+        &#34;&#34;&#34;
+        attributes, prompt_tokens = self._prepare_tokens_and_attributes(descriptions, None)
+        assert prompt_tokens is None
+        return self._generate_tokens(attributes, prompt_tokens, progress)
+
+    def generate_with_chroma(self, descriptions: tp.List[str], melody_wavs: MelodyType,
+                             melody_sample_rate: int, progress: bool = False) -&gt; torch.Tensor:
+        &#34;&#34;&#34;Generate samples conditioned on text and melody.
+
+        Args:
+            descriptions (tp.List[str]): A list of strings used as text conditioning.
+            melody_wavs: (torch.Tensor or list of Tensor): A batch of waveforms used as
+                melody conditioning. Should have shape [B, C, T] with B matching the description length,
+                C=1 or 2. It can be [C, T] if there is a single description. It can also be
+                a list of [C, T] tensors.
+            melody_sample_rate: (int): Sample rate of the melody waveforms.
+            progress (bool, optional): Flag to display progress of the generation process. Defaults to False.
+        &#34;&#34;&#34;
+        if isinstance(melody_wavs, torch.Tensor):
+            if melody_wavs.dim() == 2:
+                melody_wavs = melody_wavs[None]
+            if melody_wavs.dim() != 3:
+                raise ValueError(&#34;Melody wavs should have a shape [B, C, T].&#34;)
+            melody_wavs = list(melody_wavs)
+        else:
+            for melody in melody_wavs:
+                if melody is not None:
+                    assert melody.dim() == 2, &#34;One melody in the list has the wrong number of dims.&#34;
+
+        melody_wavs = [
+            convert_audio(wav, melody_sample_rate, self.sample_rate, self.audio_channels)
+            if wav is not None else None
+            for wav in melody_wavs]
+        attributes, prompt_tokens = self._prepare_tokens_and_attributes(descriptions=descriptions, prompt=None,
+                                                                        melody_wavs=melody_wavs)
+        assert prompt_tokens is None
+        return self._generate_tokens(attributes, prompt_tokens, progress)
+
+    def generate_continuation(self, prompt: torch.Tensor, prompt_sample_rate: int,
+                              descriptions: tp.Optional[tp.List[tp.Optional[str]]] = None,
+                              progress: bool = False) -&gt; torch.Tensor:
+        &#34;&#34;&#34;Generate samples conditioned on audio prompts.
+
+        Args:
+            prompt (torch.Tensor): A batch of waveforms used for continuation.
+                Prompt should be [B, C, T], or [C, T] if only one sample is generated.
+            prompt_sample_rate (int): Sampling rate of the given audio waveforms.
+            descriptions (tp.List[str], optional): A list of strings used as text conditioning. Defaults to None.
+            progress (bool, optional): Flag to display progress of the generation process. Defaults to False.
+        &#34;&#34;&#34;
+        if prompt.dim() == 2:
+            prompt = prompt[None]
+        if prompt.dim() != 3:
+            raise ValueError(&#34;prompt should have 3 dimensions: [B, C, T] (C = 1).&#34;)
+        prompt = convert_audio(prompt, prompt_sample_rate, self.sample_rate, self.audio_channels)
+        if descriptions is None:
+            descriptions = [None] * len(prompt)
+        attributes, prompt_tokens = self._prepare_tokens_and_attributes(descriptions, prompt)
+        assert prompt_tokens is not None
+        return self._generate_tokens(attributes, prompt_tokens, progress)
+
+    @torch.no_grad()
+    def _prepare_tokens_and_attributes(
+            self,
+            descriptions: tp.Sequence[tp.Optional[str]],
+            prompt: tp.Optional[torch.Tensor],
+            melody_wavs: tp.Optional[MelodyList] = None,
+    ) -&gt; tp.Tuple[tp.List[ConditioningAttributes], tp.Optional[torch.Tensor]]:
+        &#34;&#34;&#34;Prepare model inputs.
+
+        Args:
+            descriptions (tp.List[str]): A list of strings used as text conditioning.
+            prompt (torch.Tensor): A batch of waveforms used for continuation.
+            melody_wavs (tp.Optional[torch.Tensor], optional): A batch of waveforms
+                used as melody conditioning. Defaults to None.
+        &#34;&#34;&#34;
+        attributes = [
+            ConditioningAttributes(text={&#39;description&#39;: description})
+            for description in descriptions]
+
+        if melody_wavs is None:
+            for attr in attributes:
+                attr.wav[&#39;self_wav&#39;] = WavCondition(
+                    torch.zeros((1, 1), device=self.device),
+                    torch.tensor([0], device=self.device),
+                    path=&#39;null_wav&#39;)  # type: ignore
+        else:
+            if self.name != &#34;melody&#34;:
+                raise RuntimeError(&#34;This model doesn&#39;t support melody conditioning. &#34;
+                                   &#34;Use the `melody` model.&#34;)
+            assert len(melody_wavs) == len(descriptions), \
+                f&#34;number of melody wavs must match number of descriptions! &#34; \
+                f&#34;got melody len={len(melody_wavs)}, and descriptions len={len(descriptions)}&#34;
+            for attr, melody in zip(attributes, melody_wavs):
+                if melody is None:
+                    attr.wav[&#39;self_wav&#39;] = WavCondition(
+                        torch.zeros((1, 1), device=self.device),
+                        torch.tensor([0], device=self.device),
+                        path=&#39;null_wav&#39;)  # type: ignore
+                else:
+                    attr.wav[&#39;self_wav&#39;] = WavCondition(
+                        melody.to(device=self.device),
+                        torch.tensor([melody.shape[-1]], device=self.device))
+
+        if prompt is not None:
+            if descriptions is not None:
+                assert len(descriptions) == len(prompt), &#34;Prompt and nb. descriptions doesn&#39;t match&#34;
+            prompt = prompt.to(self.device)
+            prompt_tokens, scale = self.compression_model.encode(prompt)
+            assert scale is None
+        else:
+            prompt_tokens = None
+        return attributes, prompt_tokens
+
+    def _generate_tokens(self, attributes: tp.List[ConditioningAttributes],
+                         prompt_tokens: tp.Optional[torch.Tensor], progress: bool = False) -&gt; torch.Tensor:
+        &#34;&#34;&#34;Generate discrete audio tokens given audio prompt and/or conditions.
+
+        Args:
+            attributes (tp.List[ConditioningAttributes]): Conditions used for generation (text/melody).
+            prompt_tokens (tp.Optional[torch.Tensor]): Audio prompt used for continuation.
+            progress (bool, optional): Flag to display progress of the generation process. Defaults to False.
+        Returns:
+            torch.Tensor: Generated audio, of shape [B, C, T], T is defined by the generation params.
+        &#34;&#34;&#34;
+        def _progress_callback(generated_tokens: int, tokens_to_generate: int):
+            print(f&#39;{generated_tokens: 6d} / {tokens_to_generate: 6d}&#39;, end=&#39;\r&#39;)
+
+        if prompt_tokens is not None:
+            assert self.generation_params[&#39;max_gen_len&#39;] &gt; prompt_tokens.shape[-1], \
+                &#34;Prompt is longer than audio to generate&#34;
+
+        callback = None
+        if progress:
+            callback = _progress_callback
+
+        # generate by sampling from LM
+        with self.autocast:
+            gen_tokens = self.lm.generate(prompt_tokens, attributes, callback=callback, **self.generation_params)
+
+        # generate audio
+        assert gen_tokens.dim() == 3
+        with torch.no_grad():
+            gen_audio = self.compression_model.decode(gen_tokens, None)
+        return gen_audio</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="audiocraft.models.musicgen.MusicGen"><code class="flex name class">
+<span>class <span class="ident">MusicGen</span></span>
+<span>(</span><span>name: str, compression_model: <a title="audiocraft.models.encodec.CompressionModel" href="encodec.html#audiocraft.models.encodec.CompressionModel">CompressionModel</a>, lm: <a title="audiocraft.models.lm.LMModel" href="lm.html#audiocraft.models.lm.LMModel">LMModel</a>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>MusicGen main model with convenient generation API.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>name</code></strong> :&ensp;<code>str</code></dt>
+<dd>name of the model.</dd>
+<dt><strong><code>compression_model</code></strong> :&ensp;<code>CompressionModel</code></dt>
+<dd>Compression model
+used to map audio to invertible discrete representations.</dd>
+<dt><strong><code>lm</code></strong> :&ensp;<code>LMModel</code></dt>
+<dd>Language model over discrete representations.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class MusicGen:
+    &#34;&#34;&#34;MusicGen main model with convenient generation API.
+
+    Args:
+        name (str): name of the model.
+        compression_model (CompressionModel): Compression model
+            used to map audio to invertible discrete representations.
+        lm (LMModel): Language model over discrete representations.
+    &#34;&#34;&#34;
+    def __init__(self, name: str, compression_model: CompressionModel, lm: LMModel):
+        self.name = name
+        self.compression_model = compression_model
+        self.lm = lm
+        self.device = next(iter(lm.parameters())).device
+        self.generation_params: dict = {}
+        self.set_generation_params(duration=15)  # 15 seconds by default
+        if self.device.type == &#39;cpu&#39;:
+            self.autocast = TorchAutocast(enabled=False)
+        else:
+            self.autocast = TorchAutocast(
+                enabled=True, device_type=self.device.type, dtype=torch.float16)
+
+    @property
+    def frame_rate(self) -&gt; int:
+        &#34;&#34;&#34;Roughly the number of AR steps per seconds.&#34;&#34;&#34;
+        return self.compression_model.frame_rate
+
+    @property
+    def sample_rate(self) -&gt; int:
+        &#34;&#34;&#34;Sample rate of the generated audio.&#34;&#34;&#34;
+        return self.compression_model.sample_rate
+
+    @property
+    def audio_channels(self) -&gt; int:
+        &#34;&#34;&#34;Audio channels of the generated audio.&#34;&#34;&#34;
+        return self.compression_model.channels
+
+    @staticmethod
+    def get_pretrained(name: str = &#39;melody&#39;, device=&#39;cuda&#39;):
+        &#34;&#34;&#34;Return pretrained model, we provide four models:
+        - small (300M), text to music, # see: https://huggingface.co/facebook/musicgen-small
+        - medium (1.5B), text to music, # see: https://huggingface.co/facebook/musicgen-medium
+        - melody (1.5B) text to music and text+melody to music, # see: https://huggingface.co/facebook/musicgen-melody
+        - large (3.3B), text to music, # see: https://huggingface.co/facebook/musicgen-large
+        &#34;&#34;&#34;
+
+        if name == &#39;debug&#39;:
+            # used only for unit tests
+            compression_model = get_debug_compression_model(device)
+            lm = get_debug_lm_model(device)
+            return MusicGen(name, compression_model, lm)
+
+        if name not in HF_MODEL_CHECKPOINTS_MAP:
+            raise ValueError(
+                f&#34;{name} is not a valid checkpoint name. &#34;
+                f&#34;Choose one of {&#39;, &#39;.join(HF_MODEL_CHECKPOINTS_MAP.keys())}&#34;
+            )
+
+        cache_dir = os.environ.get(&#39;MUSICGEN_ROOT&#39;, None)
+        compression_model = load_compression_model(name, device=device, cache_dir=cache_dir)
+        lm = load_lm_model(name, device=device, cache_dir=cache_dir)
+
+        return MusicGen(name, compression_model, lm)
+
+    def set_generation_params(self, use_sampling: bool = True, top_k: int = 250,
+                              top_p: float = 0.0, temperature: float = 1.0,
+                              duration: float = 30.0, cfg_coef: float = 3.0,
+                              two_step_cfg: bool = False):
+        &#34;&#34;&#34;Set the generation parameters for MusicGen.
+
+        Args:
+            use_sampling (bool, optional): Use sampling if True, else do argmax decoding. Defaults to True.
+            top_k (int, optional): top_k used for sampling. Defaults to 250.
+            top_p (float, optional): top_p used for sampling, when set to 0 top_k is used. Defaults to 0.0.
+            temperature (float, optional): Softmax temperature parameter. Defaults to 1.0.
+            duration (float, optional): Duration of the generated waveform. Defaults to 30.0.
+            cfg_coef (float, optional): Coefficient used for classifier free guidance. Defaults to 3.0.
+            two_step_cfg (bool, optional): If True, performs 2 forward for Classifier Free Guidance,
+                instead of batching together the two. This has some impact on how things
+                are padded but seems to have little impact in practice.
+        &#34;&#34;&#34;
+        assert duration &lt;= 30, &#34;The MusicGen cannot generate more than 30 seconds&#34;
+        self.generation_params = {
+            &#39;max_gen_len&#39;: int(duration * self.frame_rate),
+            &#39;use_sampling&#39;: use_sampling,
+            &#39;temp&#39;: temperature,
+            &#39;top_k&#39;: top_k,
+            &#39;top_p&#39;: top_p,
+            &#39;cfg_coef&#39;: cfg_coef,
+            &#39;two_step_cfg&#39;: two_step_cfg,
+        }
+
+    def generate_unconditional(self, num_samples: int, progress: bool = False) -&gt; torch.Tensor:
+        &#34;&#34;&#34;Generate samples in an unconditional manner.
+
+        Args:
+            num_samples (int): Number of samples to be generated.
+            progress (bool, optional): Flag to display progress of the generation process. Defaults to False.
+        &#34;&#34;&#34;
+        descriptions: tp.List[tp.Optional[str]] = [None] * num_samples
+        attributes, prompt_tokens = self._prepare_tokens_and_attributes(descriptions, None)
+        return self._generate_tokens(attributes, prompt_tokens, progress)
+
+    def generate(self, descriptions: tp.List[str], progress: bool = False) -&gt; torch.Tensor:
+        &#34;&#34;&#34;Generate samples conditioned on text.
+
+        Args:
+            descriptions (tp.List[str]): A list of strings used as text conditioning.
+            progress (bool, optional): Flag to display progress of the generation process. Defaults to False.
+        &#34;&#34;&#34;
+        attributes, prompt_tokens = self._prepare_tokens_and_attributes(descriptions, None)
+        assert prompt_tokens is None
+        return self._generate_tokens(attributes, prompt_tokens, progress)
+
+    def generate_with_chroma(self, descriptions: tp.List[str], melody_wavs: MelodyType,
+                             melody_sample_rate: int, progress: bool = False) -&gt; torch.Tensor:
+        &#34;&#34;&#34;Generate samples conditioned on text and melody.
+
+        Args:
+            descriptions (tp.List[str]): A list of strings used as text conditioning.
+            melody_wavs: (torch.Tensor or list of Tensor): A batch of waveforms used as
+                melody conditioning. Should have shape [B, C, T] with B matching the description length,
+                C=1 or 2. It can be [C, T] if there is a single description. It can also be
+                a list of [C, T] tensors.
+            melody_sample_rate: (int): Sample rate of the melody waveforms.
+            progress (bool, optional): Flag to display progress of the generation process. Defaults to False.
+        &#34;&#34;&#34;
+        if isinstance(melody_wavs, torch.Tensor):
+            if melody_wavs.dim() == 2:
+                melody_wavs = melody_wavs[None]
+            if melody_wavs.dim() != 3:
+                raise ValueError(&#34;Melody wavs should have a shape [B, C, T].&#34;)
+            melody_wavs = list(melody_wavs)
+        else:
+            for melody in melody_wavs:
+                if melody is not None:
+                    assert melody.dim() == 2, &#34;One melody in the list has the wrong number of dims.&#34;
+
+        melody_wavs = [
+            convert_audio(wav, melody_sample_rate, self.sample_rate, self.audio_channels)
+            if wav is not None else None
+            for wav in melody_wavs]
+        attributes, prompt_tokens = self._prepare_tokens_and_attributes(descriptions=descriptions, prompt=None,
+                                                                        melody_wavs=melody_wavs)
+        assert prompt_tokens is None
+        return self._generate_tokens(attributes, prompt_tokens, progress)
+
+    def generate_continuation(self, prompt: torch.Tensor, prompt_sample_rate: int,
+                              descriptions: tp.Optional[tp.List[tp.Optional[str]]] = None,
+                              progress: bool = False) -&gt; torch.Tensor:
+        &#34;&#34;&#34;Generate samples conditioned on audio prompts.
+
+        Args:
+            prompt (torch.Tensor): A batch of waveforms used for continuation.
+                Prompt should be [B, C, T], or [C, T] if only one sample is generated.
+            prompt_sample_rate (int): Sampling rate of the given audio waveforms.
+            descriptions (tp.List[str], optional): A list of strings used as text conditioning. Defaults to None.
+            progress (bool, optional): Flag to display progress of the generation process. Defaults to False.
+        &#34;&#34;&#34;
+        if prompt.dim() == 2:
+            prompt = prompt[None]
+        if prompt.dim() != 3:
+            raise ValueError(&#34;prompt should have 3 dimensions: [B, C, T] (C = 1).&#34;)
+        prompt = convert_audio(prompt, prompt_sample_rate, self.sample_rate, self.audio_channels)
+        if descriptions is None:
+            descriptions = [None] * len(prompt)
+        attributes, prompt_tokens = self._prepare_tokens_and_attributes(descriptions, prompt)
+        assert prompt_tokens is not None
+        return self._generate_tokens(attributes, prompt_tokens, progress)
+
+    @torch.no_grad()
+    def _prepare_tokens_and_attributes(
+            self,
+            descriptions: tp.Sequence[tp.Optional[str]],
+            prompt: tp.Optional[torch.Tensor],
+            melody_wavs: tp.Optional[MelodyList] = None,
+    ) -&gt; tp.Tuple[tp.List[ConditioningAttributes], tp.Optional[torch.Tensor]]:
+        &#34;&#34;&#34;Prepare model inputs.
+
+        Args:
+            descriptions (tp.List[str]): A list of strings used as text conditioning.
+            prompt (torch.Tensor): A batch of waveforms used for continuation.
+            melody_wavs (tp.Optional[torch.Tensor], optional): A batch of waveforms
+                used as melody conditioning. Defaults to None.
+        &#34;&#34;&#34;
+        attributes = [
+            ConditioningAttributes(text={&#39;description&#39;: description})
+            for description in descriptions]
+
+        if melody_wavs is None:
+            for attr in attributes:
+                attr.wav[&#39;self_wav&#39;] = WavCondition(
+                    torch.zeros((1, 1), device=self.device),
+                    torch.tensor([0], device=self.device),
+                    path=&#39;null_wav&#39;)  # type: ignore
+        else:
+            if self.name != &#34;melody&#34;:
+                raise RuntimeError(&#34;This model doesn&#39;t support melody conditioning. &#34;
+                                   &#34;Use the `melody` model.&#34;)
+            assert len(melody_wavs) == len(descriptions), \
+                f&#34;number of melody wavs must match number of descriptions! &#34; \
+                f&#34;got melody len={len(melody_wavs)}, and descriptions len={len(descriptions)}&#34;
+            for attr, melody in zip(attributes, melody_wavs):
+                if melody is None:
+                    attr.wav[&#39;self_wav&#39;] = WavCondition(
+                        torch.zeros((1, 1), device=self.device),
+                        torch.tensor([0], device=self.device),
+                        path=&#39;null_wav&#39;)  # type: ignore
+                else:
+                    attr.wav[&#39;self_wav&#39;] = WavCondition(
+                        melody.to(device=self.device),
+                        torch.tensor([melody.shape[-1]], device=self.device))
+
+        if prompt is not None:
+            if descriptions is not None:
+                assert len(descriptions) == len(prompt), &#34;Prompt and nb. descriptions doesn&#39;t match&#34;
+            prompt = prompt.to(self.device)
+            prompt_tokens, scale = self.compression_model.encode(prompt)
+            assert scale is None
+        else:
+            prompt_tokens = None
+        return attributes, prompt_tokens
+
+    def _generate_tokens(self, attributes: tp.List[ConditioningAttributes],
+                         prompt_tokens: tp.Optional[torch.Tensor], progress: bool = False) -&gt; torch.Tensor:
+        &#34;&#34;&#34;Generate discrete audio tokens given audio prompt and/or conditions.
+
+        Args:
+            attributes (tp.List[ConditioningAttributes]): Conditions used for generation (text/melody).
+            prompt_tokens (tp.Optional[torch.Tensor]): Audio prompt used for continuation.
+            progress (bool, optional): Flag to display progress of the generation process. Defaults to False.
+        Returns:
+            torch.Tensor: Generated audio, of shape [B, C, T], T is defined by the generation params.
+        &#34;&#34;&#34;
+        def _progress_callback(generated_tokens: int, tokens_to_generate: int):
+            print(f&#39;{generated_tokens: 6d} / {tokens_to_generate: 6d}&#39;, end=&#39;\r&#39;)
+
+        if prompt_tokens is not None:
+            assert self.generation_params[&#39;max_gen_len&#39;] &gt; prompt_tokens.shape[-1], \
+                &#34;Prompt is longer than audio to generate&#34;
+
+        callback = None
+        if progress:
+            callback = _progress_callback
+
+        # generate by sampling from LM
+        with self.autocast:
+            gen_tokens = self.lm.generate(prompt_tokens, attributes, callback=callback, **self.generation_params)
+
+        # generate audio
+        assert gen_tokens.dim() == 3
+        with torch.no_grad():
+            gen_audio = self.compression_model.decode(gen_tokens, None)
+        return gen_audio</code></pre>
+</details>
+<h3>Static methods</h3>
+<dl>
+<dt id="audiocraft.models.musicgen.MusicGen.get_pretrained"><code class="name flex">
+<span>def <span class="ident">get_pretrained</span></span>(<span>name: str = 'melody', device='cuda')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Return pretrained model, we provide four models:
+- small (300M), text to music, # see: <a href="https://huggingface.co/facebook/musicgen-small">https://huggingface.co/facebook/musicgen-small</a>
+- medium (1.5B), text to music, # see: <a href="https://huggingface.co/facebook/musicgen-medium">https://huggingface.co/facebook/musicgen-medium</a>
+- melody (1.5B) text to music and text+melody to music, # see: <a href="https://huggingface.co/facebook/musicgen-melody">https://huggingface.co/facebook/musicgen-melody</a>
+- large (3.3B), text to music, # see: <a href="https://huggingface.co/facebook/musicgen-large">https://huggingface.co/facebook/musicgen-large</a></p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def get_pretrained(name: str = &#39;melody&#39;, device=&#39;cuda&#39;):
+    &#34;&#34;&#34;Return pretrained model, we provide four models:
+    - small (300M), text to music, # see: https://huggingface.co/facebook/musicgen-small
+    - medium (1.5B), text to music, # see: https://huggingface.co/facebook/musicgen-medium
+    - melody (1.5B) text to music and text+melody to music, # see: https://huggingface.co/facebook/musicgen-melody
+    - large (3.3B), text to music, # see: https://huggingface.co/facebook/musicgen-large
+    &#34;&#34;&#34;
+
+    if name == &#39;debug&#39;:
+        # used only for unit tests
+        compression_model = get_debug_compression_model(device)
+        lm = get_debug_lm_model(device)
+        return MusicGen(name, compression_model, lm)
+
+    if name not in HF_MODEL_CHECKPOINTS_MAP:
+        raise ValueError(
+            f&#34;{name} is not a valid checkpoint name. &#34;
+            f&#34;Choose one of {&#39;, &#39;.join(HF_MODEL_CHECKPOINTS_MAP.keys())}&#34;
+        )
+
+    cache_dir = os.environ.get(&#39;MUSICGEN_ROOT&#39;, None)
+    compression_model = load_compression_model(name, device=device, cache_dir=cache_dir)
+    lm = load_lm_model(name, device=device, cache_dir=cache_dir)
+
+    return MusicGen(name, compression_model, lm)</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="audiocraft.models.musicgen.MusicGen.audio_channels"><code class="name">var <span class="ident">audio_channels</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Audio channels of the generated audio.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def audio_channels(self) -&gt; int:
+    &#34;&#34;&#34;Audio channels of the generated audio.&#34;&#34;&#34;
+    return self.compression_model.channels</code></pre>
+</details>
+</dd>
+<dt id="audiocraft.models.musicgen.MusicGen.frame_rate"><code class="name">var <span class="ident">frame_rate</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Roughly the number of AR steps per seconds.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def frame_rate(self) -&gt; int:
+    &#34;&#34;&#34;Roughly the number of AR steps per seconds.&#34;&#34;&#34;
+    return self.compression_model.frame_rate</code></pre>
+</details>
+</dd>
+<dt id="audiocraft.models.musicgen.MusicGen.sample_rate"><code class="name">var <span class="ident">sample_rate</span> : int</code></dt>
+<dd>
+<div class="desc"><p>Sample rate of the generated audio.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def sample_rate(self) -&gt; int:
+    &#34;&#34;&#34;Sample rate of the generated audio.&#34;&#34;&#34;
+    return self.compression_model.sample_rate</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="audiocraft.models.musicgen.MusicGen.generate"><code class="name flex">
+<span>def <span class="ident">generate</span></span>(<span>self, descriptions: List[str], progress: bool = False) ‑> torch.Tensor</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Generate samples conditioned on text.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>descriptions</code></strong> :&ensp;<code>tp.List[str]</code></dt>
+<dd>A list of strings used as text conditioning.</dd>
+<dt><strong><code>progress</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>Flag to display progress of the generation process. Defaults to False.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def generate(self, descriptions: tp.List[str], progress: bool = False) -&gt; torch.Tensor:
+    &#34;&#34;&#34;Generate samples conditioned on text.
+
+    Args:
+        descriptions (tp.List[str]): A list of strings used as text conditioning.
+        progress (bool, optional): Flag to display progress of the generation process. Defaults to False.
+    &#34;&#34;&#34;
+    attributes, prompt_tokens = self._prepare_tokens_and_attributes(descriptions, None)
+    assert prompt_tokens is None
+    return self._generate_tokens(attributes, prompt_tokens, progress)</code></pre>
+</details>
+</dd>
+<dt id="audiocraft.models.musicgen.MusicGen.generate_continuation"><code class="name flex">
+<span>def <span class="ident">generate_continuation</span></span>(<span>self, prompt: torch.Tensor, prompt_sample_rate: int, descriptions: Optional[List[Optional[str]]] = None, progress: bool = False) ‑> torch.Tensor</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Generate samples conditioned on audio prompts.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>prompt</code></strong> :&ensp;<code>torch.Tensor</code></dt>
+<dd>A batch of waveforms used for continuation.
+Prompt should be [B, C, T], or [C, T] if only one sample is generated.</dd>
+<dt><strong><code>prompt_sample_rate</code></strong> :&ensp;<code>int</code></dt>
+<dd>Sampling rate of the given audio waveforms.</dd>
+<dt><strong><code>descriptions</code></strong> :&ensp;<code>tp.List[str]</code>, optional</dt>
+<dd>A list of strings used as text conditioning. Defaults to None.</dd>
+<dt><strong><code>progress</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>Flag to display progress of the generation process. Defaults to False.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def generate_continuation(self, prompt: torch.Tensor, prompt_sample_rate: int,
+                          descriptions: tp.Optional[tp.List[tp.Optional[str]]] = None,
+                          progress: bool = False) -&gt; torch.Tensor:
+    &#34;&#34;&#34;Generate samples conditioned on audio prompts.
+
+    Args:
+        prompt (torch.Tensor): A batch of waveforms used for continuation.
+            Prompt should be [B, C, T], or [C, T] if only one sample is generated.
+        prompt_sample_rate (int): Sampling rate of the given audio waveforms.
+        descriptions (tp.List[str], optional): A list of strings used as text conditioning. Defaults to None.
+        progress (bool, optional): Flag to display progress of the generation process. Defaults to False.
+    &#34;&#34;&#34;
+    if prompt.dim() == 2:
+        prompt = prompt[None]
+    if prompt.dim() != 3:
+        raise ValueError(&#34;prompt should have 3 dimensions: [B, C, T] (C = 1).&#34;)
+    prompt = convert_audio(prompt, prompt_sample_rate, self.sample_rate, self.audio_channels)
+    if descriptions is None:
+        descriptions = [None] * len(prompt)
+    attributes, prompt_tokens = self._prepare_tokens_and_attributes(descriptions, prompt)
+    assert prompt_tokens is not None
+    return self._generate_tokens(attributes, prompt_tokens, progress)</code></pre>
+</details>
+</dd>
+<dt id="audiocraft.models.musicgen.MusicGen.generate_unconditional"><code class="name flex">
+<span>def <span class="ident">generate_unconditional</span></span>(<span>self, num_samples: int, progress: bool = False) ‑> torch.Tensor</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Generate samples in an unconditional manner.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>num_samples</code></strong> :&ensp;<code>int</code></dt>
+<dd>Number of samples to be generated.</dd>
+<dt><strong><code>progress</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>Flag to display progress of the generation process. Defaults to False.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def generate_unconditional(self, num_samples: int, progress: bool = False) -&gt; torch.Tensor:
+    &#34;&#34;&#34;Generate samples in an unconditional manner.
+
+    Args:
+        num_samples (int): Number of samples to be generated.
+        progress (bool, optional): Flag to display progress of the generation process. Defaults to False.
+    &#34;&#34;&#34;
+    descriptions: tp.List[tp.Optional[str]] = [None] * num_samples
+    attributes, prompt_tokens = self._prepare_tokens_and_attributes(descriptions, None)
+    return self._generate_tokens(attributes, prompt_tokens, progress)</code></pre>
+</details>
+</dd>
+<dt id="audiocraft.models.musicgen.MusicGen.generate_with_chroma"><code class="name flex">
+<span>def <span class="ident">generate_with_chroma</span></span>(<span>self, descriptions: List[str], melody_wavs: Union[torch.Tensor, List[Optional[torch.Tensor]]], melody_sample_rate: int, progress: bool = False) ‑> torch.Tensor</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Generate samples conditioned on text and melody.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>descriptions</code></strong> :&ensp;<code>tp.List[str]</code></dt>
+<dd>A list of strings used as text conditioning.</dd>
+<dt><strong><code>melody_wavs</code></strong></dt>
+<dd>(torch.Tensor or list of Tensor): A batch of waveforms used as
+melody conditioning. Should have shape [B, C, T] with B matching the description length,
+C=1 or 2. It can be [C, T] if there is a single description. It can also be
+a list of [C, T] tensors.</dd>
+<dt><strong><code>melody_sample_rate</code></strong></dt>
+<dd>(int): Sample rate of the melody waveforms.</dd>
+<dt><strong><code>progress</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>Flag to display progress of the generation process. Defaults to False.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def generate_with_chroma(self, descriptions: tp.List[str], melody_wavs: MelodyType,
+                         melody_sample_rate: int, progress: bool = False) -&gt; torch.Tensor:
+    &#34;&#34;&#34;Generate samples conditioned on text and melody.
+
+    Args:
+        descriptions (tp.List[str]): A list of strings used as text conditioning.
+        melody_wavs: (torch.Tensor or list of Tensor): A batch of waveforms used as
+            melody conditioning. Should have shape [B, C, T] with B matching the description length,
+            C=1 or 2. It can be [C, T] if there is a single description. It can also be
+            a list of [C, T] tensors.
+        melody_sample_rate: (int): Sample rate of the melody waveforms.
+        progress (bool, optional): Flag to display progress of the generation process. Defaults to False.
+    &#34;&#34;&#34;
+    if isinstance(melody_wavs, torch.Tensor):
+        if melody_wavs.dim() == 2:
+            melody_wavs = melody_wavs[None]
+        if melody_wavs.dim() != 3:
+            raise ValueError(&#34;Melody wavs should have a shape [B, C, T].&#34;)
+        melody_wavs = list(melody_wavs)
+    else:
+        for melody in melody_wavs:
+            if melody is not None:
+                assert melody.dim() == 2, &#34;One melody in the list has the wrong number of dims.&#34;
+
+    melody_wavs = [
+        convert_audio(wav, melody_sample_rate, self.sample_rate, self.audio_channels)
+        if wav is not None else None
+        for wav in melody_wavs]
+    attributes, prompt_tokens = self._prepare_tokens_and_attributes(descriptions=descriptions, prompt=None,
+                                                                    melody_wavs=melody_wavs)
+    assert prompt_tokens is None
+    return self._generate_tokens(attributes, prompt_tokens, progress)</code></pre>
+</details>
+</dd>
+<dt id="audiocraft.models.musicgen.MusicGen.set_generation_params"><code class="name flex">
+<span>def <span class="ident">set_generation_params</span></span>(<span>self, use_sampling: bool = True, top_k: int = 250, top_p: float = 0.0, temperature: float = 1.0, duration: float = 30.0, cfg_coef: float = 3.0, two_step_cfg: bool = False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Set the generation parameters for MusicGen.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>use_sampling</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>Use sampling if True, else do argmax decoding. Defaults to True.</dd>
+<dt><strong><code>top_k</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>top_k used for sampling. Defaults to 250.</dd>
+<dt><strong><code>top_p</code></strong> :&ensp;<code>float</code>, optional</dt>
+<dd>top_p used for sampling, when set to 0 top_k is used. Defaults to 0.0.</dd>
+<dt><strong><code>temperature</code></strong> :&ensp;<code>float</code>, optional</dt>
+<dd>Softmax temperature parameter. Defaults to 1.0.</dd>
+<dt><strong><code>duration</code></strong> :&ensp;<code>float</code>, optional</dt>
+<dd>Duration of the generated waveform. Defaults to 30.0.</dd>
+<dt><strong><code>cfg_coef</code></strong> :&ensp;<code>float</code>, optional</dt>
+<dd>Coefficient used for classifier free guidance. Defaults to 3.0.</dd>
+<dt><strong><code>two_step_cfg</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>If True, performs 2 forward for Classifier Free Guidance,
+instead of batching together the two. This has some impact on how things
+are padded but seems to have little impact in practice.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_generation_params(self, use_sampling: bool = True, top_k: int = 250,
+                          top_p: float = 0.0, temperature: float = 1.0,
+                          duration: float = 30.0, cfg_coef: float = 3.0,
+                          two_step_cfg: bool = False):
+    &#34;&#34;&#34;Set the generation parameters for MusicGen.
+
+    Args:
+        use_sampling (bool, optional): Use sampling if True, else do argmax decoding. Defaults to True.
+        top_k (int, optional): top_k used for sampling. Defaults to 250.
+        top_p (float, optional): top_p used for sampling, when set to 0 top_k is used. Defaults to 0.0.
+        temperature (float, optional): Softmax temperature parameter. Defaults to 1.0.
+        duration (float, optional): Duration of the generated waveform. Defaults to 30.0.
+        cfg_coef (float, optional): Coefficient used for classifier free guidance. Defaults to 3.0.
+        two_step_cfg (bool, optional): If True, performs 2 forward for Classifier Free Guidance,
+            instead of batching together the two. This has some impact on how things
+            are padded but seems to have little impact in practice.
+    &#34;&#34;&#34;
+    assert duration &lt;= 30, &#34;The MusicGen cannot generate more than 30 seconds&#34;
+    self.generation_params = {
+        &#39;max_gen_len&#39;: int(duration * self.frame_rate),
+        &#39;use_sampling&#39;: use_sampling,
+        &#39;temp&#39;: temperature,
+        &#39;top_k&#39;: top_k,
+        &#39;top_p&#39;: top_p,
+        &#39;cfg_coef&#39;: cfg_coef,
+        &#39;two_step_cfg&#39;: two_step_cfg,
+    }</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="audiocraft.models" href="index.html">audiocraft.models</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="audiocraft.models.musicgen.MusicGen" href="#audiocraft.models.musicgen.MusicGen">MusicGen</a></code></h4>
+<ul class="">
+<li><code><a title="audiocraft.models.musicgen.MusicGen.audio_channels" href="#audiocraft.models.musicgen.MusicGen.audio_channels">audio_channels</a></code></li>
+<li><code><a title="audiocraft.models.musicgen.MusicGen.frame_rate" href="#audiocraft.models.musicgen.MusicGen.frame_rate">frame_rate</a></code></li>
+<li><code><a title="audiocraft.models.musicgen.MusicGen.generate" href="#audiocraft.models.musicgen.MusicGen.generate">generate</a></code></li>
+<li><code><a title="audiocraft.models.musicgen.MusicGen.generate_continuation" href="#audiocraft.models.musicgen.MusicGen.generate_continuation">generate_continuation</a></code></li>
+<li><code><a title="audiocraft.models.musicgen.MusicGen.generate_unconditional" href="#audiocraft.models.musicgen.MusicGen.generate_unconditional">generate_unconditional</a></code></li>
+<li><code><a title="audiocraft.models.musicgen.MusicGen.generate_with_chroma" href="#audiocraft.models.musicgen.MusicGen.generate_with_chroma">generate_with_chroma</a></code></li>
+<li><code><a title="audiocraft.models.musicgen.MusicGen.get_pretrained" href="#audiocraft.models.musicgen.MusicGen.get_pretrained">get_pretrained</a></code></li>
+<li><code><a title="audiocraft.models.musicgen.MusicGen.sample_rate" href="#audiocraft.models.musicgen.MusicGen.sample_rate">sample_rate</a></code></li>
+<li><code><a title="audiocraft.models.musicgen.MusicGen.set_generation_params" href="#audiocraft.models.musicgen.MusicGen.set_generation_params">set_generation_params</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>

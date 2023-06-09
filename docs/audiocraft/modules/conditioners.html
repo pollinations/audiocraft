@@ -1,0 +1,3566 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>audiocraft.modules.conditioners API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>audiocraft.modules.conditioners</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># Copyright (c) Meta Platforms, Inc. and affiliates.
+# All rights reserved.
+#
+# This source code is licensed under the license found in the
+# LICENSE file in the root directory of this source tree.
+
+from collections import defaultdict
+from copy import deepcopy
+from dataclasses import dataclass, field
+from itertools import chain
+import logging
+import random
+import re
+import typing as tp
+import warnings
+
+from einops import rearrange
+from num2words import num2words
+import spacy
+from transformers import T5EncoderModel, T5Tokenizer  # type: ignore
+import torchaudio
+import torch
+from torch import nn
+from torch import Tensor
+import torch.nn.functional as F
+from torch.nn.utils.rnn import pad_sequence
+
+from .streaming import StreamingModule
+from .transformer import create_sin_embedding
+from ..data.audio_dataset import SegmentInfo
+from ..utils.autocast import TorchAutocast
+from ..utils.utils import hash_trick, length_to_mask, collate
+
+
+logger = logging.getLogger(__name__)
+TextCondition = tp.Optional[str]  # a text condition can be a string or None (if doesn&#39;t exist)
+ConditionType = tp.Tuple[Tensor, Tensor]  # condition, mask
+
+
+class WavCondition(tp.NamedTuple):
+    wav: Tensor
+    length: Tensor
+    path: tp.List[tp.Optional[str]] = []
+
+
+def nullify_condition(condition: ConditionType, dim: int = 1):
+    &#34;&#34;&#34;This function transforms an input condition to a null condition.
+    The way it is done by converting it to a single zero vector similarly
+    to how it is done inside WhiteSpaceTokenizer and NoopTokenizer.
+
+    Args:
+        condition (ConditionType): a tuple of condition and mask (tp.Tuple[Tensor, Tensor])
+        dim (int): the dimension that will be truncated (should be the time dimension)
+        WARNING!: dim should not be the batch dimension!
+    Returns:
+        ConditionType: a tuple of null condition and mask
+    &#34;&#34;&#34;
+    assert dim != 0, &#34;dim cannot be the batch dimension!&#34;
+    assert type(condition) == tuple and \
+        type(condition[0]) == Tensor and \
+        type(condition[1]) == Tensor, &#34;&#39;nullify_condition&#39; got an unexpected input type!&#34;
+    cond, mask = condition
+    B = cond.shape[0]
+    last_dim = cond.dim() - 1
+    out = cond.transpose(dim, last_dim)
+    out = 0. * out[..., :1]
+    out = out.transpose(dim, last_dim)
+    mask = torch.zeros((B, 1), device=out.device).int()
+    assert cond.dim() == out.dim()
+    return out, mask
+
+
+def nullify_wav(wav: Tensor) -&gt; WavCondition:
+    &#34;&#34;&#34;Create a nullified WavCondition from a wav tensor with appropriate shape.
+
+    Args:
+        wav (Tensor): tensor of shape [B, T]
+    Returns:
+        WavCondition: wav condition with nullified wav.
+    &#34;&#34;&#34;
+    null_wav, _ = nullify_condition((wav, torch.zeros_like(wav)), dim=wav.dim() - 1)
+    return WavCondition(
+        wav=null_wav,
+        length=torch.tensor([0] * wav.shape[0], device=wav.device),
+        path=[&#39;null_wav&#39;] * wav.shape[0]
+    )
+
+
+@dataclass
+class ConditioningAttributes:
+    text: tp.Dict[str, tp.Optional[str]] = field(default_factory=dict)
+    wav: tp.Dict[str, WavCondition] = field(default_factory=dict)
+
+    def __getitem__(self, item):
+        return getattr(self, item)
+
+    @property
+    def text_attributes(self):
+        return self.text.keys()
+
+    @property
+    def wav_attributes(self):
+        return self.wav.keys()
+
+    @property
+    def attributes(self):
+        return {&#34;text&#34;: self.text_attributes, &#34;wav&#34;: self.wav_attributes}
+
+    def to_flat_dict(self):
+        return {
+            **{f&#34;text.{k}&#34;: v for k, v in self.text.items()},
+            **{f&#34;wav.{k}&#34;: v for k, v in self.wav.items()},
+        }
+
+    @classmethod
+    def from_flat_dict(cls, x):
+        out = cls()
+        for k, v in x.items():
+            kind, att = k.split(&#34;.&#34;)
+            out[kind][att] = v
+        return out
+
+
+class SegmentWithAttributes(SegmentInfo):
+    &#34;&#34;&#34;Base class for all dataclasses that are used for conditioning.
+    All child classes should implement `to_condition_attributes` that converts
+    the existing attributes to a dataclass of type ConditioningAttributes.
+    &#34;&#34;&#34;
+    def to_condition_attributes(self) -&gt; ConditioningAttributes:
+        raise NotImplementedError()
+
+
+class Tokenizer:
+    &#34;&#34;&#34;Base class for all tokenizers
+    (in case we want to introduce more advances tokenizers in the future).
+    &#34;&#34;&#34;
+    def __call__(self, texts: tp.List[tp.Optional[str]]) -&gt; tp.Tuple[Tensor, Tensor]:
+        raise NotImplementedError()
+
+
+class WhiteSpaceTokenizer(Tokenizer):
+    &#34;&#34;&#34;This tokenizer should be used for natural language descriptions.
+    For example:
+    [&#34;he didn&#39;t, know he&#39;s going home.&#34;, &#39;shorter sentence&#39;] =&gt;
+    [[78, 62, 31,  4, 78, 25, 19, 34],
+    [59, 77,  0,  0,  0,  0,  0,  0]]
+    &#34;&#34;&#34;
+    PUNCTUATIONS = &#34;?:!.,;&#34;
+
+    def __init__(self, n_bins: int, pad_idx: int = 0, language: str = &#34;en_core_web_sm&#34;,
+                 lemma: bool = True, stopwords: bool = True) -&gt; None:
+        self.n_bins = n_bins
+        self.pad_idx = pad_idx
+        self.lemma = lemma
+        self.stopwords = stopwords
+        try:
+            self.nlp = spacy.load(language)
+        except IOError:
+            spacy.cli.download(language)  # type: ignore
+            self.nlp = spacy.load(language)
+
+    @tp.no_type_check
+    def __call__(
+        self,
+        texts: tp.List[tp.Optional[str]],
+        return_text: bool = False
+    ) -&gt; tp.Tuple[Tensor, Tensor]:
+        &#34;&#34;&#34;Take a list of strings and convert them to a tensor of indices.
+
+        Args:
+            texts (tp.List[str]): List of strings.
+            return_text (bool, optional): Whether to return text as additional tuple item. Defaults to False.
+        Returns:
+            tp.Tuple[Tensor, Tensor]:
+                - Indices of words in the LUT.
+                - And a mask indicating where the padding tokens are
+        &#34;&#34;&#34;
+        output, lengths = [], []
+        texts = deepcopy(texts)
+        for i, text in enumerate(texts):
+            # if current sample doesn&#39;t have a certain attribute, replace with pad token
+            if text is None:
+                output.append(Tensor([self.pad_idx]))
+                lengths.append(0)
+                continue
+
+            # convert numbers to words
+            text = re.sub(r&#34;(\d+)&#34;, lambda x: num2words(int(x.group(0))), text)  # type: ignore
+            # normalize text
+            text = self.nlp(text)  # type: ignore
+            # remove stopwords
+            if self.stopwords:
+                text = [w for w in text if not w.is_stop]  # type: ignore
+            # remove punctuations
+            text = [w for w in text if w.text not in self.PUNCTUATIONS]  # type: ignore
+            # lemmatize if needed
+            text = [getattr(t, &#34;lemma_&#34; if self.lemma else &#34;text&#34;) for t in text]  # type: ignore
+
+            texts[i] = &#34; &#34;.join(text)
+            lengths.append(len(text))
+            # convert to tensor
+            tokens = Tensor([hash_trick(w, self.n_bins) for w in text])
+            output.append(tokens)
+
+        mask = length_to_mask(torch.IntTensor(lengths)).int()
+        padded_output = pad_sequence(output, padding_value=self.pad_idx).int().t()
+        if return_text:
+            return padded_output, mask, texts  # type: ignore
+        return padded_output, mask
+
+
+class NoopTokenizer(Tokenizer):
+    &#34;&#34;&#34;This tokenizer should be used for global conditioners such as: artist, genre, key, etc.
+    The difference between this and WhiteSpaceTokenizer is that NoopTokenizer does not split
+    strings, so &#34;Jeff Buckley&#34; will get it&#39;s own index. Whereas WhiteSpaceTokenizer will
+    split it to [&#34;Jeff&#34;, &#34;Buckley&#34;] and return an index per word.
+
+    For example:
+    [&#34;Queen&#34;, &#34;ABBA&#34;, &#34;Jeff Buckley&#34;] =&gt; [43, 55, 101]
+    [&#34;Metal&#34;, &#34;Rock&#34;, &#34;Classical&#34;] =&gt; [0, 223, 51]
+    &#34;&#34;&#34;
+    def __init__(self, n_bins: int, pad_idx: int = 0):
+        self.n_bins = n_bins
+        self.pad_idx = pad_idx
+
+    def __call__(self, texts: tp.List[tp.Optional[str]]) -&gt; tp.Tuple[Tensor, Tensor]:
+        output, lengths = [], []
+        for text in texts:
+            # if current sample doesn&#39;t have a certain attribute, replace with pad token
+            if text is None:
+                output.append(self.pad_idx)
+                lengths.append(0)
+            else:
+                output.append(hash_trick(text, self.n_bins))
+                lengths.append(1)
+
+        tokens = torch.LongTensor(output).unsqueeze(1)
+        mask = length_to_mask(torch.IntTensor(lengths)).int()
+        return tokens, mask
+
+
+class BaseConditioner(nn.Module):
+    &#34;&#34;&#34;Base model for all conditioner modules. We allow the output dim to be different
+    than the hidden dim for two reasons: 1) keep our LUTs small when the vocab is large;
+    2) make all condition dims consistent.
+
+    Args:
+        dim (int): Hidden dim of the model (text-encoder/LUT).
+        output_dim (int): Output dim of the conditioner.
+    &#34;&#34;&#34;
+    def __init__(self, dim, output_dim):
+        super().__init__()
+        self.dim = dim
+        self.output_dim = output_dim
+        self.output_proj = nn.Linear(dim, output_dim)
+
+    def tokenize(self, *args, **kwargs) -&gt; tp.Any:
+        &#34;&#34;&#34;Should be any part of the processing that will lead to a synchronization
+        point, e.g. BPE tokenization with transfer to the GPU.
+
+        The returned value will be saved and return later when calling forward().
+        &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    def forward(self, inputs: tp.Any) -&gt; ConditionType:
+        &#34;&#34;&#34;Gets input that should be used as conditioning (e.g, genre, description or a waveform).
+        Outputs a ConditionType, after the input data was embedded as a dense vector.
+
+        Returns:
+            ConditionType:
+                - A tensor of size [B, T, D] where B is the batch size, T is the length of the
+                  output embedding and D is the dimension of the embedding.
+                - And a mask indicating where the padding tokens.
+        &#34;&#34;&#34;
+        raise NotImplementedError()
+
+
+class TextConditioner(BaseConditioner):
+    ...
+
+
+class LUTConditioner(TextConditioner):
+    &#34;&#34;&#34;Lookup table TextConditioner.
+
+    Args:
+        n_bins (int): Number of bins.
+        dim (int): Hidden dim of the model (text-encoder/LUT).
+        output_dim (int): Output dim of the conditioner.
+        tokenizer (str): Name of the tokenizer.
+        pad_idx (int, optional): Index for padding token. Defaults to 0.
+    &#34;&#34;&#34;
+    def __init__(self, n_bins: int, dim: int, output_dim: int, tokenizer: str, pad_idx: int = 0):
+        super().__init__(dim, output_dim)
+        self.embed = nn.Embedding(n_bins, dim)
+        self.tokenizer: Tokenizer
+        if tokenizer == &#34;whitespace&#34;:
+            self.tokenizer = WhiteSpaceTokenizer(n_bins, pad_idx=pad_idx)
+        elif tokenizer == &#34;noop&#34;:
+            self.tokenizer = NoopTokenizer(n_bins, pad_idx=pad_idx)
+        else:
+            raise ValueError(f&#34;unrecognized tokenizer `{tokenizer}`.&#34;)
+
+    def tokenize(self, x: tp.List[tp.Optional[str]]) -&gt; tp.Tuple[torch.Tensor, torch.Tensor]:
+        device = self.embed.weight.device
+        tokens, mask = self.tokenizer(x)
+        tokens, mask = tokens.to(device), mask.to(device)
+        return tokens, mask
+
+    def forward(self, inputs: tp.Tuple[torch.Tensor, torch.Tensor]) -&gt; ConditionType:
+        tokens, mask = inputs
+        embeds = self.embed(tokens)
+        embeds = self.output_proj(embeds)
+        embeds = (embeds * mask.unsqueeze(-1))
+        return embeds, mask
+
+
+class T5Conditioner(TextConditioner):
+    &#34;&#34;&#34;T5-based TextConditioner.
+
+    Args:
+        name (str): Name of the T5 model.
+        output_dim (int): Output dim of the conditioner.
+        finetune (bool): Whether to fine-tune T5 at train time.
+        device (str): Device for T5 Conditioner.
+        autocast_dtype (tp.Optional[str], optional): Autocast dtype.
+        word_dropout (float, optional): Word dropout probability.
+        normalize_text (bool, optional): Whether to apply text normalization.
+    &#34;&#34;&#34;
+    MODELS = [&#34;t5-small&#34;, &#34;t5-base&#34;, &#34;t5-large&#34;, &#34;t5-3b&#34;, &#34;t5-11b&#34;,
+              &#34;google/flan-t5-small&#34;, &#34;google/flan-t5-base&#34;, &#34;google/flan-t5-large&#34;,
+              &#34;google/flan-t5-xl&#34;, &#34;google/flan-t5-xxl&#34;]
+    MODELS_DIMS = {
+        &#34;t5-small&#34;: 512,
+        &#34;t5-base&#34;: 768,
+        &#34;t5-large&#34;: 1024,
+        &#34;t5-3b&#34;: 1024,
+        &#34;t5-11b&#34;: 1024,
+        &#34;google/flan-t5-small&#34;: 512,
+        &#34;google/flan-t5-base&#34;: 768,
+        &#34;google/flan-t5-large&#34;: 1024,
+        &#34;google/flan-t5-3b&#34;: 1024,
+        &#34;google/flan-t5-11b&#34;: 1024,
+    }
+
+    def __init__(self, name: str, output_dim: int, finetune: bool, device: str,
+                 autocast_dtype: tp.Optional[str] = &#39;float32&#39;, word_dropout: float = 0.,
+                 normalize_text: bool = False):
+        assert name in self.MODELS, f&#34;unrecognized t5 model name (should in {self.MODELS})&#34;
+        super().__init__(self.MODELS_DIMS[name], output_dim)
+        self.device = device
+        self.name = name
+        self.finetune = finetune
+        self.word_dropout = word_dropout
+
+        if autocast_dtype is None or self.device == &#39;cpu&#39;:
+            self.autocast = TorchAutocast(enabled=False)
+            if self.device != &#39;cpu&#39;:
+                logger.warning(&#34;T5 has no autocast, this might lead to NaN&#34;)
+        else:
+            dtype = getattr(torch, autocast_dtype)
+            assert isinstance(dtype, torch.dtype)
+            logger.info(f&#34;T5 will be evaluated with autocast as {autocast_dtype}&#34;)
+            self.autocast = TorchAutocast(enabled=True, device_type=self.device, dtype=dtype)
+        # Let&#39;s disable logging temporarily because T5 will vomit some errors otherwise.
+        # thanks https://gist.github.com/simon-weber/7853144
+        previous_level = logging.root.manager.disable
+        logging.disable(logging.ERROR)
+        with warnings.catch_warnings():
+            warnings.simplefilter(&#34;ignore&#34;)
+            try:
+                self.t5_tokenizer = T5Tokenizer.from_pretrained(name)
+                t5 = T5EncoderModel.from_pretrained(name).train(mode=finetune)
+            finally:
+                logging.disable(previous_level)
+        if finetune:
+            self.t5 = t5
+        else:
+            # this makes sure that the t5 models is not part
+            # of the saved checkpoint
+            self.__dict__[&#34;t5&#34;] = t5.to(device)
+
+        self.normalize_text = normalize_text
+        if normalize_text:
+            self.text_normalizer = WhiteSpaceTokenizer(1, lemma=True, stopwords=True)
+
+    def tokenize(self, x: tp.List[tp.Optional[str]]) -&gt; tp.Dict[str, torch.Tensor]:
+        # if current sample doesn&#39;t have a certain attribute, replace with empty string
+        entries: tp.List[str] = [xi if xi is not None else &#34;&#34; for xi in x]
+        if self.normalize_text:
+            _, _, entries = self.text_normalizer(entries, return_text=True)
+        if self.word_dropout &gt; 0. and self.training:
+            new_entries = []
+            for entry in entries:
+                words = [word for word in entry.split(&#34; &#34;) if random.random() &gt;= self.word_dropout]
+                new_entries.append(&#34; &#34;.join(words))
+            entries = new_entries
+
+        empty_idx = torch.LongTensor([i for i, xi in enumerate(entries) if xi == &#34;&#34;])
+
+        inputs = self.t5_tokenizer(entries, return_tensors=&#34;pt&#34;, padding=True).to(self.device)
+        mask = inputs[&#34;attention_mask&#34;]
+        mask[empty_idx, :] = 0  # zero-out index where the input is non-existant
+        return inputs
+
+    def forward(self, inputs: tp.Dict[str, torch.Tensor]) -&gt; ConditionType:
+        mask = inputs[&#34;attention_mask&#34;]
+        with torch.set_grad_enabled(self.finetune), self.autocast:
+            embeds = self.t5(**inputs).last_hidden_state
+        embeds = self.output_proj(embeds.to(self.output_proj.weight))
+        embeds = (embeds * mask.unsqueeze(-1))
+        return embeds, mask
+
+
+class WaveformConditioner(BaseConditioner):
+    &#34;&#34;&#34;Base class for all conditioners that take a waveform as input.
+    Classes that inherit must implement `_get_wav_embedding` that outputs
+    a continuous tensor, and `_downsampling_factor` that returns the down-sampling
+    factor of the embedding model.
+
+    Args:
+        dim (int): The internal representation dimension.
+        output_dim (int): Output dimension.
+        device (tp.Union[torch.device, str]): Device.
+    &#34;&#34;&#34;
+    def __init__(self, dim: int, output_dim: int, device: tp.Union[torch.device, str]):
+        super().__init__(dim, output_dim)
+        self.device = device
+
+    def tokenize(self, wav_length: WavCondition) -&gt; WavCondition:
+        wav, length, path = wav_length
+        assert length is not None
+        return WavCondition(wav.to(self.device), length.to(self.device), path)
+
+    def _get_wav_embedding(self, wav: Tensor) -&gt; Tensor:
+        &#34;&#34;&#34;Gets as input a wav and returns a dense vector of conditions.&#34;&#34;&#34;
+        raise NotImplementedError()
+
+    def _downsampling_factor(self):
+        &#34;&#34;&#34;Returns the downsampling factor of the embedding model.&#34;&#34;&#34;
+        raise NotImplementedError()
+
+    def forward(self, inputs: WavCondition) -&gt; ConditionType:
+        &#34;&#34;&#34;
+        Args:
+            input (WavCondition): Tuple of (waveform, lengths).
+        Returns:
+            ConditionType: Dense vector representing the conditioning along with its&#39; mask.
+        &#34;&#34;&#34;
+        wav, lengths, path = inputs
+        with torch.no_grad():
+            embeds = self._get_wav_embedding(wav)
+        embeds = embeds.to(self.output_proj.weight)
+        embeds = self.output_proj(embeds)
+
+        if lengths is not None:
+            lengths = lengths / self._downsampling_factor()
+            mask = length_to_mask(lengths, max_len=embeds.shape[1]).int()  # type: ignore
+        else:
+            mask = torch.ones_like(embeds)
+        embeds = (embeds * mask.unsqueeze(2).to(self.device))
+
+        return embeds, mask
+
+
+class ChromaStemConditioner(WaveformConditioner):
+    &#34;&#34;&#34;Chroma conditioner that uses DEMUCS to first filter out drums and bass. The is followed by
+    the insight the drums and bass often dominate the chroma, leading to the chroma not containing the
+    information about melody.
+
+    Args:
+        output_dim (int): Output dimension for the conditioner.
+        sample_rate (int): Sample rate for the chroma extractor.
+        n_chroma (int): Number of chroma for the chroma extractor.
+        radix2_exp (int): Radix2 exponent for the chroma extractor.
+        duration (float): Duration used during training. This is later used for correct padding
+            in case we are using chroma as prefix.
+        match_len_on_eval (bool, optional): If True then all chromas are padded to the training
+            duration. Defaults to False.
+        eval_wavs (str, optional): Path to a json egg with waveform, this waveforms are used as
+            conditions during eval (for cases where we don&#39;t want to leak test conditions like MusicCaps).
+            Defaults to None.
+        n_eval_wavs (int, optional): Limits the number of waveforms used for conditioning. Defaults to 0.
+        device (tp.Union[torch.device, str], optional): Device for the conditioner.
+        **kwargs: Additional parameters for the chroma extractor.
+    &#34;&#34;&#34;
+    def __init__(self, output_dim: int, sample_rate: int, n_chroma: int, radix2_exp: int,
+                 duration: float, match_len_on_eval: bool = False, eval_wavs: tp.Optional[str] = None,
+                 n_eval_wavs: int = 0, device: tp.Union[torch.device, str] = &#34;cpu&#34;, **kwargs):
+        from demucs import pretrained
+        super().__init__(dim=n_chroma, output_dim=output_dim, device=device)
+        self.autocast = TorchAutocast(enabled=device != &#34;cpu&#34;, device_type=self.device, dtype=torch.float32)
+        self.sample_rate = sample_rate
+        self.match_len_on_eval = match_len_on_eval
+        self.duration = duration
+        self.__dict__[&#34;demucs&#34;] = pretrained.get_model(&#39;htdemucs&#39;).to(device)
+        self.stem2idx = {&#39;drums&#39;: 0, &#39;bass&#39;: 1, &#39;other&#39;: 2, &#39;vocal&#39;: 3}
+        self.stem_idx = torch.LongTensor([self.stem2idx[&#39;vocal&#39;], self.stem2idx[&#39;other&#39;]]).to(device)
+        self.chroma = ChromaExtractor(sample_rate=sample_rate, n_chroma=n_chroma, radix2_exp=radix2_exp,
+                                      device=device, **kwargs)
+        self.chroma_len = self._get_chroma_len()
+
+    def _downsampling_factor(self):
+        return self.chroma.winhop
+
+    def _get_chroma_len(self):
+        &#34;&#34;&#34;Get length of chroma during training&#34;&#34;&#34;
+        dummy_wav = torch.zeros((1, self.sample_rate * self.duration), device=self.device)
+        dummy_chr = self.chroma(dummy_wav)
+        return dummy_chr.shape[1]
+
+    @torch.no_grad()
+    def _get_filtered_wav(self, wav):
+        from demucs.apply import apply_model
+        from demucs.audio import convert_audio
+        with self.autocast:
+            wav = convert_audio(wav, self.sample_rate, self.demucs.samplerate, self.demucs.audio_channels)
+            stems = apply_model(self.demucs, wav, device=self.device)
+            stems = stems[:, self.stem_idx]  # extract stem
+            stems = stems.sum(1)  # merge extracted stems
+            stems = stems.mean(1, keepdim=True)  # mono
+            stems = convert_audio(stems, self.demucs.samplerate, self.sample_rate, 1)
+            return stems
+
+    @torch.no_grad()
+    def _get_wav_embedding(self, wav):
+        # avoid 0-size tensors when we are working with null conds
+        if wav.shape[-1] == 1:
+            return self.chroma(wav)
+        stems = self._get_filtered_wav(wav)
+        chroma = self.chroma(stems)
+
+        if self.match_len_on_eval:
+            b, t, c = chroma.shape
+            if t &gt; self.chroma_len:
+                chroma = chroma[:, :self.chroma_len]
+                logger.debug(f&#39;chroma was truncated! ({t} -&gt; {chroma.shape[1]})&#39;)
+            elif t &lt; self.chroma_len:
+                chroma = F.pad(chroma, (0, 0, 0, self.chroma_len - t))
+                logger.debug(f&#39;chroma was zero-padded! ({t} -&gt; {chroma.shape[1]})&#39;)
+        return chroma
+
+
+class ChromaExtractor(nn.Module):
+    &#34;&#34;&#34;Chroma extraction class, handles chroma extraction and quantization.
+
+    Args:
+        sample_rate (int): Sample rate.
+        n_chroma (int): Number of chroma to consider.
+        radix2_exp (int): Radix2 exponent.
+        nfft (tp.Optional[int], optional): Number of FFT.
+        winlen (tp.Optional[int], optional): Window length.
+        winhop (tp.Optional[int], optional): Window hop size.
+        argmax (bool, optional): Whether to use argmax. Defaults to False.
+        norm (float, optional): Norm for chroma normalization. Defaults to inf.
+        device (tp.Union[torch.device, str], optional): Device to use. Defaults to cpu.
+    &#34;&#34;&#34;
+    def __init__(self, sample_rate: int, n_chroma: int = 12, radix2_exp: int = 12,
+                 nfft: tp.Optional[int] = None, winlen: tp.Optional[int] = None, winhop: tp.Optional[int] = None,
+                 argmax: bool = False, norm: float = torch.inf, device: tp.Union[torch.device, str] = &#34;cpu&#34;):
+        super().__init__()
+        from librosa import filters
+        self.device = device
+        self.autocast = TorchAutocast(enabled=device != &#34;cpu&#34;, device_type=self.device, dtype=torch.float32)
+        self.winlen = winlen or 2 ** radix2_exp
+        self.nfft = nfft or self.winlen
+        self.winhop = winhop or (self.winlen // 4)
+        self.sr = sample_rate
+        self.n_chroma = n_chroma
+        self.norm = norm
+        self.argmax = argmax
+        self.window = torch.hann_window(self.winlen).to(device)
+        self.fbanks = torch.from_numpy(filters.chroma(sr=sample_rate, n_fft=self.nfft, tuning=0,
+                                                      n_chroma=self.n_chroma)).to(device)
+        self.spec = torchaudio.transforms.Spectrogram(n_fft=self.nfft, win_length=self.winlen,
+                                                      hop_length=self.winhop, power=2, center=True,
+                                                      pad=0, normalized=True).to(device)
+
+    def forward(self, wav):
+        with self.autocast:
+            T = wav.shape[-1]
+            # in case we are getting a wav that was dropped out (nullified)
+            # make sure wav length is no less that nfft
+            if T &lt; self.nfft:
+                pad = self.nfft - T
+                r = 0 if pad % 2 == 0 else 1
+                wav = F.pad(wav, (pad // 2, pad // 2 + r), &#39;constant&#39;, 0)
+                assert wav.shape[-1] == self.nfft, f&#39;expected len {self.nfft} but got {wav.shape[-1]}&#39;
+            spec = self.spec(wav).squeeze(1)
+            raw_chroma = torch.einsum(&#34;cf,...ft-&gt;...ct&#34;, self.fbanks, spec)
+            norm_chroma = torch.nn.functional.normalize(raw_chroma, p=self.norm, dim=-2, eps=1e-6)
+            norm_chroma = rearrange(norm_chroma, &#34;b d t -&gt; b t d&#34;)
+
+            if self.argmax:
+                idx = norm_chroma.argmax(-1, keepdims=True)
+                norm_chroma[:] = 0
+                norm_chroma.scatter_(dim=-1, index=idx, value=1)
+
+            return norm_chroma
+
+
+def dropout_condition(sample: ConditioningAttributes, condition_type: str, condition: str):
+    &#34;&#34;&#34;Utility function for nullifying an attribute inside an ConditioningAttributes object.
+    If the condition is of type &#34;wav&#34;, then nullify it using &#34;nullify_condition&#34;.
+    If the condition is of any other type, set its&#39; value to None.
+    Works in-place.
+    &#34;&#34;&#34;
+    if condition_type not in [&#34;text&#34;, &#34;wav&#34;]:
+        raise ValueError(
+            &#34;dropout_condition got an unexpected condition type!&#34;
+            f&#34; expected &#39;wav&#39; or &#39;text&#39; but got &#39;{condition_type}&#39;&#34;
+        )
+
+    if condition not in getattr(sample, condition_type):
+        raise ValueError(
+            &#34;dropout_condition received an unexpected condition!&#34;
+            f&#34; expected wav={sample.wav.keys()} and text={sample.text.keys()}&#34;
+            f&#34;but got &#39;{condition}&#39; of type &#39;{condition_type}&#39;!&#34;
+        )
+
+    if condition_type == &#34;wav&#34;:
+        wav, length, path = sample.wav[condition]
+        sample.wav[condition] = nullify_wav(wav)
+    else:
+        sample.text[condition] = None
+
+    return sample
+
+
+class DropoutModule(nn.Module):
+    &#34;&#34;&#34;Base class for all dropout modules.&#34;&#34;&#34;
+    def __init__(self, seed: int = 1234):
+        super().__init__()
+        self.rng = torch.Generator()
+        self.rng.manual_seed(seed)
+
+
+class AttributeDropout(DropoutModule):
+    &#34;&#34;&#34;Applies dropout with a given probability per attribute. This is different from the behavior of
+    ClassifierFreeGuidanceDropout as this allows for attributes to be dropped out separately. For example,
+    &#34;artist&#34; can be dropped while &#34;genre&#34; remains. This is in contrast to ClassifierFreeGuidanceDropout
+    where if &#34;artist&#34; is dropped &#34;genre&#34; must also be dropped.
+
+    Args:
+        p (tp.Dict[str, float]): A dict mapping between attributes and dropout probability. For example:
+            ...
+            &#34;genre&#34;: 0.1,
+            &#34;artist&#34;: 0.5,
+            &#34;wav&#34;: 0.25,
+            ...
+        active_on_eval (bool, optional): Whether the dropout is active at eval. Default to False.
+        seed (int, optional): Random seed.
+    &#34;&#34;&#34;
+    def __init__(self, p: tp.Dict[str, tp.Dict[str, float]], active_on_eval: bool = False, seed: int = 1234):
+        super().__init__(seed=seed)
+        self.active_on_eval = active_on_eval
+        # construct dict that return the values from p otherwise 0
+        self.p = {}
+        for condition_type, probs in p.items():
+            self.p[condition_type] = defaultdict(lambda: 0, probs)
+
+    def forward(self, samples: tp.List[ConditioningAttributes]) -&gt; tp.List[ConditioningAttributes]:
+        &#34;&#34;&#34;
+        Args:
+            samples (tp.List[ConditioningAttributes]): List of conditions.
+        Returns:
+            tp.List[ConditioningAttributes]: List of conditions after certain attributes were set to None.
+        &#34;&#34;&#34;
+        if not self.training and not self.active_on_eval:
+            return samples
+
+        samples = deepcopy(samples)
+
+        for condition_type, ps in self.p.items():  # for condition types [text, wav]
+            for condition, p in ps.items():  # for attributes of each type (e.g., [artist, genre])
+                if torch.rand(1, generator=self.rng).item() &lt; p:
+                    for sample in samples:
+                        dropout_condition(sample, condition_type, condition)
+
+        return samples
+
+    def __repr__(self):
+        return f&#34;AttributeDropout({dict(self.p)})&#34;
+
+
+class ClassifierFreeGuidanceDropout(DropoutModule):
+    &#34;&#34;&#34;Applies Classifier Free Guidance dropout, meaning all attributes
+    are dropped with the same probability.
+
+    Args:
+        p (float): Probability to apply condition dropout during training.
+        seed (int): Random seed.
+    &#34;&#34;&#34;
+    def __init__(self, p: float, seed: int = 1234):
+        super().__init__(seed=seed)
+        self.p = p
+
+    def forward(self, samples: tp.List[ConditioningAttributes]) -&gt; tp.List[ConditioningAttributes]:
+        &#34;&#34;&#34;
+        Args:
+            samples (tp.List[ConditioningAttributes]): List of conditions.
+        Returns:
+            tp.List[ConditioningAttributes]: List of conditions after all attributes were set to None.
+        &#34;&#34;&#34;
+        if not self.training:
+            return samples
+
+        # decide on which attributes to drop in a batched fashion
+        drop = torch.rand(1, generator=self.rng).item() &lt; self.p
+        if not drop:
+            return samples
+
+        # nullify conditions of all attributes
+        samples = deepcopy(samples)
+
+        for condition_type in [&#34;wav&#34;, &#34;text&#34;]:
+            for sample in samples:
+                for condition in sample.attributes[condition_type]:
+                    dropout_condition(sample, condition_type, condition)
+
+        return samples
+
+    def __repr__(self):
+        return f&#34;ClassifierFreeGuidanceDropout(p={self.p})&#34;
+
+
+class ConditioningProvider(nn.Module):
+    &#34;&#34;&#34;Main class to provide conditions given all the supported conditioners.
+
+    Args:
+        conditioners (dict): Dictionary of conditioners.
+        merge_text_conditions_p (float, optional): Probability to merge all text sources
+            into a single text condition. Defaults to 0.
+        drop_desc_p (float, optional): Probability to drop the original description
+            when merging all text sources into a single text condition. Defaults to 0.
+        device (tp.Union[torch.device, str], optional): Device for conditioners and output condition types.
+    &#34;&#34;&#34;
+    def __init__(
+        self,
+        conditioners: tp.Dict[str, BaseConditioner],
+        merge_text_conditions_p: float = 0,
+        drop_desc_p: float = 0,
+        device: tp.Union[torch.device, str] = &#34;cpu&#34;,
+    ):
+        super().__init__()
+        self.device = device
+        self.merge_text_conditions_p = merge_text_conditions_p
+        self.drop_desc_p = drop_desc_p
+        self.conditioners = nn.ModuleDict(conditioners)
+
+    @property
+    def text_conditions(self):
+        return [k for k, v in self.conditioners.items() if isinstance(v, TextConditioner)]
+
+    @property
+    def wav_conditions(self):
+        return [k for k, v in self.conditioners.items() if isinstance(v, WaveformConditioner)]
+
+    @property
+    def has_wav_condition(self):
+        return len(self.wav_conditions) &gt; 0
+
+    def tokenize(self, inputs: tp.List[ConditioningAttributes]) -&gt; tp.Dict[str, tp.Any]:
+        &#34;&#34;&#34;Match attributes/wavs with existing conditioners in self, and compute tokenize them accordingly.
+        This should be called before starting any real GPU work to avoid synchronization points.
+        This will return a dict matching conditioner names to their arbitrary tokenized representations.
+
+        Args:
+            inputs (list[ConditioningAttribres]): List of ConditioningAttributes objects containing
+                text and wav conditions.
+        &#34;&#34;&#34;
+        assert all([type(x) == ConditioningAttributes for x in inputs]), \
+            &#34;got unexpected types input for conditioner! should be tp.List[ConditioningAttributes]&#34; \
+            f&#34; but types were {set([type(x) for x in inputs])}&#34;
+
+        output = {}
+        text = self._collate_text(inputs)
+        wavs = self._collate_wavs(inputs)
+
+        assert set(text.keys() | wavs.keys()).issubset(set(self.conditioners.keys())), \
+            f&#34;got an unexpected attribute! Expected {self.conditioners.keys()}, got {text.keys(), wavs.keys()}&#34;
+
+        for attribute, batch in chain(text.items(), wavs.items()):
+            output[attribute] = self.conditioners[attribute].tokenize(batch)
+        return output
+
+    def forward(self, tokenized: tp.Dict[str, tp.Any]) -&gt; tp.Dict[str, ConditionType]:
+        &#34;&#34;&#34;Compute pairs of `(embedding, mask)` using the configured conditioners
+        and the tokenized representations. The output is for example:
+
+            {
+                &#34;genre&#34;: (torch.Tensor([B, 1, D_genre]), torch.Tensor([B, 1])),
+                &#34;description&#34;: (torch.Tensor([B, T_desc, D_desc]), torch.Tensor([B, T_desc])),
+                ...
+            }
+
+        Args:
+            tokenized (dict): Dict of tokenized representations as returned by `tokenize()`.
+        &#34;&#34;&#34;
+        output = {}
+        for attribute, inputs in tokenized.items():
+            condition, mask = self.conditioners[attribute](inputs)
+            output[attribute] = (condition, mask)
+        return output
+
+    def _collate_text(self, samples: tp.List[ConditioningAttributes]) -&gt; tp.Dict[str, tp.List[tp.Optional[str]]]:
+        &#34;&#34;&#34;Given a list of ConditioningAttributes objects, compile a dictionary where the keys
+        are the attributes and the values are the aggregated input per attribute.
+        For example:
+        Input:
+        [
+            ConditioningAttributes(text={&#34;genre&#34;: &#34;Rock&#34;, &#34;description&#34;: &#34;A rock song with a guitar solo&#34;}, wav=...),
+            ConditioningAttributes(text={&#34;genre&#34;: &#34;Hip-hop&#34;, &#34;description&#34;: &#34;A hip-hop verse&#34;}, wav=...),
+        ]
+        Output:
+        {
+            &#34;genre&#34;: [&#34;Rock&#34;, &#34;Hip-hop&#34;],
+            &#34;description&#34;: [&#34;A rock song with a guitar solo&#34;, &#34;A hip-hop verse&#34;]
+        }
+        &#34;&#34;&#34;
+        batch_per_attribute: tp.Dict[str, tp.List[tp.Optional[str]]] = defaultdict(list)
+
+        def _merge_conds(cond, merge_text_conditions_p=0, drop_desc_p=0):
+            def is_valid(k, v):
+                k_valid = k in [&#39;key&#39;, &#39;bpm&#39;, &#39;genre&#39;, &#39;moods&#39;, &#39;instrument&#39;]
+                v_valid = v is not None and isinstance(v, (int, float, str, list))
+                return k_valid and v_valid
+
+            def process_value(v):
+                if isinstance(v, (int, float, str)):
+                    return v
+                if isinstance(v, list):
+                    return &#34;, &#34;.join(v)
+                else:
+                    RuntimeError(f&#34;unknown type for text value! ({type(v), v})&#34;)
+
+            desc = cond.text[&#39;description&#39;]
+            meta_data = &#34;&#34;
+            if random.uniform(0, 1) &lt; merge_text_conditions_p:
+                meta_pairs = [f&#39;{k}: {process_value(v)}&#39; for k, v in cond.text.items() if is_valid(k, v)]
+                random.shuffle(meta_pairs)
+                meta_data = &#34;. &#34;.join(meta_pairs)
+                desc = desc if not random.uniform(0, 1) &lt; drop_desc_p else None
+
+            if desc is None:
+                desc = meta_data if len(meta_data) &gt; 1 else None
+            else:
+                desc = desc.rstrip(&#39;.&#39;) + &#34;. &#34; + meta_data
+            cond.text[&#39;description&#39;] = desc.strip() if desc else None
+
+        if self.training and self.merge_text_conditions_p:
+            for sample in samples:
+                _merge_conds(sample, self.merge_text_conditions_p, self.drop_desc_p)
+
+        texts = [x.text for x in samples]
+        for text in texts:
+            for condition in self.text_conditions:
+                batch_per_attribute[condition].append(text[condition])
+
+        return batch_per_attribute
+
+    def _collate_wavs(self, samples: tp.List[ConditioningAttributes]):
+        &#34;&#34;&#34;Generate a dict where the keys are attributes by which we fetch similar wavs,
+        and the values are Tensors of wavs according to said attribtues.
+
+        *Note*: by the time the samples reach this function, each sample should have some waveform
+        inside the &#34;wav&#34; attribute. It should be either:
+        1. A real waveform
+        2. A null waveform due to the sample having no similar waveforms (nullified by the dataset)
+        3. A null waveform due to it being dropped in a dropout module (nullified by dropout)
+
+        Args:
+            samples (tp.List[ConditioningAttributes]): List of ConditioningAttributes samples.
+        Returns:
+            dict: A dicionary mapping an attribute name to wavs.
+        &#34;&#34;&#34;
+        wavs = defaultdict(list)
+        lens = defaultdict(list)
+        paths = defaultdict(list)
+        out = {}
+
+        for sample in samples:
+            for attribute in self.wav_conditions:
+                wav, length, path = sample.wav[attribute]
+                wavs[attribute].append(wav.flatten())
+                lens[attribute].append(length)
+                paths[attribute].append(path)
+
+        # stack all wavs to a single tensor
+        for attribute in self.wav_conditions:
+            stacked_wav, _ = collate(wavs[attribute], dim=0)
+            out[attribute] = WavCondition(stacked_wav.unsqueeze(1),
+                                          torch.cat(lens[&#39;self_wav&#39;]), paths[attribute])  # type: ignore
+
+        return out
+
+
+class ConditionFuser(StreamingModule):
+    &#34;&#34;&#34;Condition fuser handles the logic to combine the different conditions
+    to the actual model input.
+
+    Args:
+        fuse2cond (tp.Dict[str, str]): A dictionary that says how to fuse
+            each condition. For example:
+            {
+                &#34;prepend&#34;: [&#34;description&#34;],
+                &#34;sum&#34;: [&#34;genre&#34;, &#34;bpm&#34;],
+                &#34;cross&#34;: [&#34;description&#34;],
+            }
+        cross_attention_pos_emb (bool, optional): Use positional embeddings in cross attention.
+        cross_attention_pos_emb_scale (int): Scale for positional embeddings in cross attention if used.
+    &#34;&#34;&#34;
+    FUSING_METHODS = [&#34;sum&#34;, &#34;prepend&#34;, &#34;cross&#34;, &#34;input_interpolate&#34;]
+
+    def __init__(self, fuse2cond: tp.Dict[str, tp.List[str]], cross_attention_pos_emb: bool = False,
+                 cross_attention_pos_emb_scale: float = 1.0):
+        super().__init__()
+        assert all(
+            [k in self.FUSING_METHODS for k in fuse2cond.keys()]
+        ), f&#34;got invalid fuse method, allowed methods: {self.FUSING_MEHTODS}&#34;
+        self.cross_attention_pos_emb = cross_attention_pos_emb
+        self.cross_attention_pos_emb_scale = cross_attention_pos_emb_scale
+        self.fuse2cond: tp.Dict[str, tp.List[str]] = fuse2cond
+        self.cond2fuse: tp.Dict[str, str] = {}
+        for fuse_method, conditions in fuse2cond.items():
+            for condition in conditions:
+                self.cond2fuse[condition] = fuse_method
+
+    def forward(
+        self,
+        input: Tensor,
+        conditions: tp.Dict[str, ConditionType]
+    ) -&gt; tp.Tuple[Tensor, tp.Optional[Tensor]]:
+        &#34;&#34;&#34;Fuse the conditions to the provided model input.
+
+        Args:
+            input (Tensor): Transformer input.
+            conditions (tp.Dict[str, ConditionType]): Dict of conditions.
+        Returns:
+            tp.Tuple[Tensor, Tensor]: The first tensor is the transformer input
+                after the conditions have been fused. The second output tensor is the tensor
+                used for cross-attention or None if no cross attention inputs exist.
+        &#34;&#34;&#34;
+        B, T, _ = input.shape
+
+        if &#39;offsets&#39; in self._streaming_state:
+            first_step = False
+            offsets = self._streaming_state[&#39;offsets&#39;]
+        else:
+            first_step = True
+            offsets = torch.zeros(input.shape[0], dtype=torch.long, device=input.device)
+
+        assert set(conditions.keys()).issubset(set(self.cond2fuse.keys())), \
+            f&#34;given conditions contain unknown attributes for fuser, &#34; \
+            f&#34;expected {self.cond2fuse.keys()}, got {conditions.keys()}&#34;
+        cross_attention_output = None
+        for cond_type, (cond, cond_mask) in conditions.items():
+            op = self.cond2fuse[cond_type]
+            if op == &#34;sum&#34;:
+                input += cond
+            elif op == &#34;input_interpolate&#34;:
+                cond = rearrange(cond, &#34;b t d -&gt; b d t&#34;)
+                cond = F.interpolate(cond, size=input.shape[1])
+                input += rearrange(cond, &#34;b d t -&gt; b t d&#34;)
+            elif op == &#34;prepend&#34;:
+                if first_step:
+                    input = torch.cat([cond, input], dim=1)
+            elif op == &#34;cross&#34;:
+                if cross_attention_output is not None:
+                    cross_attention_output = torch.cat([cross_attention_output, cond], dim=1)
+                else:
+                    cross_attention_output = cond
+            else:
+                raise ValueError(f&#34;unknown op ({op})&#34;)
+
+        if self.cross_attention_pos_emb and cross_attention_output is not None:
+            positions = torch.arange(
+                cross_attention_output.shape[1],
+                device=cross_attention_output.device
+            ).view(1, -1, 1)
+            pos_emb = create_sin_embedding(positions, cross_attention_output.shape[-1])
+            cross_attention_output = cross_attention_output + self.cross_attention_pos_emb_scale * pos_emb
+
+        if self._is_streaming:
+            self._streaming_state[&#39;offsets&#39;] = offsets + T
+
+        return input, cross_attention_output</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="audiocraft.modules.conditioners.dropout_condition"><code class="name flex">
+<span>def <span class="ident">dropout_condition</span></span>(<span>sample: <a title="audiocraft.modules.conditioners.ConditioningAttributes" href="#audiocraft.modules.conditioners.ConditioningAttributes">ConditioningAttributes</a>, condition_type: str, condition: str)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Utility function for nullifying an attribute inside an ConditioningAttributes object.
+If the condition is of type "wav", then nullify it using "nullify_condition".
+If the condition is of any other type, set its' value to None.
+Works in-place.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def dropout_condition(sample: ConditioningAttributes, condition_type: str, condition: str):
+    &#34;&#34;&#34;Utility function for nullifying an attribute inside an ConditioningAttributes object.
+    If the condition is of type &#34;wav&#34;, then nullify it using &#34;nullify_condition&#34;.
+    If the condition is of any other type, set its&#39; value to None.
+    Works in-place.
+    &#34;&#34;&#34;
+    if condition_type not in [&#34;text&#34;, &#34;wav&#34;]:
+        raise ValueError(
+            &#34;dropout_condition got an unexpected condition type!&#34;
+            f&#34; expected &#39;wav&#39; or &#39;text&#39; but got &#39;{condition_type}&#39;&#34;
+        )
+
+    if condition not in getattr(sample, condition_type):
+        raise ValueError(
+            &#34;dropout_condition received an unexpected condition!&#34;
+            f&#34; expected wav={sample.wav.keys()} and text={sample.text.keys()}&#34;
+            f&#34;but got &#39;{condition}&#39; of type &#39;{condition_type}&#39;!&#34;
+        )
+
+    if condition_type == &#34;wav&#34;:
+        wav, length, path = sample.wav[condition]
+        sample.wav[condition] = nullify_wav(wav)
+    else:
+        sample.text[condition] = None
+
+    return sample</code></pre>
+</details>
+</dd>
+<dt id="audiocraft.modules.conditioners.nullify_condition"><code class="name flex">
+<span>def <span class="ident">nullify_condition</span></span>(<span>condition: Tuple[torch.Tensor, torch.Tensor], dim: int = 1)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This function transforms an input condition to a null condition.
+The way it is done by converting it to a single zero vector similarly
+to how it is done inside WhiteSpaceTokenizer and NoopTokenizer.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>condition</code></strong> :&ensp;<code>ConditionType</code></dt>
+<dd>a tuple of condition and mask (tp.Tuple[Tensor, Tensor])</dd>
+<dt><strong><code>dim</code></strong> :&ensp;<code>int</code></dt>
+<dd>the dimension that will be truncated (should be the time dimension)</dd>
+</dl>
+<p>WARNING!: dim should not be the batch dimension!</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>ConditionType</code></dt>
+<dd>a tuple of null condition and mask</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def nullify_condition(condition: ConditionType, dim: int = 1):
+    &#34;&#34;&#34;This function transforms an input condition to a null condition.
+    The way it is done by converting it to a single zero vector similarly
+    to how it is done inside WhiteSpaceTokenizer and NoopTokenizer.
+
+    Args:
+        condition (ConditionType): a tuple of condition and mask (tp.Tuple[Tensor, Tensor])
+        dim (int): the dimension that will be truncated (should be the time dimension)
+        WARNING!: dim should not be the batch dimension!
+    Returns:
+        ConditionType: a tuple of null condition and mask
+    &#34;&#34;&#34;
+    assert dim != 0, &#34;dim cannot be the batch dimension!&#34;
+    assert type(condition) == tuple and \
+        type(condition[0]) == Tensor and \
+        type(condition[1]) == Tensor, &#34;&#39;nullify_condition&#39; got an unexpected input type!&#34;
+    cond, mask = condition
+    B = cond.shape[0]
+    last_dim = cond.dim() - 1
+    out = cond.transpose(dim, last_dim)
+    out = 0. * out[..., :1]
+    out = out.transpose(dim, last_dim)
+    mask = torch.zeros((B, 1), device=out.device).int()
+    assert cond.dim() == out.dim()
+    return out, mask</code></pre>
+</details>
+</dd>
+<dt id="audiocraft.modules.conditioners.nullify_wav"><code class="name flex">
+<span>def <span class="ident">nullify_wav</span></span>(<span>wav: torch.Tensor) ‑> <a title="audiocraft.modules.conditioners.WavCondition" href="#audiocraft.modules.conditioners.WavCondition">WavCondition</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Create a nullified WavCondition from a wav tensor with appropriate shape.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>wav</code></strong> :&ensp;<code>Tensor</code></dt>
+<dd>tensor of shape [B, T]</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code><a title="audiocraft.modules.conditioners.WavCondition" href="#audiocraft.modules.conditioners.WavCondition">WavCondition</a></code></dt>
+<dd>wav condition with nullified wav.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def nullify_wav(wav: Tensor) -&gt; WavCondition:
+    &#34;&#34;&#34;Create a nullified WavCondition from a wav tensor with appropriate shape.
+
+    Args:
+        wav (Tensor): tensor of shape [B, T]
+    Returns:
+        WavCondition: wav condition with nullified wav.
+    &#34;&#34;&#34;
+    null_wav, _ = nullify_condition((wav, torch.zeros_like(wav)), dim=wav.dim() - 1)
+    return WavCondition(
+        wav=null_wav,
+        length=torch.tensor([0] * wav.shape[0], device=wav.device),
+        path=[&#39;null_wav&#39;] * wav.shape[0]
+    )</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="audiocraft.modules.conditioners.AttributeDropout"><code class="flex name class">
+<span>class <span class="ident">AttributeDropout</span></span>
+<span>(</span><span>p: Dict[str, Dict[str, float]], active_on_eval: bool = False, seed: int = 1234)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Applies dropout with a given probability per attribute. This is different from the behavior of
+ClassifierFreeGuidanceDropout as this allows for attributes to be dropped out separately. For example,
+"artist" can be dropped while "genre" remains. This is in contrast to ClassifierFreeGuidanceDropout
+where if "artist" is dropped "genre" must also be dropped.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>p</code></strong> :&ensp;<code>tp.Dict[str, float]</code></dt>
+<dd>A dict mapping between attributes and dropout probability. For example:
+&hellip;
+"genre": 0.1,
+"artist": 0.5,
+"wav": 0.25,
+&hellip;</dd>
+<dt><strong><code>active_on_eval</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>Whether the dropout is active at eval. Default to False.</dd>
+<dt><strong><code>seed</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>Random seed.</dd>
+</dl>
+<p>Initializes internal Module state, shared by both nn.Module and ScriptModule.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class AttributeDropout(DropoutModule):
+    &#34;&#34;&#34;Applies dropout with a given probability per attribute. This is different from the behavior of
+    ClassifierFreeGuidanceDropout as this allows for attributes to be dropped out separately. For example,
+    &#34;artist&#34; can be dropped while &#34;genre&#34; remains. This is in contrast to ClassifierFreeGuidanceDropout
+    where if &#34;artist&#34; is dropped &#34;genre&#34; must also be dropped.
+
+    Args:
+        p (tp.Dict[str, float]): A dict mapping between attributes and dropout probability. For example:
+            ...
+            &#34;genre&#34;: 0.1,
+            &#34;artist&#34;: 0.5,
+            &#34;wav&#34;: 0.25,
+            ...
+        active_on_eval (bool, optional): Whether the dropout is active at eval. Default to False.
+        seed (int, optional): Random seed.
+    &#34;&#34;&#34;
+    def __init__(self, p: tp.Dict[str, tp.Dict[str, float]], active_on_eval: bool = False, seed: int = 1234):
+        super().__init__(seed=seed)
+        self.active_on_eval = active_on_eval
+        # construct dict that return the values from p otherwise 0
+        self.p = {}
+        for condition_type, probs in p.items():
+            self.p[condition_type] = defaultdict(lambda: 0, probs)
+
+    def forward(self, samples: tp.List[ConditioningAttributes]) -&gt; tp.List[ConditioningAttributes]:
+        &#34;&#34;&#34;
+        Args:
+            samples (tp.List[ConditioningAttributes]): List of conditions.
+        Returns:
+            tp.List[ConditioningAttributes]: List of conditions after certain attributes were set to None.
+        &#34;&#34;&#34;
+        if not self.training and not self.active_on_eval:
+            return samples
+
+        samples = deepcopy(samples)
+
+        for condition_type, ps in self.p.items():  # for condition types [text, wav]
+            for condition, p in ps.items():  # for attributes of each type (e.g., [artist, genre])
+                if torch.rand(1, generator=self.rng).item() &lt; p:
+                    for sample in samples:
+                        dropout_condition(sample, condition_type, condition)
+
+        return samples
+
+    def __repr__(self):
+        return f&#34;AttributeDropout({dict(self.p)})&#34;</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="audiocraft.modules.conditioners.DropoutModule" href="#audiocraft.modules.conditioners.DropoutModule">DropoutModule</a></li>
+<li>torch.nn.modules.module.Module</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="audiocraft.modules.conditioners.AttributeDropout.call_super_init"><code class="name">var <span class="ident">call_super_init</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="audiocraft.modules.conditioners.AttributeDropout.dump_patches"><code class="name">var <span class="ident">dump_patches</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="audiocraft.modules.conditioners.AttributeDropout.training"><code class="name">var <span class="ident">training</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="audiocraft.modules.conditioners.AttributeDropout.forward"><code class="name flex">
+<span>def <span class="ident">forward</span></span>(<span>self, samples: List[<a title="audiocraft.modules.conditioners.ConditioningAttributes" href="#audiocraft.modules.conditioners.ConditioningAttributes">ConditioningAttributes</a>]) ‑> List[<a title="audiocraft.modules.conditioners.ConditioningAttributes" href="#audiocraft.modules.conditioners.ConditioningAttributes">ConditioningAttributes</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"><h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>samples</code></strong> :&ensp;<code>tp.List[<a title="audiocraft.modules.conditioners.ConditioningAttributes" href="#audiocraft.modules.conditioners.ConditioningAttributes">ConditioningAttributes</a>]</code></dt>
+<dd>List of conditions.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tp.List[<a title="audiocraft.modules.conditioners.ConditioningAttributes" href="#audiocraft.modules.conditioners.ConditioningAttributes">ConditioningAttributes</a>]</code></dt>
+<dd>List of conditions after certain attributes were set to None.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def forward(self, samples: tp.List[ConditioningAttributes]) -&gt; tp.List[ConditioningAttributes]:
+    &#34;&#34;&#34;
+    Args:
+        samples (tp.List[ConditioningAttributes]): List of conditions.
+    Returns:
+        tp.List[ConditioningAttributes]: List of conditions after certain attributes were set to None.
+    &#34;&#34;&#34;
+    if not self.training and not self.active_on_eval:
+        return samples
+
+    samples = deepcopy(samples)
+
+    for condition_type, ps in self.p.items():  # for condition types [text, wav]
+        for condition, p in ps.items():  # for attributes of each type (e.g., [artist, genre])
+            if torch.rand(1, generator=self.rng).item() &lt; p:
+                for sample in samples:
+                    dropout_condition(sample, condition_type, condition)
+
+    return samples</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="audiocraft.modules.conditioners.BaseConditioner"><code class="flex name class">
+<span>class <span class="ident">BaseConditioner</span></span>
+<span>(</span><span>dim, output_dim)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Base model for all conditioner modules. We allow the output dim to be different
+than the hidden dim for two reasons: 1) keep our LUTs small when the vocab is large;
+2) make all condition dims consistent.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>dim</code></strong> :&ensp;<code>int</code></dt>
+<dd>Hidden dim of the model (text-encoder/LUT).</dd>
+<dt><strong><code>output_dim</code></strong> :&ensp;<code>int</code></dt>
+<dd>Output dim of the conditioner.</dd>
+</dl>
+<p>Initializes internal Module state, shared by both nn.Module and ScriptModule.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class BaseConditioner(nn.Module):
+    &#34;&#34;&#34;Base model for all conditioner modules. We allow the output dim to be different
+    than the hidden dim for two reasons: 1) keep our LUTs small when the vocab is large;
+    2) make all condition dims consistent.
+
+    Args:
+        dim (int): Hidden dim of the model (text-encoder/LUT).
+        output_dim (int): Output dim of the conditioner.
+    &#34;&#34;&#34;
+    def __init__(self, dim, output_dim):
+        super().__init__()
+        self.dim = dim
+        self.output_dim = output_dim
+        self.output_proj = nn.Linear(dim, output_dim)
+
+    def tokenize(self, *args, **kwargs) -&gt; tp.Any:
+        &#34;&#34;&#34;Should be any part of the processing that will lead to a synchronization
+        point, e.g. BPE tokenization with transfer to the GPU.
+
+        The returned value will be saved and return later when calling forward().
+        &#34;&#34;&#34;
+        raise NotImplementedError()
+
+    def forward(self, inputs: tp.Any) -&gt; ConditionType:
+        &#34;&#34;&#34;Gets input that should be used as conditioning (e.g, genre, description or a waveform).
+        Outputs a ConditionType, after the input data was embedded as a dense vector.
+
+        Returns:
+            ConditionType:
+                - A tensor of size [B, T, D] where B is the batch size, T is the length of the
+                  output embedding and D is the dimension of the embedding.
+                - And a mask indicating where the padding tokens.
+        &#34;&#34;&#34;
+        raise NotImplementedError()</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>torch.nn.modules.module.Module</li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="audiocraft.modules.conditioners.TextConditioner" href="#audiocraft.modules.conditioners.TextConditioner">TextConditioner</a></li>
+<li><a title="audiocraft.modules.conditioners.WaveformConditioner" href="#audiocraft.modules.conditioners.WaveformConditioner">WaveformConditioner</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="audiocraft.modules.conditioners.BaseConditioner.call_super_init"><code class="name">var <span class="ident">call_super_init</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="audiocraft.modules.conditioners.BaseConditioner.dump_patches"><code class="name">var <span class="ident">dump_patches</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="audiocraft.modules.conditioners.BaseConditioner.training"><code class="name">var <span class="ident">training</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="audiocraft.modules.conditioners.BaseConditioner.forward"><code class="name flex">
+<span>def <span class="ident">forward</span></span>(<span>self, inputs: Any) ‑> Tuple[torch.Tensor, torch.Tensor]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Gets input that should be used as conditioning (e.g, genre, description or a waveform).
+Outputs a ConditionType, after the input data was embedded as a dense vector.</p>
+<h2 id="returns">Returns</h2>
+<p>ConditionType:
+- A tensor of size [B, T, D] where B is the batch size, T is the length of the
+output embedding and D is the dimension of the embedding.
+- And a mask indicating where the padding tokens.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def forward(self, inputs: tp.Any) -&gt; ConditionType:
+    &#34;&#34;&#34;Gets input that should be used as conditioning (e.g, genre, description or a waveform).
+    Outputs a ConditionType, after the input data was embedded as a dense vector.
+
+    Returns:
+        ConditionType:
+            - A tensor of size [B, T, D] where B is the batch size, T is the length of the
+              output embedding and D is the dimension of the embedding.
+            - And a mask indicating where the padding tokens.
+    &#34;&#34;&#34;
+    raise NotImplementedError()</code></pre>
+</details>
+</dd>
+<dt id="audiocraft.modules.conditioners.BaseConditioner.tokenize"><code class="name flex">
+<span>def <span class="ident">tokenize</span></span>(<span>self, *args, **kwargs) ‑> Any</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Should be any part of the processing that will lead to a synchronization
+point, e.g. BPE tokenization with transfer to the GPU.</p>
+<p>The returned value will be saved and return later when calling forward().</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def tokenize(self, *args, **kwargs) -&gt; tp.Any:
+    &#34;&#34;&#34;Should be any part of the processing that will lead to a synchronization
+    point, e.g. BPE tokenization with transfer to the GPU.
+
+    The returned value will be saved and return later when calling forward().
+    &#34;&#34;&#34;
+    raise NotImplementedError()</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="audiocraft.modules.conditioners.ChromaExtractor"><code class="flex name class">
+<span>class <span class="ident">ChromaExtractor</span></span>
+<span>(</span><span>sample_rate: int, n_chroma: int = 12, radix2_exp: int = 12, nfft: Optional[int] = None, winlen: Optional[int] = None, winhop: Optional[int] = None, argmax: bool = False, norm: float = inf, device: Union[torch.device, str] = 'cpu')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Chroma extraction class, handles chroma extraction and quantization.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>sample_rate</code></strong> :&ensp;<code>int</code></dt>
+<dd>Sample rate.</dd>
+<dt><strong><code>n_chroma</code></strong> :&ensp;<code>int</code></dt>
+<dd>Number of chroma to consider.</dd>
+<dt><strong><code>radix2_exp</code></strong> :&ensp;<code>int</code></dt>
+<dd>Radix2 exponent.</dd>
+<dt><strong><code>nfft</code></strong> :&ensp;<code>tp.Optional[int]</code>, optional</dt>
+<dd>Number of FFT.</dd>
+<dt><strong><code>winlen</code></strong> :&ensp;<code>tp.Optional[int]</code>, optional</dt>
+<dd>Window length.</dd>
+<dt><strong><code>winhop</code></strong> :&ensp;<code>tp.Optional[int]</code>, optional</dt>
+<dd>Window hop size.</dd>
+<dt><strong><code>argmax</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>Whether to use argmax. Defaults to False.</dd>
+<dt><strong><code>norm</code></strong> :&ensp;<code>float</code>, optional</dt>
+<dd>Norm for chroma normalization. Defaults to inf.</dd>
+<dt><strong><code>device</code></strong> :&ensp;<code>tp.Union[torch.device, str]</code>, optional</dt>
+<dd>Device to use. Defaults to cpu.</dd>
+</dl>
+<p>Initializes internal Module state, shared by both nn.Module and ScriptModule.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ChromaExtractor(nn.Module):
+    &#34;&#34;&#34;Chroma extraction class, handles chroma extraction and quantization.
+
+    Args:
+        sample_rate (int): Sample rate.
+        n_chroma (int): Number of chroma to consider.
+        radix2_exp (int): Radix2 exponent.
+        nfft (tp.Optional[int], optional): Number of FFT.
+        winlen (tp.Optional[int], optional): Window length.
+        winhop (tp.Optional[int], optional): Window hop size.
+        argmax (bool, optional): Whether to use argmax. Defaults to False.
+        norm (float, optional): Norm for chroma normalization. Defaults to inf.
+        device (tp.Union[torch.device, str], optional): Device to use. Defaults to cpu.
+    &#34;&#34;&#34;
+    def __init__(self, sample_rate: int, n_chroma: int = 12, radix2_exp: int = 12,
+                 nfft: tp.Optional[int] = None, winlen: tp.Optional[int] = None, winhop: tp.Optional[int] = None,
+                 argmax: bool = False, norm: float = torch.inf, device: tp.Union[torch.device, str] = &#34;cpu&#34;):
+        super().__init__()
+        from librosa import filters
+        self.device = device
+        self.autocast = TorchAutocast(enabled=device != &#34;cpu&#34;, device_type=self.device, dtype=torch.float32)
+        self.winlen = winlen or 2 ** radix2_exp
+        self.nfft = nfft or self.winlen
+        self.winhop = winhop or (self.winlen // 4)
+        self.sr = sample_rate
+        self.n_chroma = n_chroma
+        self.norm = norm
+        self.argmax = argmax
+        self.window = torch.hann_window(self.winlen).to(device)
+        self.fbanks = torch.from_numpy(filters.chroma(sr=sample_rate, n_fft=self.nfft, tuning=0,
+                                                      n_chroma=self.n_chroma)).to(device)
+        self.spec = torchaudio.transforms.Spectrogram(n_fft=self.nfft, win_length=self.winlen,
+                                                      hop_length=self.winhop, power=2, center=True,
+                                                      pad=0, normalized=True).to(device)
+
+    def forward(self, wav):
+        with self.autocast:
+            T = wav.shape[-1]
+            # in case we are getting a wav that was dropped out (nullified)
+            # make sure wav length is no less that nfft
+            if T &lt; self.nfft:
+                pad = self.nfft - T
+                r = 0 if pad % 2 == 0 else 1
+                wav = F.pad(wav, (pad // 2, pad // 2 + r), &#39;constant&#39;, 0)
+                assert wav.shape[-1] == self.nfft, f&#39;expected len {self.nfft} but got {wav.shape[-1]}&#39;
+            spec = self.spec(wav).squeeze(1)
+            raw_chroma = torch.einsum(&#34;cf,...ft-&gt;...ct&#34;, self.fbanks, spec)
+            norm_chroma = torch.nn.functional.normalize(raw_chroma, p=self.norm, dim=-2, eps=1e-6)
+            norm_chroma = rearrange(norm_chroma, &#34;b d t -&gt; b t d&#34;)
+
+            if self.argmax:
+                idx = norm_chroma.argmax(-1, keepdims=True)
+                norm_chroma[:] = 0
+                norm_chroma.scatter_(dim=-1, index=idx, value=1)
+
+            return norm_chroma</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>torch.nn.modules.module.Module</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="audiocraft.modules.conditioners.ChromaExtractor.call_super_init"><code class="name">var <span class="ident">call_super_init</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="audiocraft.modules.conditioners.ChromaExtractor.dump_patches"><code class="name">var <span class="ident">dump_patches</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="audiocraft.modules.conditioners.ChromaExtractor.training"><code class="name">var <span class="ident">training</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="audiocraft.modules.conditioners.ChromaExtractor.forward"><code class="name flex">
+<span>def <span class="ident">forward</span></span>(<span>self, wav) ‑> Callable[..., Any]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the :class:<code>Module</code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def forward(self, wav):
+    with self.autocast:
+        T = wav.shape[-1]
+        # in case we are getting a wav that was dropped out (nullified)
+        # make sure wav length is no less that nfft
+        if T &lt; self.nfft:
+            pad = self.nfft - T
+            r = 0 if pad % 2 == 0 else 1
+            wav = F.pad(wav, (pad // 2, pad // 2 + r), &#39;constant&#39;, 0)
+            assert wav.shape[-1] == self.nfft, f&#39;expected len {self.nfft} but got {wav.shape[-1]}&#39;
+        spec = self.spec(wav).squeeze(1)
+        raw_chroma = torch.einsum(&#34;cf,...ft-&gt;...ct&#34;, self.fbanks, spec)
+        norm_chroma = torch.nn.functional.normalize(raw_chroma, p=self.norm, dim=-2, eps=1e-6)
+        norm_chroma = rearrange(norm_chroma, &#34;b d t -&gt; b t d&#34;)
+
+        if self.argmax:
+            idx = norm_chroma.argmax(-1, keepdims=True)
+            norm_chroma[:] = 0
+            norm_chroma.scatter_(dim=-1, index=idx, value=1)
+
+        return norm_chroma</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="audiocraft.modules.conditioners.ChromaStemConditioner"><code class="flex name class">
+<span>class <span class="ident">ChromaStemConditioner</span></span>
+<span>(</span><span>output_dim: int, sample_rate: int, n_chroma: int, radix2_exp: int, duration: float, match_len_on_eval: bool = False, eval_wavs: Optional[str] = None, n_eval_wavs: int = 0, device: Union[torch.device, str] = 'cpu', **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Chroma conditioner that uses DEMUCS to first filter out drums and bass. The is followed by
+the insight the drums and bass often dominate the chroma, leading to the chroma not containing the
+information about melody.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>output_dim</code></strong> :&ensp;<code>int</code></dt>
+<dd>Output dimension for the conditioner.</dd>
+<dt><strong><code>sample_rate</code></strong> :&ensp;<code>int</code></dt>
+<dd>Sample rate for the chroma extractor.</dd>
+<dt><strong><code>n_chroma</code></strong> :&ensp;<code>int</code></dt>
+<dd>Number of chroma for the chroma extractor.</dd>
+<dt><strong><code>radix2_exp</code></strong> :&ensp;<code>int</code></dt>
+<dd>Radix2 exponent for the chroma extractor.</dd>
+<dt><strong><code>duration</code></strong> :&ensp;<code>float</code></dt>
+<dd>Duration used during training. This is later used for correct padding
+in case we are using chroma as prefix.</dd>
+<dt><strong><code>match_len_on_eval</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>If True then all chromas are padded to the training
+duration. Defaults to False.</dd>
+<dt><strong><code>eval_wavs</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>Path to a json egg with waveform, this waveforms are used as
+conditions during eval (for cases where we don't want to leak test conditions like MusicCaps).
+Defaults to None.</dd>
+<dt><strong><code>n_eval_wavs</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>Limits the number of waveforms used for conditioning. Defaults to 0.</dd>
+<dt><strong><code>device</code></strong> :&ensp;<code>tp.Union[torch.device, str]</code>, optional</dt>
+<dd>Device for the conditioner.</dd>
+<dt><strong><code>**kwargs</code></strong></dt>
+<dd>Additional parameters for the chroma extractor.</dd>
+</dl>
+<p>Initializes internal Module state, shared by both nn.Module and ScriptModule.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ChromaStemConditioner(WaveformConditioner):
+    &#34;&#34;&#34;Chroma conditioner that uses DEMUCS to first filter out drums and bass. The is followed by
+    the insight the drums and bass often dominate the chroma, leading to the chroma not containing the
+    information about melody.
+
+    Args:
+        output_dim (int): Output dimension for the conditioner.
+        sample_rate (int): Sample rate for the chroma extractor.
+        n_chroma (int): Number of chroma for the chroma extractor.
+        radix2_exp (int): Radix2 exponent for the chroma extractor.
+        duration (float): Duration used during training. This is later used for correct padding
+            in case we are using chroma as prefix.
+        match_len_on_eval (bool, optional): If True then all chromas are padded to the training
+            duration. Defaults to False.
+        eval_wavs (str, optional): Path to a json egg with waveform, this waveforms are used as
+            conditions during eval (for cases where we don&#39;t want to leak test conditions like MusicCaps).
+            Defaults to None.
+        n_eval_wavs (int, optional): Limits the number of waveforms used for conditioning. Defaults to 0.
+        device (tp.Union[torch.device, str], optional): Device for the conditioner.
+        **kwargs: Additional parameters for the chroma extractor.
+    &#34;&#34;&#34;
+    def __init__(self, output_dim: int, sample_rate: int, n_chroma: int, radix2_exp: int,
+                 duration: float, match_len_on_eval: bool = False, eval_wavs: tp.Optional[str] = None,
+                 n_eval_wavs: int = 0, device: tp.Union[torch.device, str] = &#34;cpu&#34;, **kwargs):
+        from demucs import pretrained
+        super().__init__(dim=n_chroma, output_dim=output_dim, device=device)
+        self.autocast = TorchAutocast(enabled=device != &#34;cpu&#34;, device_type=self.device, dtype=torch.float32)
+        self.sample_rate = sample_rate
+        self.match_len_on_eval = match_len_on_eval
+        self.duration = duration
+        self.__dict__[&#34;demucs&#34;] = pretrained.get_model(&#39;htdemucs&#39;).to(device)
+        self.stem2idx = {&#39;drums&#39;: 0, &#39;bass&#39;: 1, &#39;other&#39;: 2, &#39;vocal&#39;: 3}
+        self.stem_idx = torch.LongTensor([self.stem2idx[&#39;vocal&#39;], self.stem2idx[&#39;other&#39;]]).to(device)
+        self.chroma = ChromaExtractor(sample_rate=sample_rate, n_chroma=n_chroma, radix2_exp=radix2_exp,
+                                      device=device, **kwargs)
+        self.chroma_len = self._get_chroma_len()
+
+    def _downsampling_factor(self):
+        return self.chroma.winhop
+
+    def _get_chroma_len(self):
+        &#34;&#34;&#34;Get length of chroma during training&#34;&#34;&#34;
+        dummy_wav = torch.zeros((1, self.sample_rate * self.duration), device=self.device)
+        dummy_chr = self.chroma(dummy_wav)
+        return dummy_chr.shape[1]
+
+    @torch.no_grad()
+    def _get_filtered_wav(self, wav):
+        from demucs.apply import apply_model
+        from demucs.audio import convert_audio
+        with self.autocast:
+            wav = convert_audio(wav, self.sample_rate, self.demucs.samplerate, self.demucs.audio_channels)
+            stems = apply_model(self.demucs, wav, device=self.device)
+            stems = stems[:, self.stem_idx]  # extract stem
+            stems = stems.sum(1)  # merge extracted stems
+            stems = stems.mean(1, keepdim=True)  # mono
+            stems = convert_audio(stems, self.demucs.samplerate, self.sample_rate, 1)
+            return stems
+
+    @torch.no_grad()
+    def _get_wav_embedding(self, wav):
+        # avoid 0-size tensors when we are working with null conds
+        if wav.shape[-1] == 1:
+            return self.chroma(wav)
+        stems = self._get_filtered_wav(wav)
+        chroma = self.chroma(stems)
+
+        if self.match_len_on_eval:
+            b, t, c = chroma.shape
+            if t &gt; self.chroma_len:
+                chroma = chroma[:, :self.chroma_len]
+                logger.debug(f&#39;chroma was truncated! ({t} -&gt; {chroma.shape[1]})&#39;)
+            elif t &lt; self.chroma_len:
+                chroma = F.pad(chroma, (0, 0, 0, self.chroma_len - t))
+                logger.debug(f&#39;chroma was zero-padded! ({t} -&gt; {chroma.shape[1]})&#39;)
+        return chroma</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="audiocraft.modules.conditioners.WaveformConditioner" href="#audiocraft.modules.conditioners.WaveformConditioner">WaveformConditioner</a></li>
+<li><a title="audiocraft.modules.conditioners.BaseConditioner" href="#audiocraft.modules.conditioners.BaseConditioner">BaseConditioner</a></li>
+<li>torch.nn.modules.module.Module</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="audiocraft.modules.conditioners.ChromaStemConditioner.call_super_init"><code class="name">var <span class="ident">call_super_init</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="audiocraft.modules.conditioners.ChromaStemConditioner.dump_patches"><code class="name">var <span class="ident">dump_patches</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="audiocraft.modules.conditioners.ChromaStemConditioner.training"><code class="name">var <span class="ident">training</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="audiocraft.modules.conditioners.WaveformConditioner" href="#audiocraft.modules.conditioners.WaveformConditioner">WaveformConditioner</a></b></code>:
+<ul class="hlist">
+<li><code><a title="audiocraft.modules.conditioners.WaveformConditioner.forward" href="#audiocraft.modules.conditioners.WaveformConditioner.forward">forward</a></code></li>
+<li><code><a title="audiocraft.modules.conditioners.WaveformConditioner.tokenize" href="#audiocraft.modules.conditioners.BaseConditioner.tokenize">tokenize</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="audiocraft.modules.conditioners.ClassifierFreeGuidanceDropout"><code class="flex name class">
+<span>class <span class="ident">ClassifierFreeGuidanceDropout</span></span>
+<span>(</span><span>p: float, seed: int = 1234)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Applies Classifier Free Guidance dropout, meaning all attributes
+are dropped with the same probability.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>p</code></strong> :&ensp;<code>float</code></dt>
+<dd>Probability to apply condition dropout during training.</dd>
+<dt><strong><code>seed</code></strong> :&ensp;<code>int</code></dt>
+<dd>Random seed.</dd>
+</dl>
+<p>Initializes internal Module state, shared by both nn.Module and ScriptModule.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ClassifierFreeGuidanceDropout(DropoutModule):
+    &#34;&#34;&#34;Applies Classifier Free Guidance dropout, meaning all attributes
+    are dropped with the same probability.
+
+    Args:
+        p (float): Probability to apply condition dropout during training.
+        seed (int): Random seed.
+    &#34;&#34;&#34;
+    def __init__(self, p: float, seed: int = 1234):
+        super().__init__(seed=seed)
+        self.p = p
+
+    def forward(self, samples: tp.List[ConditioningAttributes]) -&gt; tp.List[ConditioningAttributes]:
+        &#34;&#34;&#34;
+        Args:
+            samples (tp.List[ConditioningAttributes]): List of conditions.
+        Returns:
+            tp.List[ConditioningAttributes]: List of conditions after all attributes were set to None.
+        &#34;&#34;&#34;
+        if not self.training:
+            return samples
+
+        # decide on which attributes to drop in a batched fashion
+        drop = torch.rand(1, generator=self.rng).item() &lt; self.p
+        if not drop:
+            return samples
+
+        # nullify conditions of all attributes
+        samples = deepcopy(samples)
+
+        for condition_type in [&#34;wav&#34;, &#34;text&#34;]:
+            for sample in samples:
+                for condition in sample.attributes[condition_type]:
+                    dropout_condition(sample, condition_type, condition)
+
+        return samples
+
+    def __repr__(self):
+        return f&#34;ClassifierFreeGuidanceDropout(p={self.p})&#34;</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="audiocraft.modules.conditioners.DropoutModule" href="#audiocraft.modules.conditioners.DropoutModule">DropoutModule</a></li>
+<li>torch.nn.modules.module.Module</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="audiocraft.modules.conditioners.ClassifierFreeGuidanceDropout.call_super_init"><code class="name">var <span class="ident">call_super_init</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="audiocraft.modules.conditioners.ClassifierFreeGuidanceDropout.dump_patches"><code class="name">var <span class="ident">dump_patches</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="audiocraft.modules.conditioners.ClassifierFreeGuidanceDropout.training"><code class="name">var <span class="ident">training</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="audiocraft.modules.conditioners.ClassifierFreeGuidanceDropout.forward"><code class="name flex">
+<span>def <span class="ident">forward</span></span>(<span>self, samples: List[<a title="audiocraft.modules.conditioners.ConditioningAttributes" href="#audiocraft.modules.conditioners.ConditioningAttributes">ConditioningAttributes</a>]) ‑> List[<a title="audiocraft.modules.conditioners.ConditioningAttributes" href="#audiocraft.modules.conditioners.ConditioningAttributes">ConditioningAttributes</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"><h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>samples</code></strong> :&ensp;<code>tp.List[<a title="audiocraft.modules.conditioners.ConditioningAttributes" href="#audiocraft.modules.conditioners.ConditioningAttributes">ConditioningAttributes</a>]</code></dt>
+<dd>List of conditions.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tp.List[<a title="audiocraft.modules.conditioners.ConditioningAttributes" href="#audiocraft.modules.conditioners.ConditioningAttributes">ConditioningAttributes</a>]</code></dt>
+<dd>List of conditions after all attributes were set to None.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def forward(self, samples: tp.List[ConditioningAttributes]) -&gt; tp.List[ConditioningAttributes]:
+    &#34;&#34;&#34;
+    Args:
+        samples (tp.List[ConditioningAttributes]): List of conditions.
+    Returns:
+        tp.List[ConditioningAttributes]: List of conditions after all attributes were set to None.
+    &#34;&#34;&#34;
+    if not self.training:
+        return samples
+
+    # decide on which attributes to drop in a batched fashion
+    drop = torch.rand(1, generator=self.rng).item() &lt; self.p
+    if not drop:
+        return samples
+
+    # nullify conditions of all attributes
+    samples = deepcopy(samples)
+
+    for condition_type in [&#34;wav&#34;, &#34;text&#34;]:
+        for sample in samples:
+            for condition in sample.attributes[condition_type]:
+                dropout_condition(sample, condition_type, condition)
+
+    return samples</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="audiocraft.modules.conditioners.ConditionFuser"><code class="flex name class">
+<span>class <span class="ident">ConditionFuser</span></span>
+<span>(</span><span>fuse2cond: Dict[str, List[str]], cross_attention_pos_emb: bool = False, cross_attention_pos_emb_scale: float = 1.0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Condition fuser handles the logic to combine the different conditions
+to the actual model input.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>fuse2cond</code></strong> :&ensp;<code>tp.Dict[str, str]</code></dt>
+<dd>A dictionary that says how to fuse
+each condition. For example:
+{
+"prepend": ["description"],
+"sum": ["genre", "bpm"],
+"cross": ["description"],
+}</dd>
+<dt><strong><code>cross_attention_pos_emb</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>Use positional embeddings in cross attention.</dd>
+<dt><strong><code>cross_attention_pos_emb_scale</code></strong> :&ensp;<code>int</code></dt>
+<dd>Scale for positional embeddings in cross attention if used.</dd>
+</dl>
+<p>Initializes internal Module state, shared by both nn.Module and ScriptModule.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ConditionFuser(StreamingModule):
+    &#34;&#34;&#34;Condition fuser handles the logic to combine the different conditions
+    to the actual model input.
+
+    Args:
+        fuse2cond (tp.Dict[str, str]): A dictionary that says how to fuse
+            each condition. For example:
+            {
+                &#34;prepend&#34;: [&#34;description&#34;],
+                &#34;sum&#34;: [&#34;genre&#34;, &#34;bpm&#34;],
+                &#34;cross&#34;: [&#34;description&#34;],
+            }
+        cross_attention_pos_emb (bool, optional): Use positional embeddings in cross attention.
+        cross_attention_pos_emb_scale (int): Scale for positional embeddings in cross attention if used.
+    &#34;&#34;&#34;
+    FUSING_METHODS = [&#34;sum&#34;, &#34;prepend&#34;, &#34;cross&#34;, &#34;input_interpolate&#34;]
+
+    def __init__(self, fuse2cond: tp.Dict[str, tp.List[str]], cross_attention_pos_emb: bool = False,
+                 cross_attention_pos_emb_scale: float = 1.0):
+        super().__init__()
+        assert all(
+            [k in self.FUSING_METHODS for k in fuse2cond.keys()]
+        ), f&#34;got invalid fuse method, allowed methods: {self.FUSING_MEHTODS}&#34;
+        self.cross_attention_pos_emb = cross_attention_pos_emb
+        self.cross_attention_pos_emb_scale = cross_attention_pos_emb_scale
+        self.fuse2cond: tp.Dict[str, tp.List[str]] = fuse2cond
+        self.cond2fuse: tp.Dict[str, str] = {}
+        for fuse_method, conditions in fuse2cond.items():
+            for condition in conditions:
+                self.cond2fuse[condition] = fuse_method
+
+    def forward(
+        self,
+        input: Tensor,
+        conditions: tp.Dict[str, ConditionType]
+    ) -&gt; tp.Tuple[Tensor, tp.Optional[Tensor]]:
+        &#34;&#34;&#34;Fuse the conditions to the provided model input.
+
+        Args:
+            input (Tensor): Transformer input.
+            conditions (tp.Dict[str, ConditionType]): Dict of conditions.
+        Returns:
+            tp.Tuple[Tensor, Tensor]: The first tensor is the transformer input
+                after the conditions have been fused. The second output tensor is the tensor
+                used for cross-attention or None if no cross attention inputs exist.
+        &#34;&#34;&#34;
+        B, T, _ = input.shape
+
+        if &#39;offsets&#39; in self._streaming_state:
+            first_step = False
+            offsets = self._streaming_state[&#39;offsets&#39;]
+        else:
+            first_step = True
+            offsets = torch.zeros(input.shape[0], dtype=torch.long, device=input.device)
+
+        assert set(conditions.keys()).issubset(set(self.cond2fuse.keys())), \
+            f&#34;given conditions contain unknown attributes for fuser, &#34; \
+            f&#34;expected {self.cond2fuse.keys()}, got {conditions.keys()}&#34;
+        cross_attention_output = None
+        for cond_type, (cond, cond_mask) in conditions.items():
+            op = self.cond2fuse[cond_type]
+            if op == &#34;sum&#34;:
+                input += cond
+            elif op == &#34;input_interpolate&#34;:
+                cond = rearrange(cond, &#34;b t d -&gt; b d t&#34;)
+                cond = F.interpolate(cond, size=input.shape[1])
+                input += rearrange(cond, &#34;b d t -&gt; b t d&#34;)
+            elif op == &#34;prepend&#34;:
+                if first_step:
+                    input = torch.cat([cond, input], dim=1)
+            elif op == &#34;cross&#34;:
+                if cross_attention_output is not None:
+                    cross_attention_output = torch.cat([cross_attention_output, cond], dim=1)
+                else:
+                    cross_attention_output = cond
+            else:
+                raise ValueError(f&#34;unknown op ({op})&#34;)
+
+        if self.cross_attention_pos_emb and cross_attention_output is not None:
+            positions = torch.arange(
+                cross_attention_output.shape[1],
+                device=cross_attention_output.device
+            ).view(1, -1, 1)
+            pos_emb = create_sin_embedding(positions, cross_attention_output.shape[-1])
+            cross_attention_output = cross_attention_output + self.cross_attention_pos_emb_scale * pos_emb
+
+        if self._is_streaming:
+            self._streaming_state[&#39;offsets&#39;] = offsets + T
+
+        return input, cross_attention_output</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="audiocraft.modules.streaming.StreamingModule" href="streaming.html#audiocraft.modules.streaming.StreamingModule">StreamingModule</a></li>
+<li>torch.nn.modules.module.Module</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="audiocraft.modules.conditioners.ConditionFuser.FUSING_METHODS"><code class="name">var <span class="ident">FUSING_METHODS</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="audiocraft.modules.conditioners.ConditionFuser.call_super_init"><code class="name">var <span class="ident">call_super_init</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="audiocraft.modules.conditioners.ConditionFuser.dump_patches"><code class="name">var <span class="ident">dump_patches</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="audiocraft.modules.conditioners.ConditionFuser.training"><code class="name">var <span class="ident">training</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="audiocraft.modules.conditioners.ConditionFuser.forward"><code class="name flex">
+<span>def <span class="ident">forward</span></span>(<span>self, input: torch.Tensor, conditions: Dict[str, Tuple[torch.Tensor, torch.Tensor]]) ‑> Tuple[torch.Tensor, Optional[torch.Tensor]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Fuse the conditions to the provided model input.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>input</code></strong> :&ensp;<code>Tensor</code></dt>
+<dd>Transformer input.</dd>
+<dt><strong><code>conditions</code></strong> :&ensp;<code>tp.Dict[str, ConditionType]</code></dt>
+<dd>Dict of conditions.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tp.Tuple[Tensor, Tensor]</code></dt>
+<dd>The first tensor is the transformer input
+after the conditions have been fused. The second output tensor is the tensor
+used for cross-attention or None if no cross attention inputs exist.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def forward(
+    self,
+    input: Tensor,
+    conditions: tp.Dict[str, ConditionType]
+) -&gt; tp.Tuple[Tensor, tp.Optional[Tensor]]:
+    &#34;&#34;&#34;Fuse the conditions to the provided model input.
+
+    Args:
+        input (Tensor): Transformer input.
+        conditions (tp.Dict[str, ConditionType]): Dict of conditions.
+    Returns:
+        tp.Tuple[Tensor, Tensor]: The first tensor is the transformer input
+            after the conditions have been fused. The second output tensor is the tensor
+            used for cross-attention or None if no cross attention inputs exist.
+    &#34;&#34;&#34;
+    B, T, _ = input.shape
+
+    if &#39;offsets&#39; in self._streaming_state:
+        first_step = False
+        offsets = self._streaming_state[&#39;offsets&#39;]
+    else:
+        first_step = True
+        offsets = torch.zeros(input.shape[0], dtype=torch.long, device=input.device)
+
+    assert set(conditions.keys()).issubset(set(self.cond2fuse.keys())), \
+        f&#34;given conditions contain unknown attributes for fuser, &#34; \
+        f&#34;expected {self.cond2fuse.keys()}, got {conditions.keys()}&#34;
+    cross_attention_output = None
+    for cond_type, (cond, cond_mask) in conditions.items():
+        op = self.cond2fuse[cond_type]
+        if op == &#34;sum&#34;:
+            input += cond
+        elif op == &#34;input_interpolate&#34;:
+            cond = rearrange(cond, &#34;b t d -&gt; b d t&#34;)
+            cond = F.interpolate(cond, size=input.shape[1])
+            input += rearrange(cond, &#34;b d t -&gt; b t d&#34;)
+        elif op == &#34;prepend&#34;:
+            if first_step:
+                input = torch.cat([cond, input], dim=1)
+        elif op == &#34;cross&#34;:
+            if cross_attention_output is not None:
+                cross_attention_output = torch.cat([cross_attention_output, cond], dim=1)
+            else:
+                cross_attention_output = cond
+        else:
+            raise ValueError(f&#34;unknown op ({op})&#34;)
+
+    if self.cross_attention_pos_emb and cross_attention_output is not None:
+        positions = torch.arange(
+            cross_attention_output.shape[1],
+            device=cross_attention_output.device
+        ).view(1, -1, 1)
+        pos_emb = create_sin_embedding(positions, cross_attention_output.shape[-1])
+        cross_attention_output = cross_attention_output + self.cross_attention_pos_emb_scale * pos_emb
+
+    if self._is_streaming:
+        self._streaming_state[&#39;offsets&#39;] = offsets + T
+
+    return input, cross_attention_output</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="audiocraft.modules.streaming.StreamingModule" href="streaming.html#audiocraft.modules.streaming.StreamingModule">StreamingModule</a></b></code>:
+<ul class="hlist">
+<li><code><a title="audiocraft.modules.streaming.StreamingModule.flush" href="streaming.html#audiocraft.modules.streaming.StreamingModule.flush">flush</a></code></li>
+<li><code><a title="audiocraft.modules.streaming.StreamingModule.get_streaming_state" href="streaming.html#audiocraft.modules.streaming.StreamingModule.get_streaming_state">get_streaming_state</a></code></li>
+<li><code><a title="audiocraft.modules.streaming.StreamingModule.reset_streaming" href="streaming.html#audiocraft.modules.streaming.StreamingModule.reset_streaming">reset_streaming</a></code></li>
+<li><code><a title="audiocraft.modules.streaming.StreamingModule.set_streaming_state" href="streaming.html#audiocraft.modules.streaming.StreamingModule.set_streaming_state">set_streaming_state</a></code></li>
+<li><code><a title="audiocraft.modules.streaming.StreamingModule.streaming" href="streaming.html#audiocraft.modules.streaming.StreamingModule.streaming">streaming</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="audiocraft.modules.conditioners.ConditioningAttributes"><code class="flex name class">
+<span>class <span class="ident">ConditioningAttributes</span></span>
+<span>(</span><span>text: Dict[str, Optional[str]] = &lt;factory&gt;, wav: Dict[str, <a title="audiocraft.modules.conditioners.WavCondition" href="#audiocraft.modules.conditioners.WavCondition">WavCondition</a>] = &lt;factory&gt;)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>ConditioningAttributes(text: Dict[str, Union[str, NoneType]] = <factory>, wav: Dict[str, audiocraft.modules.conditioners.WavCondition] = <factory>)</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ConditioningAttributes:
+    text: tp.Dict[str, tp.Optional[str]] = field(default_factory=dict)
+    wav: tp.Dict[str, WavCondition] = field(default_factory=dict)
+
+    def __getitem__(self, item):
+        return getattr(self, item)
+
+    @property
+    def text_attributes(self):
+        return self.text.keys()
+
+    @property
+    def wav_attributes(self):
+        return self.wav.keys()
+
+    @property
+    def attributes(self):
+        return {&#34;text&#34;: self.text_attributes, &#34;wav&#34;: self.wav_attributes}
+
+    def to_flat_dict(self):
+        return {
+            **{f&#34;text.{k}&#34;: v for k, v in self.text.items()},
+            **{f&#34;wav.{k}&#34;: v for k, v in self.wav.items()},
+        }
+
+    @classmethod
+    def from_flat_dict(cls, x):
+        out = cls()
+        for k, v in x.items():
+            kind, att = k.split(&#34;.&#34;)
+            out[kind][att] = v
+        return out</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="audiocraft.modules.conditioners.ConditioningAttributes.text"><code class="name">var <span class="ident">text</span> : Dict[str, Optional[str]]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="audiocraft.modules.conditioners.ConditioningAttributes.wav"><code class="name">var <span class="ident">wav</span> : Dict[str, <a title="audiocraft.modules.conditioners.WavCondition" href="#audiocraft.modules.conditioners.WavCondition">WavCondition</a>]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="audiocraft.modules.conditioners.ConditioningAttributes.from_flat_dict"><code class="name flex">
+<span>def <span class="ident">from_flat_dict</span></span>(<span>x)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@classmethod
+def from_flat_dict(cls, x):
+    out = cls()
+    for k, v in x.items():
+        kind, att = k.split(&#34;.&#34;)
+        out[kind][att] = v
+    return out</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="audiocraft.modules.conditioners.ConditioningAttributes.attributes"><code class="name">var <span class="ident">attributes</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def attributes(self):
+    return {&#34;text&#34;: self.text_attributes, &#34;wav&#34;: self.wav_attributes}</code></pre>
+</details>
+</dd>
+<dt id="audiocraft.modules.conditioners.ConditioningAttributes.text_attributes"><code class="name">var <span class="ident">text_attributes</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def text_attributes(self):
+    return self.text.keys()</code></pre>
+</details>
+</dd>
+<dt id="audiocraft.modules.conditioners.ConditioningAttributes.wav_attributes"><code class="name">var <span class="ident">wav_attributes</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def wav_attributes(self):
+    return self.wav.keys()</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="audiocraft.modules.conditioners.ConditioningAttributes.to_flat_dict"><code class="name flex">
+<span>def <span class="ident">to_flat_dict</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def to_flat_dict(self):
+    return {
+        **{f&#34;text.{k}&#34;: v for k, v in self.text.items()},
+        **{f&#34;wav.{k}&#34;: v for k, v in self.wav.items()},
+    }</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="audiocraft.modules.conditioners.ConditioningProvider"><code class="flex name class">
+<span>class <span class="ident">ConditioningProvider</span></span>
+<span>(</span><span>conditioners: Dict[str, <a title="audiocraft.modules.conditioners.BaseConditioner" href="#audiocraft.modules.conditioners.BaseConditioner">BaseConditioner</a>], merge_text_conditions_p: float = 0, drop_desc_p: float = 0, device: Union[torch.device, str] = 'cpu')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Main class to provide conditions given all the supported conditioners.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>conditioners</code></strong> :&ensp;<code>dict</code></dt>
+<dd>Dictionary of conditioners.</dd>
+<dt><strong><code>merge_text_conditions_p</code></strong> :&ensp;<code>float</code>, optional</dt>
+<dd>Probability to merge all text sources
+into a single text condition. Defaults to 0.</dd>
+<dt><strong><code>drop_desc_p</code></strong> :&ensp;<code>float</code>, optional</dt>
+<dd>Probability to drop the original description
+when merging all text sources into a single text condition. Defaults to 0.</dd>
+<dt><strong><code>device</code></strong> :&ensp;<code>tp.Union[torch.device, str]</code>, optional</dt>
+<dd>Device for conditioners and output condition types.</dd>
+</dl>
+<p>Initializes internal Module state, shared by both nn.Module and ScriptModule.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ConditioningProvider(nn.Module):
+    &#34;&#34;&#34;Main class to provide conditions given all the supported conditioners.
+
+    Args:
+        conditioners (dict): Dictionary of conditioners.
+        merge_text_conditions_p (float, optional): Probability to merge all text sources
+            into a single text condition. Defaults to 0.
+        drop_desc_p (float, optional): Probability to drop the original description
+            when merging all text sources into a single text condition. Defaults to 0.
+        device (tp.Union[torch.device, str], optional): Device for conditioners and output condition types.
+    &#34;&#34;&#34;
+    def __init__(
+        self,
+        conditioners: tp.Dict[str, BaseConditioner],
+        merge_text_conditions_p: float = 0,
+        drop_desc_p: float = 0,
+        device: tp.Union[torch.device, str] = &#34;cpu&#34;,
+    ):
+        super().__init__()
+        self.device = device
+        self.merge_text_conditions_p = merge_text_conditions_p
+        self.drop_desc_p = drop_desc_p
+        self.conditioners = nn.ModuleDict(conditioners)
+
+    @property
+    def text_conditions(self):
+        return [k for k, v in self.conditioners.items() if isinstance(v, TextConditioner)]
+
+    @property
+    def wav_conditions(self):
+        return [k for k, v in self.conditioners.items() if isinstance(v, WaveformConditioner)]
+
+    @property
+    def has_wav_condition(self):
+        return len(self.wav_conditions) &gt; 0
+
+    def tokenize(self, inputs: tp.List[ConditioningAttributes]) -&gt; tp.Dict[str, tp.Any]:
+        &#34;&#34;&#34;Match attributes/wavs with existing conditioners in self, and compute tokenize them accordingly.
+        This should be called before starting any real GPU work to avoid synchronization points.
+        This will return a dict matching conditioner names to their arbitrary tokenized representations.
+
+        Args:
+            inputs (list[ConditioningAttribres]): List of ConditioningAttributes objects containing
+                text and wav conditions.
+        &#34;&#34;&#34;
+        assert all([type(x) == ConditioningAttributes for x in inputs]), \
+            &#34;got unexpected types input for conditioner! should be tp.List[ConditioningAttributes]&#34; \
+            f&#34; but types were {set([type(x) for x in inputs])}&#34;
+
+        output = {}
+        text = self._collate_text(inputs)
+        wavs = self._collate_wavs(inputs)
+
+        assert set(text.keys() | wavs.keys()).issubset(set(self.conditioners.keys())), \
+            f&#34;got an unexpected attribute! Expected {self.conditioners.keys()}, got {text.keys(), wavs.keys()}&#34;
+
+        for attribute, batch in chain(text.items(), wavs.items()):
+            output[attribute] = self.conditioners[attribute].tokenize(batch)
+        return output
+
+    def forward(self, tokenized: tp.Dict[str, tp.Any]) -&gt; tp.Dict[str, ConditionType]:
+        &#34;&#34;&#34;Compute pairs of `(embedding, mask)` using the configured conditioners
+        and the tokenized representations. The output is for example:
+
+            {
+                &#34;genre&#34;: (torch.Tensor([B, 1, D_genre]), torch.Tensor([B, 1])),
+                &#34;description&#34;: (torch.Tensor([B, T_desc, D_desc]), torch.Tensor([B, T_desc])),
+                ...
+            }
+
+        Args:
+            tokenized (dict): Dict of tokenized representations as returned by `tokenize()`.
+        &#34;&#34;&#34;
+        output = {}
+        for attribute, inputs in tokenized.items():
+            condition, mask = self.conditioners[attribute](inputs)
+            output[attribute] = (condition, mask)
+        return output
+
+    def _collate_text(self, samples: tp.List[ConditioningAttributes]) -&gt; tp.Dict[str, tp.List[tp.Optional[str]]]:
+        &#34;&#34;&#34;Given a list of ConditioningAttributes objects, compile a dictionary where the keys
+        are the attributes and the values are the aggregated input per attribute.
+        For example:
+        Input:
+        [
+            ConditioningAttributes(text={&#34;genre&#34;: &#34;Rock&#34;, &#34;description&#34;: &#34;A rock song with a guitar solo&#34;}, wav=...),
+            ConditioningAttributes(text={&#34;genre&#34;: &#34;Hip-hop&#34;, &#34;description&#34;: &#34;A hip-hop verse&#34;}, wav=...),
+        ]
+        Output:
+        {
+            &#34;genre&#34;: [&#34;Rock&#34;, &#34;Hip-hop&#34;],
+            &#34;description&#34;: [&#34;A rock song with a guitar solo&#34;, &#34;A hip-hop verse&#34;]
+        }
+        &#34;&#34;&#34;
+        batch_per_attribute: tp.Dict[str, tp.List[tp.Optional[str]]] = defaultdict(list)
+
+        def _merge_conds(cond, merge_text_conditions_p=0, drop_desc_p=0):
+            def is_valid(k, v):
+                k_valid = k in [&#39;key&#39;, &#39;bpm&#39;, &#39;genre&#39;, &#39;moods&#39;, &#39;instrument&#39;]
+                v_valid = v is not None and isinstance(v, (int, float, str, list))
+                return k_valid and v_valid
+
+            def process_value(v):
+                if isinstance(v, (int, float, str)):
+                    return v
+                if isinstance(v, list):
+                    return &#34;, &#34;.join(v)
+                else:
+                    RuntimeError(f&#34;unknown type for text value! ({type(v), v})&#34;)
+
+            desc = cond.text[&#39;description&#39;]
+            meta_data = &#34;&#34;
+            if random.uniform(0, 1) &lt; merge_text_conditions_p:
+                meta_pairs = [f&#39;{k}: {process_value(v)}&#39; for k, v in cond.text.items() if is_valid(k, v)]
+                random.shuffle(meta_pairs)
+                meta_data = &#34;. &#34;.join(meta_pairs)
+                desc = desc if not random.uniform(0, 1) &lt; drop_desc_p else None
+
+            if desc is None:
+                desc = meta_data if len(meta_data) &gt; 1 else None
+            else:
+                desc = desc.rstrip(&#39;.&#39;) + &#34;. &#34; + meta_data
+            cond.text[&#39;description&#39;] = desc.strip() if desc else None
+
+        if self.training and self.merge_text_conditions_p:
+            for sample in samples:
+                _merge_conds(sample, self.merge_text_conditions_p, self.drop_desc_p)
+
+        texts = [x.text for x in samples]
+        for text in texts:
+            for condition in self.text_conditions:
+                batch_per_attribute[condition].append(text[condition])
+
+        return batch_per_attribute
+
+    def _collate_wavs(self, samples: tp.List[ConditioningAttributes]):
+        &#34;&#34;&#34;Generate a dict where the keys are attributes by which we fetch similar wavs,
+        and the values are Tensors of wavs according to said attribtues.
+
+        *Note*: by the time the samples reach this function, each sample should have some waveform
+        inside the &#34;wav&#34; attribute. It should be either:
+        1. A real waveform
+        2. A null waveform due to the sample having no similar waveforms (nullified by the dataset)
+        3. A null waveform due to it being dropped in a dropout module (nullified by dropout)
+
+        Args:
+            samples (tp.List[ConditioningAttributes]): List of ConditioningAttributes samples.
+        Returns:
+            dict: A dicionary mapping an attribute name to wavs.
+        &#34;&#34;&#34;
+        wavs = defaultdict(list)
+        lens = defaultdict(list)
+        paths = defaultdict(list)
+        out = {}
+
+        for sample in samples:
+            for attribute in self.wav_conditions:
+                wav, length, path = sample.wav[attribute]
+                wavs[attribute].append(wav.flatten())
+                lens[attribute].append(length)
+                paths[attribute].append(path)
+
+        # stack all wavs to a single tensor
+        for attribute in self.wav_conditions:
+            stacked_wav, _ = collate(wavs[attribute], dim=0)
+            out[attribute] = WavCondition(stacked_wav.unsqueeze(1),
+                                          torch.cat(lens[&#39;self_wav&#39;]), paths[attribute])  # type: ignore
+
+        return out</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>torch.nn.modules.module.Module</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="audiocraft.modules.conditioners.ConditioningProvider.call_super_init"><code class="name">var <span class="ident">call_super_init</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="audiocraft.modules.conditioners.ConditioningProvider.dump_patches"><code class="name">var <span class="ident">dump_patches</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="audiocraft.modules.conditioners.ConditioningProvider.training"><code class="name">var <span class="ident">training</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="audiocraft.modules.conditioners.ConditioningProvider.has_wav_condition"><code class="name">var <span class="ident">has_wav_condition</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def has_wav_condition(self):
+    return len(self.wav_conditions) &gt; 0</code></pre>
+</details>
+</dd>
+<dt id="audiocraft.modules.conditioners.ConditioningProvider.text_conditions"><code class="name">var <span class="ident">text_conditions</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def text_conditions(self):
+    return [k for k, v in self.conditioners.items() if isinstance(v, TextConditioner)]</code></pre>
+</details>
+</dd>
+<dt id="audiocraft.modules.conditioners.ConditioningProvider.wav_conditions"><code class="name">var <span class="ident">wav_conditions</span></code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def wav_conditions(self):
+    return [k for k, v in self.conditioners.items() if isinstance(v, WaveformConditioner)]</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="audiocraft.modules.conditioners.ConditioningProvider.forward"><code class="name flex">
+<span>def <span class="ident">forward</span></span>(<span>self, tokenized: Dict[str, Any]) ‑> Dict[str, Tuple[torch.Tensor, torch.Tensor]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Compute pairs of <code>(embedding, mask)</code> using the configured conditioners
+and the tokenized representations. The output is for example:</p>
+<pre><code>{
+    "genre": (torch.Tensor([B, 1, D_genre]), torch.Tensor([B, 1])),
+    "description": (torch.Tensor([B, T_desc, D_desc]), torch.Tensor([B, T_desc])),
+    ...
+}
+</code></pre>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>tokenized</code></strong> :&ensp;<code>dict</code></dt>
+<dd>Dict of tokenized representations as returned by <code>tokenize()</code>.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def forward(self, tokenized: tp.Dict[str, tp.Any]) -&gt; tp.Dict[str, ConditionType]:
+    &#34;&#34;&#34;Compute pairs of `(embedding, mask)` using the configured conditioners
+    and the tokenized representations. The output is for example:
+
+        {
+            &#34;genre&#34;: (torch.Tensor([B, 1, D_genre]), torch.Tensor([B, 1])),
+            &#34;description&#34;: (torch.Tensor([B, T_desc, D_desc]), torch.Tensor([B, T_desc])),
+            ...
+        }
+
+    Args:
+        tokenized (dict): Dict of tokenized representations as returned by `tokenize()`.
+    &#34;&#34;&#34;
+    output = {}
+    for attribute, inputs in tokenized.items():
+        condition, mask = self.conditioners[attribute](inputs)
+        output[attribute] = (condition, mask)
+    return output</code></pre>
+</details>
+</dd>
+<dt id="audiocraft.modules.conditioners.ConditioningProvider.tokenize"><code class="name flex">
+<span>def <span class="ident">tokenize</span></span>(<span>self, inputs: List[<a title="audiocraft.modules.conditioners.ConditioningAttributes" href="#audiocraft.modules.conditioners.ConditioningAttributes">ConditioningAttributes</a>]) ‑> Dict[str, Any]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Match attributes/wavs with existing conditioners in self, and compute tokenize them accordingly.
+This should be called before starting any real GPU work to avoid synchronization points.
+This will return a dict matching conditioner names to their arbitrary tokenized representations.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>inputs</code></strong> :&ensp;<code>list[ConditioningAttribres]</code></dt>
+<dd>List of ConditioningAttributes objects containing
+text and wav conditions.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def tokenize(self, inputs: tp.List[ConditioningAttributes]) -&gt; tp.Dict[str, tp.Any]:
+    &#34;&#34;&#34;Match attributes/wavs with existing conditioners in self, and compute tokenize them accordingly.
+    This should be called before starting any real GPU work to avoid synchronization points.
+    This will return a dict matching conditioner names to their arbitrary tokenized representations.
+
+    Args:
+        inputs (list[ConditioningAttribres]): List of ConditioningAttributes objects containing
+            text and wav conditions.
+    &#34;&#34;&#34;
+    assert all([type(x) == ConditioningAttributes for x in inputs]), \
+        &#34;got unexpected types input for conditioner! should be tp.List[ConditioningAttributes]&#34; \
+        f&#34; but types were {set([type(x) for x in inputs])}&#34;
+
+    output = {}
+    text = self._collate_text(inputs)
+    wavs = self._collate_wavs(inputs)
+
+    assert set(text.keys() | wavs.keys()).issubset(set(self.conditioners.keys())), \
+        f&#34;got an unexpected attribute! Expected {self.conditioners.keys()}, got {text.keys(), wavs.keys()}&#34;
+
+    for attribute, batch in chain(text.items(), wavs.items()):
+        output[attribute] = self.conditioners[attribute].tokenize(batch)
+    return output</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="audiocraft.modules.conditioners.DropoutModule"><code class="flex name class">
+<span>class <span class="ident">DropoutModule</span></span>
+<span>(</span><span>seed: int = 1234)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Base class for all dropout modules.</p>
+<p>Initializes internal Module state, shared by both nn.Module and ScriptModule.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class DropoutModule(nn.Module):
+    &#34;&#34;&#34;Base class for all dropout modules.&#34;&#34;&#34;
+    def __init__(self, seed: int = 1234):
+        super().__init__()
+        self.rng = torch.Generator()
+        self.rng.manual_seed(seed)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>torch.nn.modules.module.Module</li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="audiocraft.modules.conditioners.AttributeDropout" href="#audiocraft.modules.conditioners.AttributeDropout">AttributeDropout</a></li>
+<li><a title="audiocraft.modules.conditioners.ClassifierFreeGuidanceDropout" href="#audiocraft.modules.conditioners.ClassifierFreeGuidanceDropout">ClassifierFreeGuidanceDropout</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="audiocraft.modules.conditioners.DropoutModule.call_super_init"><code class="name">var <span class="ident">call_super_init</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="audiocraft.modules.conditioners.DropoutModule.dump_patches"><code class="name">var <span class="ident">dump_patches</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="audiocraft.modules.conditioners.DropoutModule.training"><code class="name">var <span class="ident">training</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="audiocraft.modules.conditioners.DropoutModule.forward"><code class="name flex">
+<span>def <span class="ident">forward</span></span>(<span>self, *input: Any) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the :class:<code>Module</code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def _forward_unimplemented(self, *input: Any) -&gt; None:
+    r&#34;&#34;&#34;Defines the computation performed at every call.
+
+    Should be overridden by all subclasses.
+
+    .. note::
+        Although the recipe for forward pass needs to be defined within
+        this function, one should call the :class:`Module` instance afterwards
+        instead of this since the former takes care of running the
+        registered hooks while the latter silently ignores them.
+    &#34;&#34;&#34;
+    raise NotImplementedError(f&#34;Module [{type(self).__name__}] is missing the required \&#34;forward\&#34; function&#34;)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="audiocraft.modules.conditioners.LUTConditioner"><code class="flex name class">
+<span>class <span class="ident">LUTConditioner</span></span>
+<span>(</span><span>n_bins: int, dim: int, output_dim: int, tokenizer: str, pad_idx: int = 0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Lookup table TextConditioner.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>n_bins</code></strong> :&ensp;<code>int</code></dt>
+<dd>Number of bins.</dd>
+<dt><strong><code>dim</code></strong> :&ensp;<code>int</code></dt>
+<dd>Hidden dim of the model (text-encoder/LUT).</dd>
+<dt><strong><code>output_dim</code></strong> :&ensp;<code>int</code></dt>
+<dd>Output dim of the conditioner.</dd>
+<dt><strong><code>tokenizer</code></strong> :&ensp;<code>str</code></dt>
+<dd>Name of the tokenizer.</dd>
+<dt><strong><code>pad_idx</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>Index for padding token. Defaults to 0.</dd>
+</dl>
+<p>Initializes internal Module state, shared by both nn.Module and ScriptModule.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class LUTConditioner(TextConditioner):
+    &#34;&#34;&#34;Lookup table TextConditioner.
+
+    Args:
+        n_bins (int): Number of bins.
+        dim (int): Hidden dim of the model (text-encoder/LUT).
+        output_dim (int): Output dim of the conditioner.
+        tokenizer (str): Name of the tokenizer.
+        pad_idx (int, optional): Index for padding token. Defaults to 0.
+    &#34;&#34;&#34;
+    def __init__(self, n_bins: int, dim: int, output_dim: int, tokenizer: str, pad_idx: int = 0):
+        super().__init__(dim, output_dim)
+        self.embed = nn.Embedding(n_bins, dim)
+        self.tokenizer: Tokenizer
+        if tokenizer == &#34;whitespace&#34;:
+            self.tokenizer = WhiteSpaceTokenizer(n_bins, pad_idx=pad_idx)
+        elif tokenizer == &#34;noop&#34;:
+            self.tokenizer = NoopTokenizer(n_bins, pad_idx=pad_idx)
+        else:
+            raise ValueError(f&#34;unrecognized tokenizer `{tokenizer}`.&#34;)
+
+    def tokenize(self, x: tp.List[tp.Optional[str]]) -&gt; tp.Tuple[torch.Tensor, torch.Tensor]:
+        device = self.embed.weight.device
+        tokens, mask = self.tokenizer(x)
+        tokens, mask = tokens.to(device), mask.to(device)
+        return tokens, mask
+
+    def forward(self, inputs: tp.Tuple[torch.Tensor, torch.Tensor]) -&gt; ConditionType:
+        tokens, mask = inputs
+        embeds = self.embed(tokens)
+        embeds = self.output_proj(embeds)
+        embeds = (embeds * mask.unsqueeze(-1))
+        return embeds, mask</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="audiocraft.modules.conditioners.TextConditioner" href="#audiocraft.modules.conditioners.TextConditioner">TextConditioner</a></li>
+<li><a title="audiocraft.modules.conditioners.BaseConditioner" href="#audiocraft.modules.conditioners.BaseConditioner">BaseConditioner</a></li>
+<li>torch.nn.modules.module.Module</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="audiocraft.modules.conditioners.LUTConditioner.call_super_init"><code class="name">var <span class="ident">call_super_init</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="audiocraft.modules.conditioners.LUTConditioner.dump_patches"><code class="name">var <span class="ident">dump_patches</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="audiocraft.modules.conditioners.LUTConditioner.training"><code class="name">var <span class="ident">training</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="audiocraft.modules.conditioners.TextConditioner" href="#audiocraft.modules.conditioners.TextConditioner">TextConditioner</a></b></code>:
+<ul class="hlist">
+<li><code><a title="audiocraft.modules.conditioners.TextConditioner.forward" href="#audiocraft.modules.conditioners.BaseConditioner.forward">forward</a></code></li>
+<li><code><a title="audiocraft.modules.conditioners.TextConditioner.tokenize" href="#audiocraft.modules.conditioners.BaseConditioner.tokenize">tokenize</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="audiocraft.modules.conditioners.NoopTokenizer"><code class="flex name class">
+<span>class <span class="ident">NoopTokenizer</span></span>
+<span>(</span><span>n_bins: int, pad_idx: int = 0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This tokenizer should be used for global conditioners such as: artist, genre, key, etc.
+The difference between this and WhiteSpaceTokenizer is that NoopTokenizer does not split
+strings, so "Jeff Buckley" will get it's own index. Whereas WhiteSpaceTokenizer will
+split it to ["Jeff", "Buckley"] and return an index per word.</p>
+<p>For example:
+["Queen", "ABBA", "Jeff Buckley"] =&gt; [43, 55, 101]
+["Metal", "Rock", "Classical"] =&gt; [0, 223, 51]</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class NoopTokenizer(Tokenizer):
+    &#34;&#34;&#34;This tokenizer should be used for global conditioners such as: artist, genre, key, etc.
+    The difference between this and WhiteSpaceTokenizer is that NoopTokenizer does not split
+    strings, so &#34;Jeff Buckley&#34; will get it&#39;s own index. Whereas WhiteSpaceTokenizer will
+    split it to [&#34;Jeff&#34;, &#34;Buckley&#34;] and return an index per word.
+
+    For example:
+    [&#34;Queen&#34;, &#34;ABBA&#34;, &#34;Jeff Buckley&#34;] =&gt; [43, 55, 101]
+    [&#34;Metal&#34;, &#34;Rock&#34;, &#34;Classical&#34;] =&gt; [0, 223, 51]
+    &#34;&#34;&#34;
+    def __init__(self, n_bins: int, pad_idx: int = 0):
+        self.n_bins = n_bins
+        self.pad_idx = pad_idx
+
+    def __call__(self, texts: tp.List[tp.Optional[str]]) -&gt; tp.Tuple[Tensor, Tensor]:
+        output, lengths = [], []
+        for text in texts:
+            # if current sample doesn&#39;t have a certain attribute, replace with pad token
+            if text is None:
+                output.append(self.pad_idx)
+                lengths.append(0)
+            else:
+                output.append(hash_trick(text, self.n_bins))
+                lengths.append(1)
+
+        tokens = torch.LongTensor(output).unsqueeze(1)
+        mask = length_to_mask(torch.IntTensor(lengths)).int()
+        return tokens, mask</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="audiocraft.modules.conditioners.Tokenizer" href="#audiocraft.modules.conditioners.Tokenizer">Tokenizer</a></li>
+</ul>
+</dd>
+<dt id="audiocraft.modules.conditioners.SegmentWithAttributes"><code class="flex name class">
+<span>class <span class="ident">SegmentWithAttributes</span></span>
+<span>(</span><span>meta: <a title="audiocraft.data.audio_dataset.AudioMeta" href="../data/audio_dataset.html#audiocraft.data.audio_dataset.AudioMeta">AudioMeta</a>, seek_time: float, n_frames: int, total_frames: int, sample_rate: int)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Base class for all dataclasses that are used for conditioning.
+All child classes should implement <code>to_condition_attributes</code> that converts
+the existing attributes to a dataclass of type ConditioningAttributes.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class SegmentWithAttributes(SegmentInfo):
+    &#34;&#34;&#34;Base class for all dataclasses that are used for conditioning.
+    All child classes should implement `to_condition_attributes` that converts
+    the existing attributes to a dataclass of type ConditioningAttributes.
+    &#34;&#34;&#34;
+    def to_condition_attributes(self) -&gt; ConditioningAttributes:
+        raise NotImplementedError()</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="audiocraft.data.audio_dataset.SegmentInfo" href="../data/audio_dataset.html#audiocraft.data.audio_dataset.SegmentInfo">SegmentInfo</a></li>
+<li><a title="audiocraft.data.audio_dataset.BaseInfo" href="../data/audio_dataset.html#audiocraft.data.audio_dataset.BaseInfo">BaseInfo</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="audiocraft.modules.conditioners.SegmentWithAttributes.meta"><code class="name">var <span class="ident">meta</span> : <a title="audiocraft.data.audio_dataset.AudioMeta" href="../data/audio_dataset.html#audiocraft.data.audio_dataset.AudioMeta">AudioMeta</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="audiocraft.modules.conditioners.SegmentWithAttributes.n_frames"><code class="name">var <span class="ident">n_frames</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="audiocraft.modules.conditioners.SegmentWithAttributes.sample_rate"><code class="name">var <span class="ident">sample_rate</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="audiocraft.modules.conditioners.SegmentWithAttributes.seek_time"><code class="name">var <span class="ident">seek_time</span> : float</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="audiocraft.modules.conditioners.SegmentWithAttributes.total_frames"><code class="name">var <span class="ident">total_frames</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="audiocraft.modules.conditioners.SegmentWithAttributes.to_condition_attributes"><code class="name flex">
+<span>def <span class="ident">to_condition_attributes</span></span>(<span>self) ‑> <a title="audiocraft.modules.conditioners.ConditioningAttributes" href="#audiocraft.modules.conditioners.ConditioningAttributes">ConditioningAttributes</a></span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def to_condition_attributes(self) -&gt; ConditioningAttributes:
+    raise NotImplementedError()</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="audiocraft.modules.conditioners.T5Conditioner"><code class="flex name class">
+<span>class <span class="ident">T5Conditioner</span></span>
+<span>(</span><span>name: str, output_dim: int, finetune: bool, device: str, autocast_dtype: Optional[str] = 'float32', word_dropout: float = 0.0, normalize_text: bool = False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>T5-based TextConditioner.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>name</code></strong> :&ensp;<code>str</code></dt>
+<dd>Name of the T5 model.</dd>
+<dt><strong><code>output_dim</code></strong> :&ensp;<code>int</code></dt>
+<dd>Output dim of the conditioner.</dd>
+<dt><strong><code>finetune</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Whether to fine-tune T5 at train time.</dd>
+<dt><strong><code>device</code></strong> :&ensp;<code>str</code></dt>
+<dd>Device for T5 Conditioner.</dd>
+<dt><strong><code>autocast_dtype</code></strong> :&ensp;<code>tp.Optional[str]</code>, optional</dt>
+<dd>Autocast dtype.</dd>
+<dt><strong><code>word_dropout</code></strong> :&ensp;<code>float</code>, optional</dt>
+<dd>Word dropout probability.</dd>
+<dt><strong><code>normalize_text</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>Whether to apply text normalization.</dd>
+</dl>
+<p>Initializes internal Module state, shared by both nn.Module and ScriptModule.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class T5Conditioner(TextConditioner):
+    &#34;&#34;&#34;T5-based TextConditioner.
+
+    Args:
+        name (str): Name of the T5 model.
+        output_dim (int): Output dim of the conditioner.
+        finetune (bool): Whether to fine-tune T5 at train time.
+        device (str): Device for T5 Conditioner.
+        autocast_dtype (tp.Optional[str], optional): Autocast dtype.
+        word_dropout (float, optional): Word dropout probability.
+        normalize_text (bool, optional): Whether to apply text normalization.
+    &#34;&#34;&#34;
+    MODELS = [&#34;t5-small&#34;, &#34;t5-base&#34;, &#34;t5-large&#34;, &#34;t5-3b&#34;, &#34;t5-11b&#34;,
+              &#34;google/flan-t5-small&#34;, &#34;google/flan-t5-base&#34;, &#34;google/flan-t5-large&#34;,
+              &#34;google/flan-t5-xl&#34;, &#34;google/flan-t5-xxl&#34;]
+    MODELS_DIMS = {
+        &#34;t5-small&#34;: 512,
+        &#34;t5-base&#34;: 768,
+        &#34;t5-large&#34;: 1024,
+        &#34;t5-3b&#34;: 1024,
+        &#34;t5-11b&#34;: 1024,
+        &#34;google/flan-t5-small&#34;: 512,
+        &#34;google/flan-t5-base&#34;: 768,
+        &#34;google/flan-t5-large&#34;: 1024,
+        &#34;google/flan-t5-3b&#34;: 1024,
+        &#34;google/flan-t5-11b&#34;: 1024,
+    }
+
+    def __init__(self, name: str, output_dim: int, finetune: bool, device: str,
+                 autocast_dtype: tp.Optional[str] = &#39;float32&#39;, word_dropout: float = 0.,
+                 normalize_text: bool = False):
+        assert name in self.MODELS, f&#34;unrecognized t5 model name (should in {self.MODELS})&#34;
+        super().__init__(self.MODELS_DIMS[name], output_dim)
+        self.device = device
+        self.name = name
+        self.finetune = finetune
+        self.word_dropout = word_dropout
+
+        if autocast_dtype is None or self.device == &#39;cpu&#39;:
+            self.autocast = TorchAutocast(enabled=False)
+            if self.device != &#39;cpu&#39;:
+                logger.warning(&#34;T5 has no autocast, this might lead to NaN&#34;)
+        else:
+            dtype = getattr(torch, autocast_dtype)
+            assert isinstance(dtype, torch.dtype)
+            logger.info(f&#34;T5 will be evaluated with autocast as {autocast_dtype}&#34;)
+            self.autocast = TorchAutocast(enabled=True, device_type=self.device, dtype=dtype)
+        # Let&#39;s disable logging temporarily because T5 will vomit some errors otherwise.
+        # thanks https://gist.github.com/simon-weber/7853144
+        previous_level = logging.root.manager.disable
+        logging.disable(logging.ERROR)
+        with warnings.catch_warnings():
+            warnings.simplefilter(&#34;ignore&#34;)
+            try:
+                self.t5_tokenizer = T5Tokenizer.from_pretrained(name)
+                t5 = T5EncoderModel.from_pretrained(name).train(mode=finetune)
+            finally:
+                logging.disable(previous_level)
+        if finetune:
+            self.t5 = t5
+        else:
+            # this makes sure that the t5 models is not part
+            # of the saved checkpoint
+            self.__dict__[&#34;t5&#34;] = t5.to(device)
+
+        self.normalize_text = normalize_text
+        if normalize_text:
+            self.text_normalizer = WhiteSpaceTokenizer(1, lemma=True, stopwords=True)
+
+    def tokenize(self, x: tp.List[tp.Optional[str]]) -&gt; tp.Dict[str, torch.Tensor]:
+        # if current sample doesn&#39;t have a certain attribute, replace with empty string
+        entries: tp.List[str] = [xi if xi is not None else &#34;&#34; for xi in x]
+        if self.normalize_text:
+            _, _, entries = self.text_normalizer(entries, return_text=True)
+        if self.word_dropout &gt; 0. and self.training:
+            new_entries = []
+            for entry in entries:
+                words = [word for word in entry.split(&#34; &#34;) if random.random() &gt;= self.word_dropout]
+                new_entries.append(&#34; &#34;.join(words))
+            entries = new_entries
+
+        empty_idx = torch.LongTensor([i for i, xi in enumerate(entries) if xi == &#34;&#34;])
+
+        inputs = self.t5_tokenizer(entries, return_tensors=&#34;pt&#34;, padding=True).to(self.device)
+        mask = inputs[&#34;attention_mask&#34;]
+        mask[empty_idx, :] = 0  # zero-out index where the input is non-existant
+        return inputs
+
+    def forward(self, inputs: tp.Dict[str, torch.Tensor]) -&gt; ConditionType:
+        mask = inputs[&#34;attention_mask&#34;]
+        with torch.set_grad_enabled(self.finetune), self.autocast:
+            embeds = self.t5(**inputs).last_hidden_state
+        embeds = self.output_proj(embeds.to(self.output_proj.weight))
+        embeds = (embeds * mask.unsqueeze(-1))
+        return embeds, mask</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="audiocraft.modules.conditioners.TextConditioner" href="#audiocraft.modules.conditioners.TextConditioner">TextConditioner</a></li>
+<li><a title="audiocraft.modules.conditioners.BaseConditioner" href="#audiocraft.modules.conditioners.BaseConditioner">BaseConditioner</a></li>
+<li>torch.nn.modules.module.Module</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="audiocraft.modules.conditioners.T5Conditioner.MODELS"><code class="name">var <span class="ident">MODELS</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="audiocraft.modules.conditioners.T5Conditioner.MODELS_DIMS"><code class="name">var <span class="ident">MODELS_DIMS</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="audiocraft.modules.conditioners.T5Conditioner.call_super_init"><code class="name">var <span class="ident">call_super_init</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="audiocraft.modules.conditioners.T5Conditioner.dump_patches"><code class="name">var <span class="ident">dump_patches</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="audiocraft.modules.conditioners.T5Conditioner.training"><code class="name">var <span class="ident">training</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="audiocraft.modules.conditioners.TextConditioner" href="#audiocraft.modules.conditioners.TextConditioner">TextConditioner</a></b></code>:
+<ul class="hlist">
+<li><code><a title="audiocraft.modules.conditioners.TextConditioner.forward" href="#audiocraft.modules.conditioners.BaseConditioner.forward">forward</a></code></li>
+<li><code><a title="audiocraft.modules.conditioners.TextConditioner.tokenize" href="#audiocraft.modules.conditioners.BaseConditioner.tokenize">tokenize</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="audiocraft.modules.conditioners.TextConditioner"><code class="flex name class">
+<span>class <span class="ident">TextConditioner</span></span>
+<span>(</span><span>dim, output_dim)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Base model for all conditioner modules. We allow the output dim to be different
+than the hidden dim for two reasons: 1) keep our LUTs small when the vocab is large;
+2) make all condition dims consistent.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>dim</code></strong> :&ensp;<code>int</code></dt>
+<dd>Hidden dim of the model (text-encoder/LUT).</dd>
+<dt><strong><code>output_dim</code></strong> :&ensp;<code>int</code></dt>
+<dd>Output dim of the conditioner.</dd>
+</dl>
+<p>Initializes internal Module state, shared by both nn.Module and ScriptModule.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class TextConditioner(BaseConditioner):
+    ...</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="audiocraft.modules.conditioners.BaseConditioner" href="#audiocraft.modules.conditioners.BaseConditioner">BaseConditioner</a></li>
+<li>torch.nn.modules.module.Module</li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="audiocraft.modules.conditioners.LUTConditioner" href="#audiocraft.modules.conditioners.LUTConditioner">LUTConditioner</a></li>
+<li><a title="audiocraft.modules.conditioners.T5Conditioner" href="#audiocraft.modules.conditioners.T5Conditioner">T5Conditioner</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="audiocraft.modules.conditioners.TextConditioner.call_super_init"><code class="name">var <span class="ident">call_super_init</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="audiocraft.modules.conditioners.TextConditioner.dump_patches"><code class="name">var <span class="ident">dump_patches</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="audiocraft.modules.conditioners.TextConditioner.training"><code class="name">var <span class="ident">training</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="audiocraft.modules.conditioners.BaseConditioner" href="#audiocraft.modules.conditioners.BaseConditioner">BaseConditioner</a></b></code>:
+<ul class="hlist">
+<li><code><a title="audiocraft.modules.conditioners.BaseConditioner.forward" href="#audiocraft.modules.conditioners.BaseConditioner.forward">forward</a></code></li>
+<li><code><a title="audiocraft.modules.conditioners.BaseConditioner.tokenize" href="#audiocraft.modules.conditioners.BaseConditioner.tokenize">tokenize</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="audiocraft.modules.conditioners.Tokenizer"><code class="flex name class">
+<span>class <span class="ident">Tokenizer</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Base class for all tokenizers
+(in case we want to introduce more advances tokenizers in the future).</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Tokenizer:
+    &#34;&#34;&#34;Base class for all tokenizers
+    (in case we want to introduce more advances tokenizers in the future).
+    &#34;&#34;&#34;
+    def __call__(self, texts: tp.List[tp.Optional[str]]) -&gt; tp.Tuple[Tensor, Tensor]:
+        raise NotImplementedError()</code></pre>
+</details>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="audiocraft.modules.conditioners.NoopTokenizer" href="#audiocraft.modules.conditioners.NoopTokenizer">NoopTokenizer</a></li>
+<li><a title="audiocraft.modules.conditioners.WhiteSpaceTokenizer" href="#audiocraft.modules.conditioners.WhiteSpaceTokenizer">WhiteSpaceTokenizer</a></li>
+</ul>
+</dd>
+<dt id="audiocraft.modules.conditioners.WavCondition"><code class="flex name class">
+<span>class <span class="ident">WavCondition</span></span>
+<span>(</span><span>wav: torch.Tensor, length: torch.Tensor, path: List[Optional[str]] = [])</span>
+</code></dt>
+<dd>
+<div class="desc"><p>WavCondition(wav, length, path)</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class WavCondition(tp.NamedTuple):
+    wav: Tensor
+    length: Tensor
+    path: tp.List[tp.Optional[str]] = []</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>builtins.tuple</li>
+</ul>
+<h3>Instance variables</h3>
+<dl>
+<dt id="audiocraft.modules.conditioners.WavCondition.length"><code class="name">var <span class="ident">length</span> : torch.Tensor</code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 1</p></div>
+</dd>
+<dt id="audiocraft.modules.conditioners.WavCondition.path"><code class="name">var <span class="ident">path</span> : List[Optional[str]]</code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 2</p></div>
+</dd>
+<dt id="audiocraft.modules.conditioners.WavCondition.wav"><code class="name">var <span class="ident">wav</span> : torch.Tensor</code></dt>
+<dd>
+<div class="desc"><p>Alias for field number 0</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="audiocraft.modules.conditioners.WaveformConditioner"><code class="flex name class">
+<span>class <span class="ident">WaveformConditioner</span></span>
+<span>(</span><span>dim: int, output_dim: int, device: Union[torch.device, str])</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Base class for all conditioners that take a waveform as input.
+Classes that inherit must implement <code>_get_wav_embedding</code> that outputs
+a continuous tensor, and <code>_downsampling_factor</code> that returns the down-sampling
+factor of the embedding model.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>dim</code></strong> :&ensp;<code>int</code></dt>
+<dd>The internal representation dimension.</dd>
+<dt><strong><code>output_dim</code></strong> :&ensp;<code>int</code></dt>
+<dd>Output dimension.</dd>
+<dt><strong><code>device</code></strong> :&ensp;<code>tp.Union[torch.device, str]</code></dt>
+<dd>Device.</dd>
+</dl>
+<p>Initializes internal Module state, shared by both nn.Module and ScriptModule.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class WaveformConditioner(BaseConditioner):
+    &#34;&#34;&#34;Base class for all conditioners that take a waveform as input.
+    Classes that inherit must implement `_get_wav_embedding` that outputs
+    a continuous tensor, and `_downsampling_factor` that returns the down-sampling
+    factor of the embedding model.
+
+    Args:
+        dim (int): The internal representation dimension.
+        output_dim (int): Output dimension.
+        device (tp.Union[torch.device, str]): Device.
+    &#34;&#34;&#34;
+    def __init__(self, dim: int, output_dim: int, device: tp.Union[torch.device, str]):
+        super().__init__(dim, output_dim)
+        self.device = device
+
+    def tokenize(self, wav_length: WavCondition) -&gt; WavCondition:
+        wav, length, path = wav_length
+        assert length is not None
+        return WavCondition(wav.to(self.device), length.to(self.device), path)
+
+    def _get_wav_embedding(self, wav: Tensor) -&gt; Tensor:
+        &#34;&#34;&#34;Gets as input a wav and returns a dense vector of conditions.&#34;&#34;&#34;
+        raise NotImplementedError()
+
+    def _downsampling_factor(self):
+        &#34;&#34;&#34;Returns the downsampling factor of the embedding model.&#34;&#34;&#34;
+        raise NotImplementedError()
+
+    def forward(self, inputs: WavCondition) -&gt; ConditionType:
+        &#34;&#34;&#34;
+        Args:
+            input (WavCondition): Tuple of (waveform, lengths).
+        Returns:
+            ConditionType: Dense vector representing the conditioning along with its&#39; mask.
+        &#34;&#34;&#34;
+        wav, lengths, path = inputs
+        with torch.no_grad():
+            embeds = self._get_wav_embedding(wav)
+        embeds = embeds.to(self.output_proj.weight)
+        embeds = self.output_proj(embeds)
+
+        if lengths is not None:
+            lengths = lengths / self._downsampling_factor()
+            mask = length_to_mask(lengths, max_len=embeds.shape[1]).int()  # type: ignore
+        else:
+            mask = torch.ones_like(embeds)
+        embeds = (embeds * mask.unsqueeze(2).to(self.device))
+
+        return embeds, mask</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="audiocraft.modules.conditioners.BaseConditioner" href="#audiocraft.modules.conditioners.BaseConditioner">BaseConditioner</a></li>
+<li>torch.nn.modules.module.Module</li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="audiocraft.modules.conditioners.ChromaStemConditioner" href="#audiocraft.modules.conditioners.ChromaStemConditioner">ChromaStemConditioner</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="audiocraft.modules.conditioners.WaveformConditioner.call_super_init"><code class="name">var <span class="ident">call_super_init</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="audiocraft.modules.conditioners.WaveformConditioner.dump_patches"><code class="name">var <span class="ident">dump_patches</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="audiocraft.modules.conditioners.WaveformConditioner.training"><code class="name">var <span class="ident">training</span> : bool</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="audiocraft.modules.conditioners.WaveformConditioner.forward"><code class="name flex">
+<span>def <span class="ident">forward</span></span>(<span>self, inputs: <a title="audiocraft.modules.conditioners.WavCondition" href="#audiocraft.modules.conditioners.WavCondition">WavCondition</a>) ‑> Tuple[torch.Tensor, torch.Tensor]</span>
+</code></dt>
+<dd>
+<div class="desc"><h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>input</code></strong> :&ensp;<code><a title="audiocraft.modules.conditioners.WavCondition" href="#audiocraft.modules.conditioners.WavCondition">WavCondition</a></code></dt>
+<dd>Tuple of (waveform, lengths).</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>ConditionType</code></dt>
+<dd>Dense vector representing the conditioning along with its' mask.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def forward(self, inputs: WavCondition) -&gt; ConditionType:
+    &#34;&#34;&#34;
+    Args:
+        input (WavCondition): Tuple of (waveform, lengths).
+    Returns:
+        ConditionType: Dense vector representing the conditioning along with its&#39; mask.
+    &#34;&#34;&#34;
+    wav, lengths, path = inputs
+    with torch.no_grad():
+        embeds = self._get_wav_embedding(wav)
+    embeds = embeds.to(self.output_proj.weight)
+    embeds = self.output_proj(embeds)
+
+    if lengths is not None:
+        lengths = lengths / self._downsampling_factor()
+        mask = length_to_mask(lengths, max_len=embeds.shape[1]).int()  # type: ignore
+    else:
+        mask = torch.ones_like(embeds)
+    embeds = (embeds * mask.unsqueeze(2).to(self.device))
+
+    return embeds, mask</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="audiocraft.modules.conditioners.BaseConditioner" href="#audiocraft.modules.conditioners.BaseConditioner">BaseConditioner</a></b></code>:
+<ul class="hlist">
+<li><code><a title="audiocraft.modules.conditioners.BaseConditioner.tokenize" href="#audiocraft.modules.conditioners.BaseConditioner.tokenize">tokenize</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="audiocraft.modules.conditioners.WhiteSpaceTokenizer"><code class="flex name class">
+<span>class <span class="ident">WhiteSpaceTokenizer</span></span>
+<span>(</span><span>n_bins: int, pad_idx: int = 0, language: str = 'en_core_web_sm', lemma: bool = True, stopwords: bool = True)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This tokenizer should be used for natural language descriptions.
+For example:
+["he didn't, know he's going home.", 'shorter sentence'] =&gt;
+[[78, 62, 31,
+4, 78, 25, 19, 34],
+[59, 77,
+0,
+0,
+0,
+0,
+0,
+0]]</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class WhiteSpaceTokenizer(Tokenizer):
+    &#34;&#34;&#34;This tokenizer should be used for natural language descriptions.
+    For example:
+    [&#34;he didn&#39;t, know he&#39;s going home.&#34;, &#39;shorter sentence&#39;] =&gt;
+    [[78, 62, 31,  4, 78, 25, 19, 34],
+    [59, 77,  0,  0,  0,  0,  0,  0]]
+    &#34;&#34;&#34;
+    PUNCTUATIONS = &#34;?:!.,;&#34;
+
+    def __init__(self, n_bins: int, pad_idx: int = 0, language: str = &#34;en_core_web_sm&#34;,
+                 lemma: bool = True, stopwords: bool = True) -&gt; None:
+        self.n_bins = n_bins
+        self.pad_idx = pad_idx
+        self.lemma = lemma
+        self.stopwords = stopwords
+        try:
+            self.nlp = spacy.load(language)
+        except IOError:
+            spacy.cli.download(language)  # type: ignore
+            self.nlp = spacy.load(language)
+
+    @tp.no_type_check
+    def __call__(
+        self,
+        texts: tp.List[tp.Optional[str]],
+        return_text: bool = False
+    ) -&gt; tp.Tuple[Tensor, Tensor]:
+        &#34;&#34;&#34;Take a list of strings and convert them to a tensor of indices.
+
+        Args:
+            texts (tp.List[str]): List of strings.
+            return_text (bool, optional): Whether to return text as additional tuple item. Defaults to False.
+        Returns:
+            tp.Tuple[Tensor, Tensor]:
+                - Indices of words in the LUT.
+                - And a mask indicating where the padding tokens are
+        &#34;&#34;&#34;
+        output, lengths = [], []
+        texts = deepcopy(texts)
+        for i, text in enumerate(texts):
+            # if current sample doesn&#39;t have a certain attribute, replace with pad token
+            if text is None:
+                output.append(Tensor([self.pad_idx]))
+                lengths.append(0)
+                continue
+
+            # convert numbers to words
+            text = re.sub(r&#34;(\d+)&#34;, lambda x: num2words(int(x.group(0))), text)  # type: ignore
+            # normalize text
+            text = self.nlp(text)  # type: ignore
+            # remove stopwords
+            if self.stopwords:
+                text = [w for w in text if not w.is_stop]  # type: ignore
+            # remove punctuations
+            text = [w for w in text if w.text not in self.PUNCTUATIONS]  # type: ignore
+            # lemmatize if needed
+            text = [getattr(t, &#34;lemma_&#34; if self.lemma else &#34;text&#34;) for t in text]  # type: ignore
+
+            texts[i] = &#34; &#34;.join(text)
+            lengths.append(len(text))
+            # convert to tensor
+            tokens = Tensor([hash_trick(w, self.n_bins) for w in text])
+            output.append(tokens)
+
+        mask = length_to_mask(torch.IntTensor(lengths)).int()
+        padded_output = pad_sequence(output, padding_value=self.pad_idx).int().t()
+        if return_text:
+            return padded_output, mask, texts  # type: ignore
+        return padded_output, mask</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="audiocraft.modules.conditioners.Tokenizer" href="#audiocraft.modules.conditioners.Tokenizer">Tokenizer</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="audiocraft.modules.conditioners.WhiteSpaceTokenizer.PUNCTUATIONS"><code class="name">var <span class="ident">PUNCTUATIONS</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="audiocraft.modules" href="index.html">audiocraft.modules</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="audiocraft.modules.conditioners.dropout_condition" href="#audiocraft.modules.conditioners.dropout_condition">dropout_condition</a></code></li>
+<li><code><a title="audiocraft.modules.conditioners.nullify_condition" href="#audiocraft.modules.conditioners.nullify_condition">nullify_condition</a></code></li>
+<li><code><a title="audiocraft.modules.conditioners.nullify_wav" href="#audiocraft.modules.conditioners.nullify_wav">nullify_wav</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="audiocraft.modules.conditioners.AttributeDropout" href="#audiocraft.modules.conditioners.AttributeDropout">AttributeDropout</a></code></h4>
+<ul class="">
+<li><code><a title="audiocraft.modules.conditioners.AttributeDropout.call_super_init" href="#audiocraft.modules.conditioners.AttributeDropout.call_super_init">call_super_init</a></code></li>
+<li><code><a title="audiocraft.modules.conditioners.AttributeDropout.dump_patches" href="#audiocraft.modules.conditioners.AttributeDropout.dump_patches">dump_patches</a></code></li>
+<li><code><a title="audiocraft.modules.conditioners.AttributeDropout.forward" href="#audiocraft.modules.conditioners.AttributeDropout.forward">forward</a></code></li>
+<li><code><a title="audiocraft.modules.conditioners.AttributeDropout.training" href="#audiocraft.modules.conditioners.AttributeDropout.training">training</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="audiocraft.modules.conditioners.BaseConditioner" href="#audiocraft.modules.conditioners.BaseConditioner">BaseConditioner</a></code></h4>
+<ul class="">
+<li><code><a title="audiocraft.modules.conditioners.BaseConditioner.call_super_init" href="#audiocraft.modules.conditioners.BaseConditioner.call_super_init">call_super_init</a></code></li>
+<li><code><a title="audiocraft.modules.conditioners.BaseConditioner.dump_patches" href="#audiocraft.modules.conditioners.BaseConditioner.dump_patches">dump_patches</a></code></li>
+<li><code><a title="audiocraft.modules.conditioners.BaseConditioner.forward" href="#audiocraft.modules.conditioners.BaseConditioner.forward">forward</a></code></li>
+<li><code><a title="audiocraft.modules.conditioners.BaseConditioner.tokenize" href="#audiocraft.modules.conditioners.BaseConditioner.tokenize">tokenize</a></code></li>
+<li><code><a title="audiocraft.modules.conditioners.BaseConditioner.training" href="#audiocraft.modules.conditioners.BaseConditioner.training">training</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="audiocraft.modules.conditioners.ChromaExtractor" href="#audiocraft.modules.conditioners.ChromaExtractor">ChromaExtractor</a></code></h4>
+<ul class="">
+<li><code><a title="audiocraft.modules.conditioners.ChromaExtractor.call_super_init" href="#audiocraft.modules.conditioners.ChromaExtractor.call_super_init">call_super_init</a></code></li>
+<li><code><a title="audiocraft.modules.conditioners.ChromaExtractor.dump_patches" href="#audiocraft.modules.conditioners.ChromaExtractor.dump_patches">dump_patches</a></code></li>
+<li><code><a title="audiocraft.modules.conditioners.ChromaExtractor.forward" href="#audiocraft.modules.conditioners.ChromaExtractor.forward">forward</a></code></li>
+<li><code><a title="audiocraft.modules.conditioners.ChromaExtractor.training" href="#audiocraft.modules.conditioners.ChromaExtractor.training">training</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="audiocraft.modules.conditioners.ChromaStemConditioner" href="#audiocraft.modules.conditioners.ChromaStemConditioner">ChromaStemConditioner</a></code></h4>
+<ul class="">
+<li><code><a title="audiocraft.modules.conditioners.ChromaStemConditioner.call_super_init" href="#audiocraft.modules.conditioners.ChromaStemConditioner.call_super_init">call_super_init</a></code></li>
+<li><code><a title="audiocraft.modules.conditioners.ChromaStemConditioner.dump_patches" href="#audiocraft.modules.conditioners.ChromaStemConditioner.dump_patches">dump_patches</a></code></li>
+<li><code><a title="audiocraft.modules.conditioners.ChromaStemConditioner.training" href="#audiocraft.modules.conditioners.ChromaStemConditioner.training">training</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="audiocraft.modules.conditioners.ClassifierFreeGuidanceDropout" href="#audiocraft.modules.conditioners.ClassifierFreeGuidanceDropout">ClassifierFreeGuidanceDropout</a></code></h4>
+<ul class="">
+<li><code><a title="audiocraft.modules.conditioners.ClassifierFreeGuidanceDropout.call_super_init" href="#audiocraft.modules.conditioners.ClassifierFreeGuidanceDropout.call_super_init">call_super_init</a></code></li>
+<li><code><a title="audiocraft.modules.conditioners.ClassifierFreeGuidanceDropout.dump_patches" href="#audiocraft.modules.conditioners.ClassifierFreeGuidanceDropout.dump_patches">dump_patches</a></code></li>
+<li><code><a title="audiocraft.modules.conditioners.ClassifierFreeGuidanceDropout.forward" href="#audiocraft.modules.conditioners.ClassifierFreeGuidanceDropout.forward">forward</a></code></li>
+<li><code><a title="audiocraft.modules.conditioners.ClassifierFreeGuidanceDropout.training" href="#audiocraft.modules.conditioners.ClassifierFreeGuidanceDropout.training">training</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="audiocraft.modules.conditioners.ConditionFuser" href="#audiocraft.modules.conditioners.ConditionFuser">ConditionFuser</a></code></h4>
+<ul class="">
+<li><code><a title="audiocraft.modules.conditioners.ConditionFuser.FUSING_METHODS" href="#audiocraft.modules.conditioners.ConditionFuser.FUSING_METHODS">FUSING_METHODS</a></code></li>
+<li><code><a title="audiocraft.modules.conditioners.ConditionFuser.call_super_init" href="#audiocraft.modules.conditioners.ConditionFuser.call_super_init">call_super_init</a></code></li>
+<li><code><a title="audiocraft.modules.conditioners.ConditionFuser.dump_patches" href="#audiocraft.modules.conditioners.ConditionFuser.dump_patches">dump_patches</a></code></li>
+<li><code><a title="audiocraft.modules.conditioners.ConditionFuser.forward" href="#audiocraft.modules.conditioners.ConditionFuser.forward">forward</a></code></li>
+<li><code><a title="audiocraft.modules.conditioners.ConditionFuser.training" href="#audiocraft.modules.conditioners.ConditionFuser.training">training</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="audiocraft.modules.conditioners.ConditioningAttributes" href="#audiocraft.modules.conditioners.ConditioningAttributes">ConditioningAttributes</a></code></h4>
+<ul class="two-column">
+<li><code><a title="audiocraft.modules.conditioners.ConditioningAttributes.attributes" href="#audiocraft.modules.conditioners.ConditioningAttributes.attributes">attributes</a></code></li>
+<li><code><a title="audiocraft.modules.conditioners.ConditioningAttributes.from_flat_dict" href="#audiocraft.modules.conditioners.ConditioningAttributes.from_flat_dict">from_flat_dict</a></code></li>
+<li><code><a title="audiocraft.modules.conditioners.ConditioningAttributes.text" href="#audiocraft.modules.conditioners.ConditioningAttributes.text">text</a></code></li>
+<li><code><a title="audiocraft.modules.conditioners.ConditioningAttributes.text_attributes" href="#audiocraft.modules.conditioners.ConditioningAttributes.text_attributes">text_attributes</a></code></li>
+<li><code><a title="audiocraft.modules.conditioners.ConditioningAttributes.to_flat_dict" href="#audiocraft.modules.conditioners.ConditioningAttributes.to_flat_dict">to_flat_dict</a></code></li>
+<li><code><a title="audiocraft.modules.conditioners.ConditioningAttributes.wav" href="#audiocraft.modules.conditioners.ConditioningAttributes.wav">wav</a></code></li>
+<li><code><a title="audiocraft.modules.conditioners.ConditioningAttributes.wav_attributes" href="#audiocraft.modules.conditioners.ConditioningAttributes.wav_attributes">wav_attributes</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="audiocraft.modules.conditioners.ConditioningProvider" href="#audiocraft.modules.conditioners.ConditioningProvider">ConditioningProvider</a></code></h4>
+<ul class="two-column">
+<li><code><a title="audiocraft.modules.conditioners.ConditioningProvider.call_super_init" href="#audiocraft.modules.conditioners.ConditioningProvider.call_super_init">call_super_init</a></code></li>
+<li><code><a title="audiocraft.modules.conditioners.ConditioningProvider.dump_patches" href="#audiocraft.modules.conditioners.ConditioningProvider.dump_patches">dump_patches</a></code></li>
+<li><code><a title="audiocraft.modules.conditioners.ConditioningProvider.forward" href="#audiocraft.modules.conditioners.ConditioningProvider.forward">forward</a></code></li>
+<li><code><a title="audiocraft.modules.conditioners.ConditioningProvider.has_wav_condition" href="#audiocraft.modules.conditioners.ConditioningProvider.has_wav_condition">has_wav_condition</a></code></li>
+<li><code><a title="audiocraft.modules.conditioners.ConditioningProvider.text_conditions" href="#audiocraft.modules.conditioners.ConditioningProvider.text_conditions">text_conditions</a></code></li>
+<li><code><a title="audiocraft.modules.conditioners.ConditioningProvider.tokenize" href="#audiocraft.modules.conditioners.ConditioningProvider.tokenize">tokenize</a></code></li>
+<li><code><a title="audiocraft.modules.conditioners.ConditioningProvider.training" href="#audiocraft.modules.conditioners.ConditioningProvider.training">training</a></code></li>
+<li><code><a title="audiocraft.modules.conditioners.ConditioningProvider.wav_conditions" href="#audiocraft.modules.conditioners.ConditioningProvider.wav_conditions">wav_conditions</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="audiocraft.modules.conditioners.DropoutModule" href="#audiocraft.modules.conditioners.DropoutModule">DropoutModule</a></code></h4>
+<ul class="">
+<li><code><a title="audiocraft.modules.conditioners.DropoutModule.call_super_init" href="#audiocraft.modules.conditioners.DropoutModule.call_super_init">call_super_init</a></code></li>
+<li><code><a title="audiocraft.modules.conditioners.DropoutModule.dump_patches" href="#audiocraft.modules.conditioners.DropoutModule.dump_patches">dump_patches</a></code></li>
+<li><code><a title="audiocraft.modules.conditioners.DropoutModule.forward" href="#audiocraft.modules.conditioners.DropoutModule.forward">forward</a></code></li>
+<li><code><a title="audiocraft.modules.conditioners.DropoutModule.training" href="#audiocraft.modules.conditioners.DropoutModule.training">training</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="audiocraft.modules.conditioners.LUTConditioner" href="#audiocraft.modules.conditioners.LUTConditioner">LUTConditioner</a></code></h4>
+<ul class="">
+<li><code><a title="audiocraft.modules.conditioners.LUTConditioner.call_super_init" href="#audiocraft.modules.conditioners.LUTConditioner.call_super_init">call_super_init</a></code></li>
+<li><code><a title="audiocraft.modules.conditioners.LUTConditioner.dump_patches" href="#audiocraft.modules.conditioners.LUTConditioner.dump_patches">dump_patches</a></code></li>
+<li><code><a title="audiocraft.modules.conditioners.LUTConditioner.training" href="#audiocraft.modules.conditioners.LUTConditioner.training">training</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="audiocraft.modules.conditioners.NoopTokenizer" href="#audiocraft.modules.conditioners.NoopTokenizer">NoopTokenizer</a></code></h4>
+</li>
+<li>
+<h4><code><a title="audiocraft.modules.conditioners.SegmentWithAttributes" href="#audiocraft.modules.conditioners.SegmentWithAttributes">SegmentWithAttributes</a></code></h4>
+<ul class="">
+<li><code><a title="audiocraft.modules.conditioners.SegmentWithAttributes.meta" href="#audiocraft.modules.conditioners.SegmentWithAttributes.meta">meta</a></code></li>
+<li><code><a title="audiocraft.modules.conditioners.SegmentWithAttributes.n_frames" href="#audiocraft.modules.conditioners.SegmentWithAttributes.n_frames">n_frames</a></code></li>
+<li><code><a title="audiocraft.modules.conditioners.SegmentWithAttributes.sample_rate" href="#audiocraft.modules.conditioners.SegmentWithAttributes.sample_rate">sample_rate</a></code></li>
+<li><code><a title="audiocraft.modules.conditioners.SegmentWithAttributes.seek_time" href="#audiocraft.modules.conditioners.SegmentWithAttributes.seek_time">seek_time</a></code></li>
+<li><code><a title="audiocraft.modules.conditioners.SegmentWithAttributes.to_condition_attributes" href="#audiocraft.modules.conditioners.SegmentWithAttributes.to_condition_attributes">to_condition_attributes</a></code></li>
+<li><code><a title="audiocraft.modules.conditioners.SegmentWithAttributes.total_frames" href="#audiocraft.modules.conditioners.SegmentWithAttributes.total_frames">total_frames</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="audiocraft.modules.conditioners.T5Conditioner" href="#audiocraft.modules.conditioners.T5Conditioner">T5Conditioner</a></code></h4>
+<ul class="">
+<li><code><a title="audiocraft.modules.conditioners.T5Conditioner.MODELS" href="#audiocraft.modules.conditioners.T5Conditioner.MODELS">MODELS</a></code></li>
+<li><code><a title="audiocraft.modules.conditioners.T5Conditioner.MODELS_DIMS" href="#audiocraft.modules.conditioners.T5Conditioner.MODELS_DIMS">MODELS_DIMS</a></code></li>
+<li><code><a title="audiocraft.modules.conditioners.T5Conditioner.call_super_init" href="#audiocraft.modules.conditioners.T5Conditioner.call_super_init">call_super_init</a></code></li>
+<li><code><a title="audiocraft.modules.conditioners.T5Conditioner.dump_patches" href="#audiocraft.modules.conditioners.T5Conditioner.dump_patches">dump_patches</a></code></li>
+<li><code><a title="audiocraft.modules.conditioners.T5Conditioner.training" href="#audiocraft.modules.conditioners.T5Conditioner.training">training</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="audiocraft.modules.conditioners.TextConditioner" href="#audiocraft.modules.conditioners.TextConditioner">TextConditioner</a></code></h4>
+<ul class="">
+<li><code><a title="audiocraft.modules.conditioners.TextConditioner.call_super_init" href="#audiocraft.modules.conditioners.TextConditioner.call_super_init">call_super_init</a></code></li>
+<li><code><a title="audiocraft.modules.conditioners.TextConditioner.dump_patches" href="#audiocraft.modules.conditioners.TextConditioner.dump_patches">dump_patches</a></code></li>
+<li><code><a title="audiocraft.modules.conditioners.TextConditioner.training" href="#audiocraft.modules.conditioners.TextConditioner.training">training</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="audiocraft.modules.conditioners.Tokenizer" href="#audiocraft.modules.conditioners.Tokenizer">Tokenizer</a></code></h4>
+</li>
+<li>
+<h4><code><a title="audiocraft.modules.conditioners.WavCondition" href="#audiocraft.modules.conditioners.WavCondition">WavCondition</a></code></h4>
+<ul class="">
+<li><code><a title="audiocraft.modules.conditioners.WavCondition.length" href="#audiocraft.modules.conditioners.WavCondition.length">length</a></code></li>
+<li><code><a title="audiocraft.modules.conditioners.WavCondition.path" href="#audiocraft.modules.conditioners.WavCondition.path">path</a></code></li>
+<li><code><a title="audiocraft.modules.conditioners.WavCondition.wav" href="#audiocraft.modules.conditioners.WavCondition.wav">wav</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="audiocraft.modules.conditioners.WaveformConditioner" href="#audiocraft.modules.conditioners.WaveformConditioner">WaveformConditioner</a></code></h4>
+<ul class="">
+<li><code><a title="audiocraft.modules.conditioners.WaveformConditioner.call_super_init" href="#audiocraft.modules.conditioners.WaveformConditioner.call_super_init">call_super_init</a></code></li>
+<li><code><a title="audiocraft.modules.conditioners.WaveformConditioner.dump_patches" href="#audiocraft.modules.conditioners.WaveformConditioner.dump_patches">dump_patches</a></code></li>
+<li><code><a title="audiocraft.modules.conditioners.WaveformConditioner.forward" href="#audiocraft.modules.conditioners.WaveformConditioner.forward">forward</a></code></li>
+<li><code><a title="audiocraft.modules.conditioners.WaveformConditioner.training" href="#audiocraft.modules.conditioners.WaveformConditioner.training">training</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="audiocraft.modules.conditioners.WhiteSpaceTokenizer" href="#audiocraft.modules.conditioners.WhiteSpaceTokenizer">WhiteSpaceTokenizer</a></code></h4>
+<ul class="">
+<li><code><a title="audiocraft.modules.conditioners.WhiteSpaceTokenizer.PUNCTUATIONS" href="#audiocraft.modules.conditioners.WhiteSpaceTokenizer.PUNCTUATIONS">PUNCTUATIONS</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>
