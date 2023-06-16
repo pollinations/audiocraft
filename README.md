@@ -13,13 +13,15 @@ all 4 codebooks in one pass. By introducing a small delay between the codebooks,
 them in parallel, thus having only 50 auto-regressive steps per second of audio.
 Check out our [sample page][musicgen_samples] or test the available demo!
 
-<a target="_blank" href="https://colab.research.google.com/drive/1fxGqfg96RBUvGxZ1XXN07s3DthrKUl4-?usp=sharing">
+<a target="_blank" href="https://colab.research.google.com/drive/1-Xe9NCdIs2sCUbiSmwHXozK6AAhMm7_i?usp=sharing">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
 <a target="_blank" href="https://huggingface.co/spaces/facebook/MusicGen">
   <img src="https://huggingface.co/datasets/huggingface/badges/raw/main/open-in-hf-spaces-sm.svg" alt="Open in HugginFace"/>
 </a>
 <br>
+
+We use 20K hours of licensed music to train MusicGen. Specifically, we rely on an internal dataset of 10K high-quality music tracks, and on the ShutterStock and Pond5 music data.
 
 ## Installation
 Audiocraft requires Python 3.9, PyTorch 2.0.0, and a GPU with at least 16 GB of memory (for the medium-sized model). To install Audiocraft, you can run the following:
@@ -38,7 +40,9 @@ pip install -e .  # or if you cloned the repo locally
 We offer a number of way to interact with MusicGen:
 1. You can play with MusicGen by running the jupyter notebook at [`demo.ipynb`](./demo.ipynb) locally, or use the provided [colab notebook](https://colab.research.google.com/drive/1fxGqfg96RBUvGxZ1XXN07s3DthrKUl4-?usp=sharing).
 2. You can use the gradio demo locally by running `python app.py`.
-3. Finally, a demo is also available on the [`facebook/MusicGen`  HuggingFace Space](https://huggingface.co/spaces/facebook/MusicGen) (huge thanks to all the HF team for their support).
+3. A demo is also available on the [`facebook/MusicGen`  HuggingFace Space](https://huggingface.co/spaces/facebook/MusicGen) (huge thanks to all the HF team for their support).
+4. Finally, you can run the [Gradio demo with a Colab GPU](https://colab.research.google.com/drive/1-Xe9NCdIs2sCUbiSmwHXozK6AAhMm7_i?usp=sharing),
+as adapted from [@camenduru Colab](https://github.com/camenduru/MusicGen-colab).
 
 ## API
 
@@ -77,7 +81,7 @@ wav = model.generate_with_chroma(descriptions, melody[None].expand(3, -1, -1), s
 
 for idx, one_wav in enumerate(wav):
     # Will save under {idx}.wav, with loudness normalization at -14 db LUFS.
-    audio_write(f'{idx}', one_wav.cpu(), model.sample_rate, strategy="loudness")
+    audio_write(f'{idx}', one_wav.cpu(), model.sample_rate, strategy="loudness", loudness_compressor=True)
 ```
 
 
@@ -90,6 +94,11 @@ See [the model card page](./MODEL_CARD.md).
 #### Will the training code be released?
 
 Yes. We will soon release the training code for MusicGen and EnCodec.
+
+
+#### I need help on Windows
+
+@FurkanGozukara made a complete tutorial for [Audiocraft/MusicGen on Windows](https://youtu.be/v-YpvPkhdO4)
 
 
 ## Citation
